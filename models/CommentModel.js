@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
-const CommentSchema = mongoose.Schema({
+const CommentSchema = new mongoose.Schema({
     name: {
         firstName: {
             type    : String,
             required: true,
         },
-        secondName:{
+        lastName:{
             type    : String,
             required: true,
         },
@@ -23,8 +23,17 @@ const CommentSchema = mongoose.Schema({
         type    : String,
         required: true,
     },
+    type: {
+        type    : String,
+        required: true,
+    },
+    isActive: {
+        type    : Boolean,
+        required: true,
+    },
     number: {
-        type: Number,
+        type    : Number,
+        required: true,
     }
 });
 

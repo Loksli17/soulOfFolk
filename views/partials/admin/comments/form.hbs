@@ -1,0 +1,56 @@
+<div class="form-wrap">
+    <form action="{{action}}" method="post">
+        <div class="row">
+            <div class="col">
+                <span>Фамилия</span>
+                <input type="text" name="comment[lastName]" value="{{comment.name.lastName}}">
+            </div>
+            <div class="col">
+                <span>Имя</span>
+                <input type="text" name="comment[firstName]" value="{{comment.name.firstName}}">
+            </div>
+            <input type="hidden" name="_csrf" value="{{csrf}}">
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <span>Купленный набор</span>
+                <input type="text" name="comment[bundle]" value="{{comment.bundle}}">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <span>Язык</span>
+                <select name="comment[type]" id="">
+                    {{#if comment.typeEng}}
+                        <option value="rus">Русский</option>
+                        <option value="eng" selected>Английский</option>
+                    {{else}}
+                        <option value="rus" selected>Русский</option>
+                        <option value="eng">Английский</option>
+                    {{/if}}
+                </select>
+            </div>
+            <div class="col">
+                <span>Выводиться в лендинг</span>
+                <input type="checkbox" name="comment[isActive]" {{#if comment.isActive}}checked{{/if}}>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <span>Текст</span>
+                <textarea name="comment[text]" id="" cols="30" rows="10">{{comment.text}}</textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <input type="submit" value="{{submitValue}}">
+            </div>
+        </div>
+
+
+    </form>
+</div>

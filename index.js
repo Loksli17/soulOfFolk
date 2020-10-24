@@ -4,7 +4,6 @@ const
     session    = require('express-session'),
     cookie     = require('cookie-parser'),
     hbs        = require('hbs'),
-    helmet     = require('helmet'),
     bodyParser = require('body-parser'),
     flash      = require('connect-flash'),
     csurf      = require('csurf');
@@ -20,7 +19,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookie());
 app.use(csurf({cookie: true}));
 app.use(flash());
-app.use(helmet());
 app.use(fileUpload({
     createParentPath: true,
 }));
@@ -50,8 +48,8 @@ hbs.registerHelper('title', (title) => {
 
 // app.use(require('./controllers/authController').actionAuthControl);
 
-// //locals
-// app.use(require('./controllers/authController').actionLocalsControl);
+//locals
+app.use(require('./controllers/authController').actionLocalsControl);
 
 app.use('/', require('./routers/indexRouter'));
 

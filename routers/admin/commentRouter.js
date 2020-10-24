@@ -3,6 +3,11 @@ const
     controller = require('../../controllers/admin/commentController'),
     router     = express.Router();
 
-router.all('/', controller.actionIndex);
+router.all('/',       controller.actionIndex);
+router.all('/delete', controller.actionDelete);
+router.all('/edit',   controller.actionEdit);
+router.all('/create', controller.actionCreate);
+router.all('/view',   controller.actionView);
+router.all('/search', controller.actionSearch);
 
 module.exports = router;

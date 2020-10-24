@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
-const OrderSchema = mongoose.Schema({
+const OrderSchema = new mongoose.Schema({
     name: {
         firstName: {
             type    : String,
             required: true,
         },
-        secondName:{
+        lastName:{
             type    : String,
             required: true,
         },
@@ -28,7 +28,11 @@ const OrderSchema = mongoose.Schema({
     bundle: {
         type    : String,
         required: true,
-    }
+    },
+    viewStatus: {
+        type    : Boolean,
+        required: true,
+    },
 });
 
 module.exports = mongoose.model('orders', OrderSchema);

@@ -12,13 +12,14 @@ let query = async () => {
                             let order = new Order({
                                 name: {
                                     firstName : 'Олежа',
-                                    secondName: 'Чеботарев',
+                                    lastName  : 'Чеботарев',
                                     patronymic: 'Рукавишникович'
                                 },
-                                date  : '2020-10-24',
-                                phone : '+7 (924) 109 83-57',
-                                bundle: 'Подарок из России',
-                                number: 1,
+                                date      : '2020-10-24',
+                                phone     : '+7 (924) 109 83-57',
+                                bundle    : 'Подарок из России',
+                                number    : 1,
+                                viewStatus: false,
                             });
 
                             order.save(function(err){
@@ -33,13 +34,14 @@ let query = async () => {
                             let order = new Order({
                                 name: {
                                     firstName : 'Олежа',
-                                    secondName: 'Чеботарев',
+                                    lastName: 'Чеботарев',
                                     patronymic: 'Рукавишникович'
                                 },
                                 phone : '+7 (924) 109 83-57',
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 2,
+                                viewStatus: false,
                             });
  
                             order.save(function(err){
@@ -54,13 +56,14 @@ let query = async () => {
                             let order = new Order({
                                 name: {
                                     firstName : 'Олежа',
-                                    secondName: 'Чеботарев',
+                                    lastName: 'Чеботарев',
                                     patronymic: 'Рукавишникович'
                                 },
                                 phone : '+7 (924) 109 83-57',
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 3,
+                                viewStatus: false,
                             });
                             order.save(function(err){
                                 if(err){
@@ -74,13 +77,14 @@ let query = async () => {
                             let order = new Order({
                                 name: {
                                     firstName : 'Олежа',
-                                    secondName: 'Чеботарев',
+                                    lastName: 'Чеботарев',
                                     patronymic: 'Рукавишникович'
                                 },
                                 phone : '+7 (924) 109 83-57',
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 4,
+                                viewStatus: false,
                             });
 
                             order.save(function(err){
@@ -95,13 +99,14 @@ let query = async () => {
                             let order = new Order({
                                 name: {
                                     firstName : 'Олежа',
-                                    secondName: 'Чеботарев',
+                                    lastName: 'Чеботарев',
                                     patronymic: 'Рукавишникович'
                                 },
                                 phone : '+7 (924) 109 83-57',
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 5,
+                                viewStatus: false,
                             });
 
                             order.save(function(err){
@@ -116,13 +121,14 @@ let query = async () => {
                             let order = new Order({
                                 name: {
                                     firstName : 'Олежа',
-                                    secondName: 'Чеботарев',
+                                    lastName: 'Чеботарев',
                                     patronymic: 'Рукавишникович'
                                 },
                                 phone : '+7 (924) 109 83-57',
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 6,
+                                viewStatus: false,
                             });
 
                             order.save(function(err){
@@ -137,13 +143,14 @@ let query = async () => {
                             let order = new Order({
                                 name: {
                                     firstName : 'Олежа',
-                                    secondName: 'Чеботарев',
+                                    lastName  : 'Чеботарев',
                                     patronymic: 'Рукавишникович'
                                 },
                                 phone : '+7 (924) 109 83-57',
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 7,
+                                viewStatus: false,
                             });
 
                             order.save(function(err){
@@ -158,13 +165,14 @@ let query = async () => {
                             let order = new Order({
                                 name: {
                                     firstName : 'Олежа',
-                                    secondName: 'Чеботарев',
+                                    lastName  : 'Чеботарев',
                                     patronymic: 'Рукавишникович'
                                 },
                                 phone : '+7 (924) 109 83-57',
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 8,
+                                viewStatus: false,
                             });
 
                             order.save(function(err){
@@ -179,13 +187,14 @@ let query = async () => {
                             let order = new Order({
                                 name: {
                                     firstName : 'Олежа',
-                                    secondName: 'Чеботарев',
+                                    lastName  : 'Чеботарев',
                                     patronymic: 'Рукавишникович'
                                 },
                                 phone : '+7 (924) 109 83-57',
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 9,
+                                viewStatus: false,
                             });
 
                             order.save(function(err){
@@ -200,13 +209,14 @@ let query = async () => {
                             let order = new Order({
                                 name: {
                                     firstName : 'Олежа',
-                                    secondName: 'Чеботарев',
+                                    lastName  : 'Чеботарев',
                                     patronymic: 'Рукавишникович'
                                 },
                                 phone : '+7 (924) 109 83-57',
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 10,
+                                viewStatus: false,
                             });
 
                             order.save(function(err){
@@ -221,13 +231,14 @@ let query = async () => {
                             let order = new Order({
                                 name: {
                                     firstName : 'Олежа',
-                                    secondName: 'Чеботарев',
+                                    lastName  : 'Чеботарев',
                                     patronymic: 'Рукавишникович'
                                 },
                                 phone : '+7 (924) 109 83-57',
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 11,
+                                viewStatus: false,
                             });
 
                             order.save(function(err){

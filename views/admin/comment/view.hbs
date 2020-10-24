@@ -1,0 +1,30 @@
+<div class="table-view">
+    <div class="row">
+        <div class="title">ID</div>
+        <div class="content">{{comment.id}}</div>
+    </div>
+    <div class="row">
+        <div class="title">ФИ</div>
+        <div class="content">{{comment.name.lastName}} {{this.name.firstName}}</div>
+    </div>
+    <div class="row">
+        <div class="title">Купленный набор</div>
+        <div class="content">{{comment.bundle}}</div>
+    </div>
+    <div class="row">
+        <div class="title">Текст</div>
+        <div class="content">{{comment.text}}</div>
+    </div>
+    <div class="row">
+        <div class="title">Язык</div>
+        <div class="content">{{comment.type}}</div>
+    </div>
+    <div class="row">
+        <div class="title">Выводится в лендинге</div>
+        <div class="content">{{comment.isActive}}</div>
+    </div>
+</div>
+
+<div class="img-wrap">
+    <img src="/img/comments/{{comment.img}}" alt="">
+</div>

@@ -1,0 +1,6 @@
+.order-active {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background: #dedede;
+  cursor: pointer; }

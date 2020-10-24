@@ -9,12 +9,6 @@ module.exports = {
         password: 'XfRg5mCW',
         action  : 'localhost:3000/auth/accessEmail',
     },
-    admin: {
-        pagination: {
-            pageSize: 8,
-            limit   : 20,
-        },
-    },
     secret: {
         password: '~1;3JklN,<az09T',
         session : 'mtq[}$TyE4fg9)1',
@@ -25,7 +19,7 @@ module.exports = {
         name: 'SoulOfFolk',
         pagination: {
             pageSize: 8,
-            limit   : 10,
+            limit   : 6,
         },
         timeLifeCookie: Date.now() + 1000 * 60 * 60 * 24,
     },
