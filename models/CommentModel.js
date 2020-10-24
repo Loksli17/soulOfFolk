@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const OrderSchema = mongoose.Schema({
+const CommentSchema = mongoose.Schema({
     name: {
         firstName: {
             type    : String,
@@ -10,25 +10,22 @@ const OrderSchema = mongoose.Schema({
             type    : String,
             required: true,
         },
-        patronymic: {
-            type: String,
-        }
     },
-    date: {
-        type: Date,
-    },
-    phone: {
+    text: {
         required: true,
         type    : String,
-    },
-    number: {
-        type    : Number,
-        required: true,
     },
     bundle: {
         type    : String,
         required: true,
+    },
+    img: {
+        type    : String,
+        required: true,
+    },
+    number: {
+        type: Number,
     }
 });
 
-module.exports = mongoose.model('orders', OrderSchema);
+module.exports = mongoose.model('comments', CommentSchema);

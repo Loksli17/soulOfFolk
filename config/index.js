@@ -1,10 +1,8 @@
 //Application settings
 module.exports = {
     db: {
-        host    : 'localhost',
-        database: 'dvgupsSno',
-        user    : 'root',
-        password: '1234',
+        name: 'SoulOfFolk',
+        url : 'mongodb://localhost:27017/',
     },
     email: {
         user    : 'dvgups.sno@gmail.com',
@@ -24,7 +22,7 @@ module.exports = {
     },
     app: {
         port: 3000,
-        name: 'dvgupsSno',
+        name: 'SoulOfFolk',
         pagination: {
             pageSize: 8,
             limit   : 10,
