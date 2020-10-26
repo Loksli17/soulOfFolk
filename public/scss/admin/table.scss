@@ -5,20 +5,37 @@
     tr{
         $radius: 8px;
 
+        th{
+            text-align: left;
+            box-sizing: border-box;
+            padding-left: 15px;
+            font-size: 20.2px;
+        }
+
+        th:first-child{
+            box-sizing: border-box;
+            padding-left: 15px;
+        }
+
         td:first-child{
             border-right: 2px solid #01D76E;
-            padding: 22px 37px;
+            padding: 22px 30px;
             border-radius: $radius 0px 0px $radius;
+            text-align: center;
         }
 
         td:last-child{
+            display: grid;
+            grid-template-columns: max-content max-content max-content;
+            grid-column-gap: 10px;
             border-radius: 0px $radius $radius 0px;
         }
+
     }
 
     td{
         background: #fff;
         padding: 22px;
-        font-size: 22px;
+        font-size: 19px;
     }
 }

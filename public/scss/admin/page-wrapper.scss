@@ -26,6 +26,10 @@ body{
         font-size: 28px;
         letter-spacing: 0.8px;
     }
+    
+    .table-wrap{
+        margin-top: 50px;
+    }
 
     .add{
         display: flex;
@@ -40,6 +44,7 @@ body{
             font-size: 22px;
             padding: 0px 40px;
             box-sizing: border-box;
+            border-radius: 8px;
         }
     }
     

@@ -70,9 +70,9 @@ function showData(data){
             <td>${data[i].type}</td>
             <td>${data[i].isActive}</td>
             <td>
-                <a href="/admin/comments/view?id=${data[i]._id}"><i class="far fa-eye"></a>
-                <a href="/admin/comments/edit?id=${data[i]._id}"><i class="far fa-edit"></a>
-                <a href="/admin/comments/delete?id=${data[i]._id}"><i class="fas fa-trash"></a>
+                <a href="/admin/comments/view?id=${data[i]._id}"><i class="far fa-eye"></i></a>
+                <a href="/admin/comments/edit?id=${data[i]._id}"><i class="far fa-edit"></i></a>
+                <a href="/admin/comments/delete?id=${data[i]._id}"><i class="fas fa-trash"></i></a>
             </td>
         `;
         table.append(tr);

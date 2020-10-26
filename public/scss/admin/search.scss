@@ -1,6 +1,6 @@
 #search-form{
     display: flex;
-    $radius: 10px;
+    $radius: 8px;
 
     div{
         display: flex;
@@ -41,7 +41,7 @@
     left: 0;
 
     .data{
-        background: #fff;
+        background: #F5F6FA;
         padding: 30px;
         max-height: 700px;
         overflow-y: auto;

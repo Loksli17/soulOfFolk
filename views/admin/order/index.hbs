@@ -16,7 +16,7 @@
 </div>
 
 <div class="table-wrap wrap-row">
-    <table>
+    <table class="tableView" border=0>
         <tr>
             <th>ID</th>
             <th>ФИО</th>
@@ -47,7 +47,7 @@
                 {{/if}}
             </td>
             <td>
-                <a href="/admin/orders/delete?id={{this._id}}">Удалить</a>
+                <a href="/admin/orders/delete?id={{this._id}}"><i class="fas fa-trash"></i></a>
             </td>
         </tr>
         {{/each}}

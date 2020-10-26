@@ -49,13 +49,16 @@ function search(e){
 
 function showData(data){
     let
-        wrap      = document.createElement('div'),
-        dataBlock = document.createElement('table');
+        wrap  = document.createElement('div'),
+        wrapDiv = document.createElement('div'),
+        table = document.createElement('table');
 
     wrap.classList.add('search-data-wrap');
-    dataBlock.classList.add('data');
-    dataBlock.innerHTML = '<tr> <th>ID</th> <th>ФИО</th> <th>Номер телефон</th> <th>Дата заказа</th> <th>Набор</th> <th>Действия</th> </tr>';
-    wrap.append(dataBlock);
+    wrapDiv.classList.add('data');
+    table.classList.add('tableView');
+    table.innerHTML = '<tr> <th>ID</th> <th>ФИО</th> <th>Номер телефон</th> <th>Дата заказа</th> <th>Набор</th> <th>Действия</th> </tr>';
+    wrapDiv.append(table);
+    wrap.append(wrapDiv);
 
 
     for(let i = 0; i < data.length; i++){
@@ -67,10 +70,10 @@ function showData(data){
             <td>${data[i].dateView}</td>
             <td>${data[i].bundle}</td>
             <td>
-                <a href="/admin/orders/delete?id=${data[i]._id}">Удалить</a>
+                <a href="/admin/orders/delete?id=${data[i]._id}"><i class="fas fa-trash"></i></a>
             </td>
         `;
-        dataBlock.append(tr);
+        table.append(tr);
     }
 
     document.body.append(wrap);
