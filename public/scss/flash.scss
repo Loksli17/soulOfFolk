@@ -1,0 +1,26 @@
+.flash-mes{
+    position: fixed;
+    bottom: 50px;
+    left: -800px;
+    transition: 0.5s left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 80px;
+    border: 2px solid;
+
+    #flash-mes-close{
+        position: absolute;
+        top: -5px;
+        right: 5px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+}
+
+.flash-mes-active{
+    left: 50px;
+    transition: 0.5s left;
+}
+

@@ -45,10 +45,10 @@ exports.actionIndex = async (req, res) => {
     res.render('admin/order/index.hbs', {
        layout   : 'layouts/admin',
        orders   : orders,
-       flash    : flash == '' ? false : JSON.stringify(flash),
+       flash    : flash == '' ? false : flash,
        countInfo: pagination.getCountInfo(),
        pages    : pagination.getPages(),
-       linkCss  : ['/css/admin/order/index.css'],
+       linkCss  : ['/css/admin/order/index.css', '/css/admin/search.css', '/css/flash.css'],
        csrf     : res.locals._csrfToken,
     });
 }
@@ -120,7 +120,54 @@ exports.actionDelete = async (req, res) => {
     }
 
     await Order.findByIdAndDelete(id);
-
+    
+    req.flash('flash', {class: 'success', status: 'Успешно!', text: `Заказ c id ${order.number} успешно удален.`});
     res.redirect('/admin/orders');
 
+}
+
+exports.actionSearch = async (req, res) => {
+        
+    if(!req.xhr){
+        res.render('server/error.hbs', {
+            layout : null,
+            code   : '404',
+            message: 'Страница не найдена',
+        });
+        return;
+    }
+
+    const
+        POST = req.body;
+        
+    let
+        searchData = POST.searchData,
+        orders     = [];
+
+    if(searchData == undefined){
+        res.status(404).send({message: 'Некоректные данные'});
+    }
+
+    if(isNaN(Number(searchData))){
+        searchObj = {
+            $or: [
+                {bundle          : {$regex: searchData}},
+                {'name.lastName' : {$regex: searchData}},
+                {'name.firstName': {$regex: searchData}},
+                {'name.firstName': {$regex: searchData}},
+                {phone           : {$regex: searchData}},
+            ],
+        }
+    }else{
+        //number data
+        searchObj = {number: {searchData}}
+    }
+
+    orders = await Order.find(searchObj).lean().exec();
+
+    for(let i = 0; i < orders.length; i++){
+        orders[i].dateView = DateModule.formatViewDate(orders[i].date);
+    }
+
+    res.status(200).send({data: orders});
 }

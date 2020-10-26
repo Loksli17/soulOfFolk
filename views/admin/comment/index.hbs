@@ -2,10 +2,20 @@
 
 <h1>Отзывы</h1>
 
+<div class="add">
+    <div class="search-wrap">
+        <form action="/admin/comments/search" id="search-form">
+            <input type="hidden" name="_csrf" value="{{csrf}}">
+            <input type="text" name="search-data" placeholder="Поиск..">
+        </form>
+    </div>
+    <a href="/admin/comments/create">Добавить отзыв+</a>
+</div>
+
 <table>
     <tr>
         <th>ID</th>
-        <th>ФИ</th>
+        <th>Имя</th>
         <th>Купленный набор</th>
         <th>Текст</th>
         <th>Язык</th>
@@ -31,11 +41,7 @@
                 <span>{{this.type}}</span>
             </td>
             <td>
-                {{#if this.isActive}}
-                    <div>Да</div>
-                {{else}}
-                    <div>Нет</div>
-                {{/if}}
+                <span>{{this.isActive}}</span>
             </td>
             <td>
                 <a href="/admin/comments/view?id={{this._id}}">Просмотр</a>
@@ -67,3 +73,9 @@
         {{/each}}
     </ul>
 </div>
+
+<script>
+    var csrf = '{{csrf}}';
+</script>
+<script src="/js/admin/comment/search.js"></script>
+<script src="/js/flash.js"></script>

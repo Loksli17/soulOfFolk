@@ -35,11 +35,13 @@ exports.actionIndex = async (req, res) => {
         limit(pagination.limit).
         skip(pagination.skip).
         sort({number: -1}).
+        lean().
         exec();
 
     for(let i = 0; i < comments.length; i++){
-        comments[i].text = `${comments[i].text.slice(0, 30)}...`;
-        comments[i].type = comments.type == 'eng' ? 'Английский' : 'Русский';
+        comments[i].text     = `${comments[i].text.slice(0, 30)}...`;
+        comments[i].type     = comments[i].type == 'eng' ? 'Английский' : 'Русский';
+        comments[i].isActive = comments[i].isActive ? 'Да' : 'Нет'; 
     }
 
     flash = req.flash('flash')[0];
@@ -47,10 +49,11 @@ exports.actionIndex = async (req, res) => {
     res.render('admin/comment/index.hbs', {
        layout   : 'layouts/admin',
        comments : comments,
-       flash    : flash == '' ? false : JSON.stringify(flash),
+       flash    : flash == '' ? false : flash,
        countInfo: pagination.getCountInfo(),
        pages    : pagination.getPages(),
-       linkCss  : ['/css/admin/comment/index.css'],
+       linkCss  : ['/css/admin/comment/index.css', '/css/admin/search.css', '/css/flash.css'],
+       csrf     : res.locals._csrfToken,
     });
 }
 
@@ -95,6 +98,58 @@ exports.actionDelete = async (req, res) => {
 
 exports.actionCreate = async (req, res) => {
     
+    const
+        POST = req.body;
+
+    let
+        commentForm  = {},
+        lastCommment = await Comment.findOne().limit(1).sort({number: -1}).exec(),
+        comment      = {};
+
+    if(POST.comment == undefined){
+        res.render('admin/comment/edit', {
+            layout : 'layouts/admin',
+            comment: comment,
+            title  : 'Панель администрации: Редактирование комментария',
+            linkCss: ['/css/admin/form.css'],
+            csrf   : res.locals._csrfToken,
+            submitValue: 'Редактировать отзыв',
+
+        });
+        return;
+    }
+
+    commentForm = POST.comment;
+
+    comment = new Comment({
+        name: {
+            firstName : commentForm.firstName,
+            lastName  : commentForm.lastName,
+        },
+        img     : 'default-customer.jpg',
+        bundle  : commentForm.bundle,
+        number  : lastCommment.number + 1,
+        type    : commentForm.type,
+        isActive: commentForm.isActive == undefined ? false : true,
+        text    : commentForm.text,
+    });
+
+    try{
+        await comment.save({runValidators: true});
+        req.flash('flash', {class: 'success', status: 'Успешно!', text: `Отзыв c id ${comment.number} успешно создан.`});
+        res.redirect('/admin/comments');
+    }catch(error){
+        //обработать ошибки
+        req.flash('flash', {class: 'fail', status: 'Ошибка!', text: `Отзыв c id ${comment.number} не был удален.`});
+        res.render('admin/comment/edit', {
+            layout : 'layouts/admin',
+            comment: comment,
+            title  : 'Панель администрации: Редактирование комментария',
+            linkCss: ['/css/admin/form.css'],
+            csrf   : res.locals._csrfToken,
+            submitValue: 'Редактировать отзыв',
+        });
+    }
 }
 
 
@@ -159,6 +214,7 @@ exports.actionEdit = async (req, res) => {
         res.redirect('/admin/comments');
     }catch(error){
         //обработать ошибки
+        req.flash('flash', {class: 'fail', status: 'Успешно!', text: `Отзыв c id ${comment.number} не был изменен.`});
         console.log(error);
         res.render('admin/comment/edit', {
             layout : 'layouts/admin',
@@ -208,11 +264,64 @@ exports.actionView = async (req, res) => {
     res.render('admin/comment/view.hbs', {
        layout   : 'layouts/admin',
        comment  : comment,
-       linkCss  : ['/css/admin/order/index.css'],
+       linkCss  : ['/css/admin/order/index.css', '/css/admin/ordse'],
     });
 }
 
 
 exports.actionSearch = async (req, res) => {
     
+    if(!req.xhr){
+        res.render('server/error.hbs', {
+            layout : null,
+            code   : '404',
+            message: 'Страница не найдена',
+        });
+        return;
+    }
+
+    const
+        POST = req.body;
+        
+    let
+        searchData = POST.searchData,
+        comments   = [];
+
+    if(searchData == undefined){
+        res.status(404).send({message: 'Некоректные данные'});
+    }
+
+    if(isNaN(Number(searchData))){
+        //string data
+        if(searchData == 'Да'){
+            searchObj = {isActive: true};
+        }else if(searchData == 'Нет'){
+            searchObj = {isActive: false};
+        }else{
+            searchObj = {
+                $or: [
+                    {text            : {$regex: searchData}},
+                    {bundle          : {$regex: searchData}},
+                    {'name.lastName' : {$regex: searchData}},
+                    {'name.firstName': {$regex: searchData}},
+                    {type            : {$regex: searchData}},
+                ],
+            }
+        }
+
+    }else{
+        //number data
+        searchObj = {number: {searchData}}
+    }
+
+    comments = await Comment.find(searchObj).lean().exec();
+
+    for(let i = 0; i < comments.length; i++){
+        comments[i].text     = `${comments[i].text.slice(0, 30)}...`;
+        comments[i].type     = comments[i].type == 'eng' ? 'Английский' : 'Русский';
+        comments[i].isActive = comments[i].isActive ? 'Да' : 'Нет'; 
+    }
+
+    res.status(200).send({data: comments});
+
 }
