@@ -1,18 +1,18 @@
 <div class="pages">
-    <span>Показаны {{countInfo.startRecord}} - {{countInfo.endRecord}} из {{countInfo.count}} записей</span>
+    <p>Показаны <span>{{countInfo.startRecord}}</span> - <span>{{countInfo.endRecord}}</span> из <span>{{countInfo.count}}</span> записей</p>
 
     <ul>
         {{#each pages}}
             <li>
                 {{#if addBlock}}
                     <div class="ellipsis">
-                        {{content}}
+                        {{{content}}}
                     </div>
                 {{else}}
                     {{#if current}}
-                        <a class="{{class}} {{classActive}}" href="{{route}}page={{id}}">{{content}}</a>
+                        <a class="{{class}} {{classActive}}" href="{{route}}page={{id}}">{{{content}}}</a>
                     {{else}}
-                        <a class="{{class}}" href="{{route}}page={{id}}">{{content}}</a>
+                        <a class="{{class}}" href="{{route}}page={{id}}">{{{content}}}</a>
                     {{/if}}
                 {{/if}}
             </li>

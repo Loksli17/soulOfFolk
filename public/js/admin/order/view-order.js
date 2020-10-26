@@ -11,17 +11,18 @@ const main = () => {
 function viewOrder(){
     let
         xhr      = new XMLHttpRequest(),
+        block    = this.block,
         formData = new FormData(); 
 
     xhr.onload = xhr.onerror = function(e){
         if(this.status == 200){
-            console.log(this.response);
+            block.remove();
         }else{
-            alert('все плохо');
+            alert('Ошибка сервера - обратитись в поддержку!');
         }
     }
 
-    formData.append('id', this.block.id);
+    formData.append('id', block.id);
 
     xhr.open('POST', '/admin/orders/view-order');
     xhr.responseType = 'json',

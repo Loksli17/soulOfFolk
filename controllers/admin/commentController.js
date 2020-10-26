@@ -29,6 +29,8 @@ exports.actionIndex = async (req, res) => {
         count      : count,
         endButton  : true,
         startButton: true,
+        prev       : {content: '&larr;', class: 'step-a'},
+        next       : {content: '&rarr;', class: 'step-a'},
     });
 
     comments = await Comment.find().
@@ -52,7 +54,7 @@ exports.actionIndex = async (req, res) => {
        flash    : flash == '' ? false : flash,
        countInfo: pagination.getCountInfo(),
        pages    : pagination.getPages(),
-       linkCss  : ['/css/admin/comment/index.css', '/css/admin/search.css', '/css/flash.css'],
+       linkCss  : ['/css/admin/search.css', '/css/admin/pages.css', '/css/flash.css', '/css/admin/header.css', '/css/admin/table.css'],
        csrf     : res.locals._csrfToken,
     });
 }
@@ -111,7 +113,7 @@ exports.actionCreate = async (req, res) => {
             layout : 'layouts/admin',
             comment: comment,
             title  : 'Панель администрации: Редактирование комментария',
-            linkCss: ['/css/admin/form.css'],
+            linkCss: ['/css/admin/form.css', '/css/admin/header.css'],
             csrf   : res.locals._csrfToken,
             submitValue: 'Редактировать отзыв',
 
@@ -145,7 +147,7 @@ exports.actionCreate = async (req, res) => {
             layout : 'layouts/admin',
             comment: comment,
             title  : 'Панель администрации: Редактирование комментария',
-            linkCss: ['/css/admin/form.css'],
+            linkCss: ['/css/admin/form.css', '/css/admin/header.css'],
             csrf   : res.locals._csrfToken,
             submitValue: 'Редактировать отзыв',
         });
@@ -191,7 +193,7 @@ exports.actionEdit = async (req, res) => {
             layout : 'layouts/admin',
             comment: comment,
             title  : 'Панель администрации: Редактирование комментария',
-            linkCss: ['/css/admin/form.css'],
+            linkCss: ['/css/admin/form.css', '/css/admin/header.css'],
             csrf   : res.locals._csrfToken,
             submitValue: 'Редактировать отзыв',
 
@@ -220,7 +222,7 @@ exports.actionEdit = async (req, res) => {
             layout : 'layouts/admin',
             comment: comment,
             title  : 'Панель администрации: Редактирование комментария',
-            linkCss: ['/css/admin/form.css'],
+            linkCss: ['/css/admin/form.css', '/css/admin/header.css'],
             csrf   : res.locals._csrfToken,
             submitValue: 'Редактировать отзыв',
 
@@ -264,7 +266,7 @@ exports.actionView = async (req, res) => {
     res.render('admin/comment/view.hbs', {
        layout   : 'layouts/admin',
        comment  : comment,
-       linkCss  : ['/css/admin/order/index.css', '/css/admin/ordse'],
+       linkCss  : ['/css/admin/order/index.css', '/css/admin/header.css'],
     });
 }
 

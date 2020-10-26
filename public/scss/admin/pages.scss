@@ -1,0 +1,54 @@
+.pages{
+    p{
+        display: block;
+        margin-bottom: 15px;
+        font-size: 19px;
+
+        span{
+            color: #13DB79;
+        }
+    }
+
+    ul{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 50px);
+        grid-column-gap: 5px;
+
+        li{
+            list-style: none;
+
+            a{
+                display: block;
+                box-sizing: border-box;
+                padding: 15px 0px;
+                text-align: center;
+                background: #DBDDE1;
+                color: #000;
+                text-decoration: none;
+                font-size: 20px;
+            }
+
+            .ellipsis{
+                padding: 15px 0px;
+                font-size: 20px;
+                color: #000;
+                height: max-content;
+                line-height: 10px;
+                text-align: center;
+            }
+
+            .page-active{
+                background: #13DB79;
+                color: #fff;
+            }
+
+            .step-a{
+                background: rgba(0, 0, 0, 0);
+                font-size: 26px;
+                height: 54px;
+                line-height: 20px;
+            }
+        }
+    }
+
+}

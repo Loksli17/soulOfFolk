@@ -1,28 +1,32 @@
 {{>flash}}
 
-<h1>Заказы</h1>
+<div class="title wrap-row">
+    <h1>Заказы</h1>
+</div>
 
-<div class="add">
+
+<div class="add wrap-row">
     <div class="search-wrap">
         <form action="/admin/orders/search" id="search-form">
             <input type="hidden" name="_csrf" value="{{csrf}}">
             <input type="text" name="search-data" placeholder="Поиск..">
         </form>
     </div>
+    
 </div>
 
-
-<table>
-    <tr>
-        <th>ID</th>
-        <th>ФИО</th>
-        <th>Номер телефон</th>
-        <th>Дата заказа</th>
-        <th>Набор</th>
-        <th>Действия</th>
-    </tr>
-
-    {{#each orders}}
+<div class="table-wrap wrap-row">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>ФИО</th>
+            <th>Номер телефон</th>
+            <th>Дата заказа</th>
+            <th>Набор</th>
+            <th>Действия</th>
+        </tr>
+    
+        {{#each orders}}
         <tr>
             <td>
                 <span>{{this.number}}</span>
@@ -39,31 +43,33 @@
             <td>
                 <span>{{this.bundle}}</span>
                 {{#if this.viewStatus}}
-                    <div class="order-active" id="{{this._id}}"></div>
+                <div class="order-active" id="{{this._id}}"></div>
                 {{/if}}
             </td>
             <td>
                 <a href="/admin/orders/delete?id={{this._id}}">Удалить</a>
             </td>
         </tr>
-    {{/each}}
-</table>
+        {{/each}}
+    </table>
+</div>
 
-<div class="pages">
-    <span>Показаны {{countInfo.startRecord}} - {{countInfo.endRecord}} из {{countInfo.count}} записей</span>
+
+<div class="pages wrap-row">
+    <p>Показаны <span>{{countInfo.startRecord}}</span> - <span>{{countInfo.endRecord}}</span> из <span>{{countInfo.count}}</span> записей</p>
 
     <ul>
         {{#each pages}}
             <li>
                 {{#if addBlock}}
                     <div class="ellipsis">
-                        {{content}}
+                        {{{content}}}
                     </div>
                 {{else}}
                     {{#if current}}
-                        <a class="{{class}} {{classActive}}" href="{{route}}page={{id}}">{{content}}</a>
+                        <a class="{{class}} {{classActive}}" href="{{route}}page={{id}}">{{{content}}}</a>
                     {{else}}
-                        <a class="{{class}}" href="{{route}}page={{id}}">{{content}}</a>
+                        <a class="{{class}}" href="{{route}}page={{id}}">{{{content}}}</a>
                     {{/if}}
                 {{/if}}
             </li>

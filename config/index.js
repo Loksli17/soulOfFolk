@@ -18,7 +18,7 @@ module.exports = {
         port: 3000,
         name: 'SoulOfFolk',
         pagination: {
-            pageSize: 8,
+            pageSize: 5,
             limit   : 6,
         },
         timeLifeCookie: Date.now() + 1000 * 60 * 60 * 24,

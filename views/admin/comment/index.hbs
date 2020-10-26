@@ -1,29 +1,35 @@
 {{>flash}}
 
-<h1>Отзывы</h1>
+<div class="title wrap-row">
+    <h1>Отзывы</h1>
+</div>
 
-<div class="add">
+<div class="add wrap-row">
     <div class="search-wrap">
         <form action="/admin/comments/search" id="search-form">
             <input type="hidden" name="_csrf" value="{{csrf}}">
+            <div>
+                <img src="/img/admin/search.svg">
+            </div>
             <input type="text" name="search-data" placeholder="Поиск..">
         </form>
     </div>
-    <a href="/admin/comments/create">Добавить отзыв+</a>
+    <a class="btn-add" href="/admin/comments/create">Добавить отзыв+</a>
 </div>
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Имя</th>
-        <th>Купленный набор</th>
-        <th>Текст</th>
-        <th>Язык</th>
-        <th>Выводиться на лендинге</th>
-        <th>Действия</th>
-    </tr>
-
-    {{#each comments}}
+<div class="table-wrap wrap-row">
+    <table class="tableView" border=0>
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Купленный набор</th>
+            <th>Текст</th>
+            <th>Язык</th>
+            <th>Выводиться на лендинге</th>
+            <th>Действия</th>
+        </tr>
+    
+        {{#each comments}}
         <tr>
             <td>
                 <span>{{this.number}}</span>
@@ -44,29 +50,30 @@
                 <span>{{this.isActive}}</span>
             </td>
             <td>
-                <a href="/admin/comments/view?id={{this._id}}">Просмотр</a>
-                <a href="/admin/comments/edit?id={{this._id}}">Редактировать</a>
-                <a href="/admin/comments/delete?id={{this._id}}">Удалить</a>
+                <a href="/admin/comments/view?id={{this._id}}"><i class="far fa-eye"></i></a>
+                <a href="/admin/comments/edit?id={{this._id}}"><i class="far fa-edit"></i></a>
+                <a href="/admin/comments/delete?id={{this._id}}"><i class="fas fa-trash"></i></i></a>
             </td>
         </tr>
-    {{/each}}
-</table>
+        {{/each}}
+    </table>
+</div>
 
-<div class="pages">
-    <span>Показаны {{countInfo.startRecord}} - {{countInfo.endRecord}} из {{countInfo.count}} записей</span>
+<div class="pages wrap-row">
+    <p>Показаны <span>{{countInfo.startRecord}}</span> - <span>{{countInfo.endRecord}}</span> из <span>{{countInfo.count}}</span> записей</p>
 
     <ul>
         {{#each pages}}
             <li>
                 {{#if addBlock}}
                     <div class="ellipsis">
-                        {{content}}
+                        {{{content}}}
                     </div>
                 {{else}}
                     {{#if current}}
-                        <a class="{{class}} {{classActive}}" href="{{route}}page={{id}}">{{content}}</a>
+                        <a class="{{class}} {{classActive}}" href="{{route}}page={{id}}">{{{content}}}</a>
                     {{else}}
-                        <a class="{{class}}" href="{{route}}page={{id}}">{{content}}</a>
+                        <a class="{{class}}" href="{{route}}page={{id}}">{{{content}}}</a>
                     {{/if}}
                 {{/if}}
             </li>

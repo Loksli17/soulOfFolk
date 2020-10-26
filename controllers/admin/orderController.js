@@ -48,7 +48,7 @@ exports.actionIndex = async (req, res) => {
        flash    : flash == '' ? false : flash,
        countInfo: pagination.getCountInfo(),
        pages    : pagination.getPages(),
-       linkCss  : ['/css/admin/order/index.css', '/css/admin/search.css', '/css/flash.css'],
+       linkCss  : ['/css/admin/search.css', '/css/admin/pages.css', '/css/flash.css', '/css/admin/header.css', '/css/admin/table.css'],
        csrf     : res.locals._csrfToken,
     });
 }

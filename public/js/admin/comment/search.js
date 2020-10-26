@@ -49,14 +49,16 @@ function search(e){
 
 function showData(data){
     let
-        wrap      = document.createElement('div'),
-        dataBlock = document.createElement('table');
+        wrap    = document.createElement('div'),
+        wrapDiv = document.createElement('div'), 
+        table   = document.createElement('table');
 
     wrap.classList.add('search-data-wrap');
-    dataBlock.classList.add('data');
-    dataBlock.innerHTML = '<tr> <th>ID</th> <th>Имя</th> <th>Купленый набор</th> <th>Текст</th> <th>Язык</th> <th>Выводится на лендинге</th> <th>Действия</th> </tr>';
-    wrap.append(dataBlock);
-
+    wrapDiv.classList.add('data');
+    table.classList.add('tableView');
+    table.innerHTML = '<tr> <th>ID</th> <th>Имя</th> <th>Купленый набор</th> <th>Текст</th> <th>Язык</th> <th>Выводится на лендинге</th> <th>Действия</th> </tr>';
+    wrapDiv.append(table);
+    wrap.append(wrapDiv);
 
     for(let i = 0; i < data.length; i++){
         let tr = document.createElement('tr');
@@ -68,12 +70,12 @@ function showData(data){
             <td>${data[i].type}</td>
             <td>${data[i].isActive}</td>
             <td>
-                <a href="/admin/comments/view?id=${data[i]._id}">Просмотр</a>
-                <a href="/admin/comments/edit?id=${data[i]._id}">Редактировать</a>
-                <a href="/admin/comments/delete?id=${data[i]._id}">Удалить</a>
+                <a href="/admin/comments/view?id=${data[i]._id}"><i class="far fa-eye"></a>
+                <a href="/admin/comments/edit?id=${data[i]._id}"><i class="far fa-edit"></a>
+                <a href="/admin/comments/delete?id=${data[i]._id}"><i class="fas fa-trash"></a>
             </td>
         `;
-        dataBlock.append(tr);
+        table.append(tr);
     }
 
     document.body.append(wrap);

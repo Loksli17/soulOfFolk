@@ -172,7 +172,7 @@ let query = async () => {
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 8,
-                                viewStatus: false,
+                                viewStatus: true,
                             });
 
                             order.save(function(err){
@@ -194,7 +194,7 @@ let query = async () => {
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 9,
-                                viewStatus: false,
+                                viewStatus: true,
                             });
 
                             order.save(function(err){
@@ -216,7 +216,7 @@ let query = async () => {
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 10,
-                                viewStatus: false,
+                                viewStatus: true,
                             });
 
                             order.save(function(err){
@@ -238,7 +238,7 @@ let query = async () => {
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 11,
-                                viewStatus: false,
+                                viewStatus: true,
                             });
 
                             order.save(function(err){

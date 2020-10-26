@@ -1,0 +1,24 @@
+.tableView{
+    width: 100%;
+    border-spacing: 0px 18px;
+
+    tr{
+        $radius: 8px;
+
+        td:first-child{
+            border-right: 2px solid #01D76E;
+            padding: 22px 37px;
+            border-radius: $radius 0px 0px $radius;
+        }
+
+        td:last-child{
+            border-radius: 0px $radius $radius 0px;
+        }
+    }
+
+    td{
+        background: #fff;
+        padding: 22px;
+        font-size: 22px;
+    }
+}
