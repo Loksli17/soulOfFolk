@@ -37,9 +37,21 @@
         height: 60px;
         border-left: 2px solid #CACBCF;
         border-right: 2px solid #CACBCF;
-        margin-right: 15px; }
+        margin-right: 15px;
+        position: relative; }
         .menu div .col-2 .alert-wrap img {
           width: 80%; }
+        .menu div .col-2 .alert-wrap span {
+          position: absolute;
+          top: 35px;
+          right: 5px;
+          background: crimson;
+          display: block;
+          width: 20px;
+          height: 20px;
+          border-radius: 10px;
+          text-align: center;
+          color: #fff; }
       .menu div .col-2 .admin-wrap {
         display: flex;
         align-items: center; }

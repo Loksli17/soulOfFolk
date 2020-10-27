@@ -2,5 +2,13 @@
   width: 30px;
   height: 30px;
   border-radius: 15px;
-  background: #dedede;
-  cursor: pointer; }
+  background: #01D76E;
+  cursor: pointer;
+  position: absolute;
+  top: 19px;
+  left: 0px; }
+
+.flex-td {
+  position: relative; }
+  .flex-td span {
+    margin-left: 20px; }

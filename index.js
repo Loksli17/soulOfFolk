@@ -50,6 +50,7 @@ hbs.registerHelper('title', (title) => {
 
 //locals
 app.use(require('./controllers/authController').actionLocalsControl);
+app.use(require('./controllers/admin/orderController').actionGetNewOrders);
 
 app.use('/', require('./routers/indexRouter'));
 

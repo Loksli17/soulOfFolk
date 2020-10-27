@@ -47,9 +47,23 @@
                 border-left: 2px solid #CACBCF;
                 border-right: 2px solid #CACBCF;
                 margin-right: 15px;
+                position: relative;
 
                 img{
                     width: 80%;
+                }
+
+                span{
+                    position: absolute;
+                    top: 35px;
+                    right: 5px;
+                    background: crimson;
+                    display: block;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 10px;
+                    text-align: center;
+                    color: #fff;
                 }
             }
 

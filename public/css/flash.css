@@ -6,15 +6,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 80px;
-  border: 2px solid; }
+  width: 400px;
+  height: 100px;
+  border-left: 3px solid #60E6A4;
+  background: #fff; }
   .flash-mes #flash-mes-close {
     position: absolute;
     top: -5px;
     right: 5px;
-    font-size: 30px;
-    cursor: pointer; }
+    font-size: 32px;
+    cursor: pointer;
+    color: #60E6A4; }
 
 .flash-mes-active {
   left: 50px;

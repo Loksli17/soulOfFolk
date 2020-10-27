@@ -1,7 +1,8 @@
 <div class="form-wrap">
+
     <form action="{{action}}" method="post">
         <div class="row">
-            <div class="col">
+            <div class="col margin">
                 <span>Фамилия</span>
                 <input type="text" name="comment[lastName]" value="{{comment.name.lastName}}">
             </div>
@@ -20,7 +21,7 @@
         </div>
 
         <div class="row">
-            <div class="col">
+            <div class="col margin">
                 <span>Язык</span>
                 <select name="comment[type]" id="">
                     {{#if comment.typeEng}}

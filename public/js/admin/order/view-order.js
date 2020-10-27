@@ -17,6 +17,12 @@ function viewOrder(){
     xhr.onload = xhr.onerror = function(e){
         if(this.status == 200){
             block.remove();
+            let countNewOrder = document.querySelector('.alert-wrap > span').innerHTML;
+            if(countNewOrder - 1){
+                document.querySelector('.alert-wrap > span').innerHTML = countNewOrder - 1;
+            }else{
+                document.querySelector('.alert-wrap > span').remove();
+            }
         }else{
             alert('Ошибка сервера - обратитись в поддержку!');
         }

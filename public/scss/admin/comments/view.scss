@@ -1,0 +1,37 @@
+.view-content{
+    margin-top: 30px;
+    max-width: 1600px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-column-gap: 30px;
+    
+    .col-2 img{
+        width: 100%;
+    }
+}
+
+.add{
+    margin-top: 30px;
+}
+
+.gridView{
+    width: 100%;
+    background: #fff;
+    border-spacing: 0;
+    border: 1px solid #01D76E;
+
+    th, td{
+        border: 1px solid #01D76E;
+    }
+
+    tr{
+        td{
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: light;
+        }
+    }
+
+    
+}

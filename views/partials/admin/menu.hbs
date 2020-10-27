@@ -12,6 +12,9 @@
         <div class="col-2">
             <div class="alert-wrap">
                 <img src="/img/admin/menu/alert.svg" alt="">
+                {{#if countNewOrders}}
+                    <span>{{countNewOrders}}</span>
+                {{/if}}  
             </div>
             <div class="admin-wrap">
                 <span>Администратор</span>

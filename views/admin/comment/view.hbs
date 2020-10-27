@@ -1,30 +1,45 @@
-<div class="table-view">
-    <div class="row">
-        <div class="title">ID</div>
-        <div class="content">{{comment.id}}</div>
+<div class="title">
+    <h1>Отзыв</h1>
+    <span>Просмотр id: {{comment.number}}</span>
+</div>
+
+<div class="add">
+    <a class="btn-add" href="/admin/comments">&larr; Все отзывы</a>
+</div>
+
+<div class="view-content">
+    <div class="col-1">
+        <table class="gridView">
+            <tr>
+                <td>ID</td>
+                <td>{{comment.number}}</td>
+            </tr>
+            <tr>
+                <td>ФИ</td>
+                <td>{{comment.name.lastName}} {{comment.name.firstName}}</td>
+            </tr>
+            <tr>
+                <td>Купленный набор</td>
+                <td>{{comment.bundle}}</td>
+            </tr>
+            <tr>
+                <td>Текст</td>
+                <td>{{comment.text}}</td>
+            </tr>
+            <tr>
+                <td>Язык</td>
+                <td>{{comment.type}}</td>
+            </tr>
+            <tr>
+                <td>Выводится в лендинге</td>
+                <td>{{comment.isActive}}</td>
+            </tr>
+        </table>
     </div>
-    <div class="row">
-        <div class="title">ФИ</div>
-        <div class="content">{{comment.name.lastName}} {{this.name.firstName}}</div>
-    </div>
-    <div class="row">
-        <div class="title">Купленный набор</div>
-        <div class="content">{{comment.bundle}}</div>
-    </div>
-    <div class="row">
-        <div class="title">Текст</div>
-        <div class="content">{{comment.text}}</div>
-    </div>
-    <div class="row">
-        <div class="title">Язык</div>
-        <div class="content">{{comment.type}}</div>
-    </div>
-    <div class="row">
-        <div class="title">Выводится в лендинге</div>
-        <div class="content">{{comment.isActive}}</div>
+    <div class="col-2">
+        <img src="/img/comments/{{comment.img}}" alt="">
     </div>
 </div>
 
-<div class="img-wrap">
-    <img src="/img/comments/{{comment.img}}" alt="">
-</div>
+
+

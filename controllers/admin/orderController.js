@@ -48,7 +48,7 @@ exports.actionIndex = async (req, res) => {
        flash    : flash == '' ? false : flash,
        countInfo: pagination.getCountInfo(),
        pages    : pagination.getPages(),
-       linkCss  : ['/css/admin/search.css', '/css/admin/pages.css', '/css/flash.css', '/css/admin/header.css', '/css/admin/table.css'],
+       linkCss  : ['/css/admin/search.css', '/css/admin/pages.css', '/css/flash.css', '/css/admin/header.css', '/css/admin/table.css', '/css/admin/order/index.css'],
        csrf     : res.locals._csrfToken,
     });
 }
@@ -126,6 +126,7 @@ exports.actionDelete = async (req, res) => {
 
 }
 
+
 exports.actionSearch = async (req, res) => {
         
     if(!req.xhr){
@@ -170,4 +171,16 @@ exports.actionSearch = async (req, res) => {
     }
 
     res.status(200).send({data: orders});
+}
+
+
+exports.actionGetNewOrders = async (req, res, next) => {
+
+    let
+        countOrder = [];
+
+    countOrder = await Order.countDocuments({viewStatus: true}).exec();
+
+    res.locals.countNewOrders = countOrder ? countOrder : false;    
+    next();
 }

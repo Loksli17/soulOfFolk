@@ -1,0 +1,17 @@
+.add {
+  margin-top: 30px; }
+
+.gridView {
+  margin-top: 30px;
+  width: 100%;
+  background: #fff;
+  border-spacing: 0;
+  border: 1px solid #01D76E; }
+  .gridView th, .gridView td {
+    border: 1px solid #01D76E; }
+  .gridView tr td {
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: light; }
+  .gridView tr td:first-child {
+    width: 300px; }

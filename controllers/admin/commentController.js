@@ -72,7 +72,7 @@ exports.actionDelete = async (req, res) => {
     if(id == undefined){
         res.status(404).render('server/error.hbs', {
             layout : null,
-            code   : '404',
+            err   : '404',
             message: 'Отзыв не найден',
         });
         return;
@@ -83,7 +83,8 @@ exports.actionDelete = async (req, res) => {
     if(comment == undefined){
         res.status(404).render('server/error.hbs', {
             layout : null,
-            code   : '404',
+            err    
+            : '404',
             message: 'Заказ не найден',
         });
         return;
@@ -109,7 +110,7 @@ exports.actionCreate = async (req, res) => {
         comment      = {};
 
     if(POST.comment == undefined){
-        res.render('admin/comment/edit', {
+        res.render('admin/comment/create', {
             layout : 'layouts/admin',
             comment: comment,
             title  : 'Панель администрации: Редактирование комментария',
@@ -143,13 +144,13 @@ exports.actionCreate = async (req, res) => {
     }catch(error){
         //обработать ошибки
         req.flash('flash', {class: 'fail', status: 'Ошибка!', text: `Отзыв c id ${comment.number} не был удален.`});
-        res.render('admin/comment/edit', {
+        res.render('admin/comment/create', {
             layout : 'layouts/admin',
             comment: comment,
             title  : 'Панель администрации: Редактирование комментария',
             linkCss: ['/css/admin/form.css', '/css/admin/header.css'],
             csrf   : res.locals._csrfToken,
-            submitValue: 'Редактировать отзыв',
+            submitValue: 'Добавить отзыв',
         });
     }
 }
@@ -169,23 +170,23 @@ exports.actionEdit = async (req, res) => {
     if(id == undefined){
         res.status(404).render('server/error.hbs', {
             layout : null,
-            code   : '404',
+            err   : '404',
             message: 'Отзыв не найден',
         });
         return;
     }
     
-    comment = await Comment.findById(id);
-
-    if(comment == undefined){
+    try {
+        comment = await Comment.findById(id).exec();
+    }catch(err) {
         res.status(404).render('server/error.hbs', {
             layout : null,
-            code   : '404',
+            err    : '404',
             message: 'Заказ не найден',
         });
         return;
     }
-
+    
     comment.typeEng = comment.type == 'eng' ? true : false;
 
     if(POST.comment == undefined){
@@ -243,18 +244,22 @@ exports.actionView = async (req, res) => {
     if(id == undefined){
         res.status(404).render('server/error.hbs', {
             layout : null,
-            code   : '404',
+            err    : '404',
             message: 'Отзыв не найден',
         });
         return;
     }
-    
-    comment = await Comment.findById(id);
+
+    try{
+        comment = await Comment.findById(id).lean().exec();
+    }catch(err){
+        comment = undefined;
+    }
 
     if(comment == undefined){
         res.status(404).render('server/error.hbs', {
             layout : null,
-            code   : '404',
+            err    : '404',
             message: 'Заказ не найден',
         });
         return;
@@ -266,7 +271,7 @@ exports.actionView = async (req, res) => {
     res.render('admin/comment/view.hbs', {
        layout   : 'layouts/admin',
        comment  : comment,
-       linkCss  : ['/css/admin/order/index.css', '/css/admin/header.css'],
+       linkCss  : ['/css/admin/order/index.css', '/css/admin/header.css', '/css/admin/comments/view.css'],
     });
 }
 
@@ -276,7 +281,7 @@ exports.actionSearch = async (req, res) => {
     if(!req.xhr){
         res.render('server/error.hbs', {
             layout : null,
-            code   : '404',
+            err    : '404',
             message: 'Страница не найдена',
         });
         return;

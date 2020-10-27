@@ -34,3 +34,13 @@ body {
       padding: 0px 40px;
       box-sizing: border-box;
       border-radius: 8px; }
+
+.nice-block {
+  position: fixed;
+  top: -400px;
+  right: -300px;
+  z-index: -9999;
+  width: 50%;
+  background: #60E6A4;
+  transform: rotate(-28.57deg);
+  height: 2000px; }
