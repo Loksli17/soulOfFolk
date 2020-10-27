@@ -18,7 +18,15 @@
     display: grid;
     grid-template-columns: max-content max-content max-content;
     grid-column-gap: 10px;
-    border-radius: 0px 8px 8px 0px; }
+    border-radius: 0px 8px 8px 0px;
+    justify-content: center; }
+    .tableView tr td:last-child a {
+      color: #000; }
+      .tableView tr td:last-child a:hover {
+        transition: 0.5s;
+        color: #19be6c; }
+    .tableView tr td:last-child a.del {
+      color: #DD3838; }
   .tableView td {
     background: #fff;
     padding: 22px;

@@ -1,0 +1,83 @@
+.progress {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin-bottom: 20px;
+
+    progress {
+        position: absolute;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        left: -777px;  
+    }
+
+    progress[value="1"] + .progress-value:before {
+        content: "1%";
+    }
+
+    progress[value="1"] ~ .progress-bg .progress-bar {
+        width: 1%;
+    }
+
+    .progress-value {
+        order: 2;
+        color: #60E6A4;
+        font-size: 12px;
+        display: block;
+        text-align: right;
+
+        margin-left: 5px;
+    }
+
+    .progress-bg {
+        order: 1;
+        background: #60E6A4;
+        height: 12px;
+        min-width: 80%;
+        border-radius: 5px;
+        overflow: hidden;
+
+        .progress-bar {
+            overflow: hidden;
+            background: #60E6A4;
+            width: 0;
+            height: 100%;
+            position: relative;
+            top: 0;
+            left: 0;
+
+
+        }
+    }
+}
+
+@keyframes progress_bar {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -40px 0;
+    }
+}
+
+.progress-bar {
+    transition: width 1s linear;
+}
+
+.progress-bar:after {
+    animation: progress_bar 0.8s linear infinite;
+}
+
+
+@for $i from 0 through 100 {
+  .progress {
+      progress[value="#{$i}"] {
+          & + .progress-value:before { content : '#{$i}%' }
+          & ~ .progress-bg .progress-bar { width: $i * 1% }
+      }
+  }
+}

@@ -9,5 +9,6 @@ router.all('/edit',   controller.actionEdit);
 router.all('/create', controller.actionCreate);
 router.all('/view',   controller.actionView);
 router.all('/search', controller.actionSearch);
+router.all('/file',   controller.actionFileUpload);
 
 module.exports = router;

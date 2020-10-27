@@ -1,6 +1,6 @@
 .view-content {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 46% auto;
   grid-column-gap: 50px;
   width: 100%;
   border-radius: 10px;
@@ -60,3 +60,11 @@ form {
       width: 100%; }
     form .row:last-child {
       justify-content: flex-end; }
+
+@media screen and (max-width: 1340px) {
+  .view-content {
+    grid-template-columns: 100%;
+    grid-column-gap: 0px;
+    grid-row-gap: 30px; }
+  form .row:last-child {
+    justify-content: flex-start; } }

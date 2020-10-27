@@ -7,6 +7,21 @@
     <div class="col-1">
         {{>admin/comments/form}}
     </div>
-    <div class="col-2"></div>
+    <div class="col-2">
+        <div class="wrap-progress-bar">
+
+        </div>
+        <div class="drop-zone upload-block">
+            <span>Перетащите файл сюда</span>
+        </div>
+    </div>
 </div>
+
+<script>
+    let
+        csrf = '{{csrf}}',
+        id   = undefined;
+</script>
+
+<script src="/js/admin/comment/file-upload.js"></script>
 

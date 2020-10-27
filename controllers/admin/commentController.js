@@ -1,8 +1,10 @@
+const e = require('express');
 const
     mongoose   = require('../../lib/database'),
     DateModule = require('../../lib/dateModule'),
     Pagination = require('../../lib/pagination'),
     config     = require('../../config'),
+    crypto     = require('crypto'),
     fs         = require('fs'),
     Comment    = require('../../models/CommentModel');
 
@@ -113,11 +115,15 @@ exports.actionCreate = async (req, res) => {
         res.render('admin/comment/create', {
             layout : 'layouts/admin',
             comment: comment,
-            title  : 'Панель администрации: Редактирование комментария',
-            linkCss: ['/css/admin/form.css', '/css/admin/header.css'],
+            title  : 'Панель администрации: Созадние комментария',
             csrf   : res.locals._csrfToken,
-            submitValue: 'Редактировать отзыв',
-
+            linkCss: [
+                '/css/admin/form.css', 
+                '/css/admin/header.css', 
+                '/css/admin/comments/file-upload.css',
+                '/css/admin/comments/progress-bar.css',
+            ],
+            submitValue: 'Создать отзыв',
         });
         return;
     }
@@ -129,7 +135,7 @@ exports.actionCreate = async (req, res) => {
             firstName : commentForm.firstName,
             lastName  : commentForm.lastName,
         },
-        img     : 'default-customer.jpg',
+        img     : commentForm.filename,
         bundle  : commentForm.bundle,
         number  : lastCommment.number + 1,
         type    : commentForm.type,
@@ -147,8 +153,13 @@ exports.actionCreate = async (req, res) => {
         res.render('admin/comment/create', {
             layout : 'layouts/admin',
             comment: comment,
-            title  : 'Панель администрации: Редактирование комментария',
-            linkCss: ['/css/admin/form.css', '/css/admin/header.css'],
+            title  : 'Панель администрации: Создание комментария',
+            linkCss: [
+                '/css/admin/form.css', 
+                '/css/admin/header.css', 
+                '/css/admin/comments/file-upload.css',
+                '/css/admin/comments/progress-bar.css',
+            ],
             csrf   : res.locals._csrfToken,
             submitValue: 'Добавить отзыв',
         });
@@ -194,7 +205,7 @@ exports.actionEdit = async (req, res) => {
             layout : 'layouts/admin',
             comment: comment,
             title  : 'Панель администрации: Редактирование комментария',
-            linkCss: ['/css/admin/form.css', '/css/admin/header.css'],
+            linkCss: ['/css/admin/form.css', '/css/admin/header.css', '/css/admin/comments/file-upload.css'],
             csrf   : res.locals._csrfToken,
             submitValue: 'Редактировать отзыв',
 
@@ -210,6 +221,7 @@ exports.actionEdit = async (req, res) => {
     comment.isActive       = commentForm.isActive == undefined ? false : true;
     comment.type           = commentForm.type;
     comment.bundle         = commentForm.bundle;
+    comment.img            = commentForm.filename;
 
     try{
         await Comment.findByIdAndUpdate(comment._id, comment, {runValidators: true});
@@ -223,7 +235,7 @@ exports.actionEdit = async (req, res) => {
             layout : 'layouts/admin',
             comment: comment,
             title  : 'Панель администрации: Редактирование комментария',
-            linkCss: ['/css/admin/form.css', '/css/admin/header.css'],
+            linkCss: ['/css/admin/form.css', '/css/admin/header.css', '/css/admin/comments/file-upload.css'],
             csrf   : res.locals._csrfToken,
             submitValue: 'Редактировать отзыв',
 
@@ -330,5 +342,32 @@ exports.actionSearch = async (req, res) => {
     }
 
     res.status(200).send({data: comments});
+
+}
+
+
+exports.actionFileUpload = (req, res) => {
+
+    const
+        file = req.files.file;
+
+    let
+        type     = '',
+        fullname = '',
+        name     = '';
+
+    if(file.mimetype != 'image/png' && file.mimetype != 'image/jpeg' && file.mimetype != 'image/jpg'){
+        res.status(200);
+        res.send({data: 'fail', message: 'Файл не является изображением'});
+        return;
+    }
+
+    type     = file.name.substring(file.name.indexOf('.') + 1).toLowerCase();
+    name     = crypto.createHash('sha256', '4%#hfhNXCl421@').update(`${file.name}${Math.random()}`).digest('hex');
+    fullname = `${name}.${type}`
+
+    file.mv(`./public/img/comments/${fullname}`);
+
+    res.status(200).send({filename: fullname});
 
 }
