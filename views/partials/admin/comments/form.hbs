@@ -4,27 +4,27 @@
         <div class="row">
             <div class="col margin">
                 <span>Фамилия</span>
-                <input type="text" name="comment[lastName]" value="{{comment.name.lastName}}">
+                <input type="text" name="comment[lastName]" value="{{comment.name.lastName}}" required>
             </div>
             <div class="col">
                 <span>Имя</span>
-                <input type="text" name="comment[firstName]" value="{{comment.name.firstName}}">
+                <input type="text" name="comment[firstName]" value="{{comment.name.firstName}}" required>
             </div>
             <input type="hidden" name="_csrf" value="{{csrf}}">
-            <input type="hidden" id="filename" name="comment[filename]">
+            <input type="hidden" id="filename" name="comment[filename]" value="{{comment.img}}">
         </div>
 
         <div class="row">
             <div class="col">
                 <span>Купленный набор</span>
-                <input type="text" name="comment[bundle]" value="{{comment.bundle}}">
+                <input type="text" name="comment[bundle]" value="{{comment.bundle}}" required>
             </div>
         </div>
 
         <div class="row">
             <div class="col margin">
                 <span>Язык</span>
-                <select name="comment[type]" id="">
+                <select name="comment[type]" id="" required>
                     {{#if comment.typeEng}}
                         <option value="rus">Русский</option>
                         <option value="eng" selected>Английский</option>
@@ -43,7 +43,7 @@
         <div class="row">
             <div class="col">
                 <span>Текст</span>
-                <textarea name="comment[text]" id="" cols="30" rows="10">{{comment.text}}</textarea>
+                <textarea name="comment[text]" id="" cols="30" rows="10" required>{{comment.text}}</textarea>
             </div>
         </div>
 

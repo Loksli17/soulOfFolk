@@ -1,0 +1,35 @@
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="/css/admin/login.css">
+</head>
+<body>
+    <div class="nice-block"></div>
+
+    <form action="/admin/login" method="post">
+        <div class="row">
+            <h1>Авторизация</h1>
+        </div>
+
+        <div class="row">
+            <span>Логин</span>
+            <input type="text" name="user[login]" id="" value="{{user.login}}" required>
+            <input type="hidden" name="_csrf" value="{{csrf}}">
+        </div>
+
+        <div class="row">
+            <span>Пароль</span>
+            <input type="password" name="user[password]" id="">
+        </div>
+
+        <div class="row">
+            {{#if err}}
+                <span class="err">{{err}}</span>
+            {{/if}}
+            <input type="submit" value="Войти">
+        </div>
+    </form>
+</body>
+</html>

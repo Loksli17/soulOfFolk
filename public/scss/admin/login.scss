@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400&display=swap'); 
+
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F5F6FA;
+    font-family: 'Exo 2';
+}
+
+form{
+    padding: 30px;
+    background: #fff;
+    display: grid;
+    grid-row-gap: 30px;
+    width: 400px;
+    border-radius: 20px;
+
+    .row span.err{
+        color: #DD3838;
+        margin-bottom: 20px;
+    }
+
+    .row{
+        display: grid;
+        grid-row-gap: 10px;
+        
+        span{
+            font-size: 23px;
+            color: #60E6A4;
+        }
+
+        input[type=text], input[type=password]{
+            border-radius: 8px;
+            border: 1px solid #808080;
+            font-size: 19px;
+            padding: 10px;
+        }
+
+        input[type=submit]{
+            background: #60E6A4;
+            color: #fff;
+            font-size: 19px;
+            border-radius: 8px;
+            border: 0px solid;
+            padding: 15px 20px;
+            cursor: pointer;
+
+            &:hover{
+                transition: 0.5s;
+                background: #19be6c;
+            }
+        }
+    }
+}
+
+.nice-block{
+    position: fixed;
+    top: -400px;
+    right: -300px;
+    z-index: -9999;
+    width: 50%;
+    background: #60E6A4;
+    transform: rotate(-28.57deg);
+    height: 2000px;
+}

@@ -5,7 +5,7 @@ const mainFileUpload = () => {
         dropZone   = document.querySelector('.drop-zone'),
         file       = undefined,
         form       = document.querySelector('form'),
-        fileUpload = false,
+        fileUpload = (id == undefined) ? false : true;
         srcOldFile = ''; 
 
     if(img != undefined){

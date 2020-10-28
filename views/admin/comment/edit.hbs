@@ -7,5 +7,20 @@
     <div class="col-1">
         {{>admin/comments/form}}
     </div>
-    <div class="col-2"></div>
+    <div class="col-2">
+        <div class="wrap-progress-bar">
+        
+        </div>
+        <div class="drop-zone">
+            <img id='img' src="/img/comments/{{comment.img}}" alt="">
+        </div>
+    </div>
 </div>
+
+<script>
+    let
+        csrf = '{{csrf}}',
+        id   = '{{comment.id}}';
+</script>
+
+<script src="/js/admin/comment/file-upload.js"></script>

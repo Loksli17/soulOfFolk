@@ -46,16 +46,42 @@ hbs.registerHelper('title', (title) => {
     return title;
 });
 
-// app.use(require('./controllers/authController').actionAuthControl);
-
 //locals
 app.use(require('./controllers/authController').actionLocalsControl);
 app.use(require('./controllers/admin/orderController').actionGetNewOrders);
 
-app.use('/', require('./routers/indexRouter'));
+app.use('/',      require('./routers/indexRouter'));
+app.use('/admin/login', require('./controllers/authController').actionLogin);
+
+// app.use('/admin/orders', (req, res, next) => {
+//     if(req.session.userIdentity == undefined){
+//         res.status(404).render('server/error.hbs', {
+//             layout : null,
+//             err   : '404',
+//             message: 'Страница не найдена',
+//         });
+//     }else{
+//         next();
+//     } 
+// });
+
+// app.use('/admin/comments', (req, res, next) => {
+//     if(req.session.userIdentity == undefined){
+//         res.status(404).render('server/error.hbs', {
+//             layout : null,
+//             err   : '404',
+//             message: 'Страница не найдена',
+//         });
+//     }else{
+//         next();
+//     }  
+// });
 
 app.use('/admin/orders',   require('./routers/admin/orderRouter'));
 app.use('/admin/comments', require('./routers/admin/commentRouter'));
+
+
+
 
 app.use((req, res) => {
     res.status(404);

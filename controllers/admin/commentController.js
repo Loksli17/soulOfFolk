@@ -1,4 +1,3 @@
-const e = require('express');
 const
     mongoose   = require('../../lib/database'),
     DateModule = require('../../lib/dateModule'),
@@ -149,7 +148,7 @@ exports.actionCreate = async (req, res) => {
         res.redirect('/admin/comments');
     }catch(error){
         //обработать ошибки
-        req.flash('flash', {class: 'fail', status: 'Ошибка!', text: `Отзыв c id ${comment.number} не был удален.`});
+        req.flash('flash', {class: 'fail', status: 'Ошибка!', text: `Отзыв c id ${comment.number} не был создан.`});
         res.render('admin/comment/create', {
             layout : 'layouts/admin',
             comment: comment,
@@ -205,7 +204,12 @@ exports.actionEdit = async (req, res) => {
             layout : 'layouts/admin',
             comment: comment,
             title  : 'Панель администрации: Редактирование комментария',
-            linkCss: ['/css/admin/form.css', '/css/admin/header.css', '/css/admin/comments/file-upload.css'],
+            linkCss: [
+                '/css/admin/form.css', 
+                '/css/admin/header.css', 
+                '/css/admin/comments/file-upload.css',
+                '/css/admin/comments/progress-bar.css',
+            ],
             csrf   : res.locals._csrfToken,
             submitValue: 'Редактировать отзыв',
 
@@ -238,7 +242,6 @@ exports.actionEdit = async (req, res) => {
             linkCss: ['/css/admin/form.css', '/css/admin/header.css', '/css/admin/comments/file-upload.css'],
             csrf   : res.locals._csrfToken,
             submitValue: 'Редактировать отзыв',
-
         });
     }
 }
