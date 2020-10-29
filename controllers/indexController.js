@@ -40,9 +40,10 @@ exports.actionCreateOrder = async (req, res) => {
             patronymic: orderForm.patronymic, 
         },
         number    : lastOrder.number + 1,
-        viewStatus: false,
+        viewStatus: true,
         phone     : orderForm.phone,
         bundle    : orderForm.bundle,
+        date      : new Date(),
     });
 
     try{
