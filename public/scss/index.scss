@@ -475,7 +475,7 @@ $blue: #0034FF;
                 font-size: 44px;
                 color: black;
                 cursor: pointer;
-                margin: 0px 20px;
+                margin: 0px 12.5px;
 
                 &:hover {
                     background: $blue;
@@ -516,20 +516,14 @@ $blue: #0034FF;
             flex-flow: row nowrap;
             justify-content: space-around;
             align-items: center;
+            margin-bottom: 40px;
 
-            .reviews {
-                display: flex;
-                flex-flow: row nowrap;
-                align-items: center;
-                height: 600px;
-
-                .review {
-                    width: 35vw;
-                    height: 500px;
-                    border-radius: 7px;
-                    background: #F2F2F2;
-                    margin: 0px 20px;
-                }
+            .review {
+                width: 50vw;
+                height: 400px;
+                border-radius: 7px;
+                background: #F2F2F2;
+                margin: 0px 20px;
             }
 
             .scroll {
@@ -626,13 +620,17 @@ $blue: #0034FF;
                     padding-left: 3px;
 
                     span {
-                        color: $blue;
+                        color: #476AE6;
                     }
                 }
 
                 &:nth-child(3) {
                     padding-top: 5px;
                     padding-left: 3px;
+
+                    span {
+                        color: #476AE6;
+                    }
                 }
             }
 
@@ -803,9 +801,12 @@ $blue: #0034FF;
         }
 
         .bundle-variants {
+            >p {
+                font-size: 45px;
+            }
             .bundles {
                 justify-content: center;
-
+                padding: 50px 0px;
                 >div {
                     width: 70%;
                 }
@@ -814,6 +815,58 @@ $blue: #0034FF;
             .bundle-selector {
                 .selector {
                     display: block;
+                }
+            }
+        }
+
+        .footer {
+            flex-flow: column nowrap;
+            align-items: center;
+            background-image: url("../img/client/index/first-page-bg.png");
+            background-size: cover;
+            background-position: 50% 50%;
+            min-height: 1210px;
+
+            .owner {
+                img {
+                    height: 450px;
+                }
+            }
+
+            .contacts {
+                background: none;
+                border-left: none;
+                padding-top: 10px;
+                align-items: center;
+
+                >p {
+                    display: flex;
+                    flex-flow: column nowrap;
+                    align-items: center;
+                }
+
+                .social-medias {
+                    flex-flow: column nowrap;
+                    align-items: center;
+
+                    img {
+                        width: 90px;
+                        margin: 10px 0px;
+                    }
+                }
+
+                .logo-and-text {
+                    img {
+                        width: 60px;
+                    }
+
+                    span {
+                        max-width: 80px;
+
+                        &::before {
+                            top: 4px;
+                        }
+                    }
                 }
             }
         }
