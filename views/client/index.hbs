@@ -1,0 +1,28 @@
+{{#each comments}}
+    {{this.text}}
+    <img src="/img/comments/{{this.img}}" alt="">
+    {{this.name.lastName}}
+    {{this.name.firstName}}
+    {{this.bundle}}
+{{/each}}
+
+<div class="flash-mes">
+    <span></span>
+    <div id='flash-mes-close'>&#10006;</div>
+</div>
+
+<form id="orderForm" action="/save-order" method="post">
+    <input type="text" name="order[firstName]" id="" placeholder="Василий" required>
+    <input type="text" name="order[lastName]" id="" placeholder="Рукавишников" required>
+    <input type="text" name="order[patronymic]" id="" placeholder="Владимирович" required>
+    <input type="tel" name="order[phone]" id="" placeholder="+7 (800) 555 35-35" required>
+    <input type="hidden" name="csrf" value="{{csrf}}">
+    <input type="submit" value="Оформить заказ">
+    <span class="err"></span>
+</form>
+
+<script>
+    let csrf = '{{csrf}}';
+</script>
+<script src="/js/flash.js"></script>
+<script src="/js/save-order.js"></script>

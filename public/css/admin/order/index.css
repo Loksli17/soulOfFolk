@@ -6,9 +6,7 @@
   cursor: pointer;
   position: absolute;
   top: 19px;
-  left: 0px; }
+  left: -15px; }
 
 .flex-td {
   position: relative; }
-  .flex-td span {
-    margin-left: 20px; }
