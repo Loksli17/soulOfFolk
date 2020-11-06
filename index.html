@@ -110,6 +110,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="bundle-selector">
+                    <span class="selector active">1</span>
+                    <span class="selector">2</span>
+                    <span class="selector">3</span>
+                </div>
             </div>
             <div class="clients-reviews">
                 <p>Отзывы наших клиентов</p>
@@ -152,9 +157,9 @@
                     <p>Телефон: <span>+7 (962) 678 05 84</span></p>
                     <p>E-mail: <span>arshinova.tatyana@bk.ru</span></p>
                     <div class="social-medias">
-                        <img src="public/img/client/index/whatsapp.svg" alt="whats-app">
-                        <img src="public/img/client/index/insta.svg" alt="instagram">
-                        <img src="public/img/client/index/telegram.svg" alt="telegram">
+                        <a href="#"><img src="public/img/client/index/whatsapp.svg" alt="whats-app"></a>
+                        <a href="#"><img src="public/img/client/index/insta.svg" alt="instagram"></a>
+                        <a href="#"><img src="public/img/client/index/telegram.svg" alt="telegram"></a>
                     </div>
                     <div class="logo-and-text">
                         <img src="public/img/client/index/logo.png" alt="logo">
@@ -165,24 +170,61 @@
         </div>
 
         <script type="text/javascript">
-        let arrows = function() {
+        let bundles = document.querySelector(".bundles"),
+            dvbundle = document.querySelector(".dv-bundle"),
+            ussrbundle = document.querySelector(".ussr-bundle"),
+            rusbundle = document.querySelector(".rus-bundle"),
+            selector = document.querySelectorAll(".selector");
+
+        let windowResize = function() {
             if (window.matchMedia("(max-width: 900px)").matches) {
                 let x = document.querySelectorAll(".arrow-stick");
                 x.forEach((item, i) => {
                     item.classList.add('arrow-mobile');
                 });
+                ussrbundle.remove();
+                rusbundle.remove();
             }
             else {
                 let x = document.querySelectorAll(".arrow-stick");
                 x.forEach((item, i) => {
                     item.classList.remove('arrow-mobile');
                 });
+                while (bundles.firstChild) {
+                    bundles.removeChild(bundles.lastChild);
+                }
+                bundles.appendChild(dvbundle);
+                bundles.appendChild(ussrbundle);
+                bundles.appendChild(rusbundle);
             }
         }
 
-        arrows();
+        windowResize();
 
-        window.addEventListener("resize", arrows);
+        selector.forEach((item, i) => {
+            item.onclick = function() {
+                bundles.removeChild(bundles.children[0]);
+                selector.forEach((sel, x) => {
+                    sel.classList.remove('active');
+                });
+                switch (i) {
+                    case 0:
+                        item.classList.add('active');
+                        bundles.appendChild(dvbundle);
+                        break;
+                    case 1:
+                        item.classList.add('active');
+                        bundles.appendChild(ussrbundle);
+                        break;
+                    case 2:
+                        item.classList.add('active');
+                        bundles.appendChild(rusbundle);
+                        break;
+                }
+            }
+        });
+
+        window.addEventListener("resize", windowResize);
         </script>
     </body>
 </html>

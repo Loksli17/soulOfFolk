@@ -58,9 +58,37 @@ $blue: #0034FF;
 }
 
 .arrow-mobile {
-    width: 100px;
+    width: 6px;
     height: 100px;
-    background: red;
+    display: block;
+    content: '';
+    background: $green;
+
+    &::before, &::after {
+        display: block;
+        content: "";
+        width: 40px;
+        height: 6px;
+        background: $green;
+        border-radius: 3px;
+
+        position: relative;
+
+    }
+
+    &::after {
+        transform: rotate(-45deg);
+
+        bottom: -133px;
+        left: -5px;
+    }
+
+    &::before {
+        transform: rotate(45deg);
+
+        bottom: -139px;
+        left: -29px;
+    }
 }
 
 .arrow-straight {
@@ -91,8 +119,8 @@ $blue: #0034FF;
         width: 50px;
         background: $green;
         transform: rotate(45deg);
-        position: absolute;
-        right: 100px;
+        position: relative;
+        left: 0px;
     }
 
     &::after {
@@ -102,9 +130,9 @@ $blue: #0034FF;
         width: 80px;
         background: $green;
         transform: rotate(135deg);
-        position: absolute;
-        right: 40px;
-        top: -10px;
+        position: relative;
+        left: 30px;
+        top: -13px;
     }
 }
 
@@ -166,6 +194,10 @@ $blue: #0034FF;
                     padding-top: 30px;
                     padding-bottom: 60px;
                 }
+            }
+
+            .order-button {
+                width: 350px;
             }
         }
 
@@ -271,10 +303,11 @@ $blue: #0034FF;
             'text1 arrow1'
             'arrow2 text2'
             'text3 arrow3';
-        grid-column-gap: 10vw;
+        grid-column-gap: 15vw;
+        grid-row-gap: 50px;
         justify-content: center;
         align-items: center;
-        padding: 200px 10vw;
+        padding: 100px 10vw;
         position: relative;
 
         p {
@@ -342,6 +375,16 @@ $blue: #0034FF;
                 grid-area: arrow3;
                 position: relative;
 
+            }
+
+            .ok {
+                display: block;
+                content: '';
+                width: 120px;
+                height: 70px;
+                margin-left: 65%;
+
+                position: relative;
             }
         }
     }
@@ -414,6 +457,40 @@ $blue: #0034FF;
                 }
             }
         }
+
+        .bundle-selector {
+            padding-top: 30px;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+            .selector {
+                display: block;
+                width: 80px;
+                height: 80px;
+                text-align: center;
+                line-height: 80px;
+                border-radius: 10px;
+                background: #F9F9F9;
+                font-size: 44px;
+                color: black;
+                cursor: pointer;
+                margin: 0px 20px;
+
+                &:hover {
+                    background: $blue;
+                    color: #F9F9F9;
+                    transition: 1s;
+                }
+
+                display: none;
+            }
+
+            .active {
+                background: #476AE6;
+                color: white;
+            }
+        }
     }
 
     .clients-reviews {
@@ -438,11 +515,12 @@ $blue: #0034FF;
             display: flex;
             flex-flow: row nowrap;
             justify-content: space-around;
+            align-items: center;
 
             .reviews {
                 display: flex;
                 flex-flow: row nowrap;
-                justify-content: space-between;
+                align-items: center;
                 height: 600px;
 
                 .review {
@@ -450,10 +528,18 @@ $blue: #0034FF;
                     height: 500px;
                     border-radius: 7px;
                     background: #F2F2F2;
+                    margin: 0px 20px;
                 }
             }
 
             .scroll {
+                width: 100px;
+                height: 150px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
                 &::before, &::after {
                     display: block;
                     content: '';
@@ -463,21 +549,24 @@ $blue: #0034FF;
                     transform: rotate(45deg);
 
                     position: relative;
-                    top: 35%;
+                    left: 50%;
+                }
+
+                &::before {
+                    bottom: -44.5%;
                 }
 
                 &::after {
                     transform: rotate(135deg);
-                    top: 26%;
+                    top: -45%;
                 }
             }
 
             .left {
-
+                transform: scaleX(-1);
             }
 
             .right {
-
             }
         }
     }
@@ -550,12 +639,12 @@ $blue: #0034FF;
             .social-medias {
                 display: flex;
                 flex-flow: row nowrap;
-                justify-content: space-between;
                 padding-top: 25px;
                 width: 60%;
 
                 img {
-                    width: 80px;
+                    width: 50px;
+                    margin: 0px 5px;
                 }
             }
 
@@ -638,18 +727,25 @@ $blue: #0034FF;
             display: flex;
             flex-flow: column nowrap;
             align-items: center;
-            text-align: center;
+            padding-bottom: 50px;
 
             p {
+                &:not(&:nth-child(1)) {
+                line-height: 40px;
+                text-align: left;
+                padding: 0px 30px;
+                }
+
                 &:nth-child(1) {
                     max-width: 300px;
                     order: 1;
+                    padding-bottom: 20px;
 
                     span::after {
                         position: static;
                         width: 100px;
                         background: $green;
-                        margin-left: 60px;
+                        margin-left: 35px;
                     }
                 }
 
@@ -667,6 +763,8 @@ $blue: #0034FF;
             }
 
             >div {
+
+                margin: 0px;
 
                 &:nth-child(3) {
                     order: 3;
@@ -693,8 +791,31 @@ $blue: #0034FF;
                     display: none;
                 }
 
+                .ok {
+                    margin-top: 60px;
+                    margin-left: 48px;
+
+                    transform: scale(1.5);
+                }
+
             }
 
+        }
+
+        .bundle-variants {
+            .bundles {
+                justify-content: center;
+
+                >div {
+                    width: 70%;
+                }
+            }
+
+            .bundle-selector {
+                .selector {
+                    display: block;
+                }
+            }
         }
     }
 }
