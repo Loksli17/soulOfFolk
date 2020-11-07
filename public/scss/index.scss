@@ -9,6 +9,208 @@ $blue: #0034FF;
     font-family: 'Exo 2', sans-serif;
 }
 
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+.scroll {
+    width: 100px;
+    height: 150px;
+    cursor: pointer;
+
+    &::before, &::after {
+        display: block;
+        content: '';
+        width: 4px;
+        height: 80px;
+        background: $green;
+        transform: rotate(45deg);
+
+        position: relative;
+        left: 50%;
+    }
+
+    &::before {
+        bottom: -44.5%;
+    }
+
+    &::after {
+        transform: rotate(135deg);
+        top: -45%;
+    }
+}
+
+.left {
+    transform: scaleX(-1);
+}
+
+.bundles-collection {
+    .left {
+        position: fixed;
+        top: 42%;
+        left: 2%;
+        transform: translate(0%, -50%);
+        transform: rotate(180deg);
+        z-index: 99999;
+    }
+
+    .right {
+        position: fixed;
+        top: 50%;
+        right: 2%;
+        transform: translate(0%, -50%);
+        z-index: 99999;
+    }
+
+    .close {
+        display: block;
+        content: '';
+        width: 80px;
+        height: 80px;
+        border-radius: 40px;
+        background: $green;
+        z-index: 99999;
+        cursor: pointer;
+
+        position: fixed;
+        top: 50%;
+        right: 50%;
+        transform: translate(470px, -340px);
+
+
+        .cross {
+            width: 100%;
+            height: 100%;
+            &::before, &::after {
+                display: block;
+                content: '';
+                width: 50px;
+                height: 3px;
+                background: white;
+                position: relative;
+            }
+
+            &::before {
+                transform: rotate(45deg);
+                top: 40px;
+                left: 15px;
+            }
+            &::after {
+                transform: rotate(-45deg);
+                top: 37px;
+                left: 15px;
+            }
+        }
+    }
+
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.57);
+
+    .carton {
+        .bundle-text {
+            .bundle-head {
+                p {
+                    &:nth-child(2) {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+
+    .ussrbundle {
+        .bundle-text {
+            .bundle-content {
+                padding-top: 15px;
+                li {
+                    &:nth-child(1), &:nth-child(5), &:nth-child(13), &:nth-child(16) {
+                        font-weight: bold;
+                        padding-top: 2px;
+                    }
+                }
+            }
+        }
+    }
+
+    >div:not(.close):not(.scroll) {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 40px;
+        height: 500px;
+        width: 800px;
+        border-radius: 10px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        text-align: right;
+
+        opacity: 0;
+
+        .bundle-text {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: flex-start;
+            height: 395px;
+            .bundle-head {
+                p {
+                    &:nth-child(1) {
+                        font-size: 30px;
+                    }
+                    &:last-child {
+                        padding-top: 5px;
+                        font-size: 22px;
+                        color: $green;
+                    }
+                }
+            }
+            .bundle-content {
+                padding-top: 30px;
+                li {
+                    list-style-type: none;
+                    font-size: 14px;
+                    text-indent: 80px;
+                }
+                p {
+                    font-size: 14px;
+                    margin-left: 80px;
+                }
+            }
+        }
+
+        .bundle-image-and-button {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            margin-left: 20px;
+            img {
+                height: 320px;
+                width: 320px;
+            }
+
+            .order-button {
+                margin-top: 15px;
+                width: 100%;
+                padding: 15px 0px;
+            }
+        }
+
+        &:nth-child(8) {
+            opacity: 1;
+            z-index: 9998;
+        }
+    }
+}
+
+
 .order-button {
     background: $green;
     color: white;
@@ -412,11 +614,12 @@ $blue: #0034FF;
             padding-top: 25px;
             display: flex;
             flex-flow: row nowrap;
-            justify-content: space-between;
+            justify-content: center;
 
             >div {
                 width: 25%;
                 padding: 30px 30px;
+                margin: 0px 10px;
                 background: white;
                 border-radius: 7px;
                 display: flex;
@@ -480,7 +683,7 @@ $blue: #0034FF;
                 &:hover {
                     background: $blue;
                     color: #F9F9F9;
-                    transition: 1s;
+                    transition: 1s ease-in-out;
                 }
 
                 display: none;
@@ -524,43 +727,6 @@ $blue: #0034FF;
                 border-radius: 7px;
                 background: #F2F2F2;
                 margin: 0px 20px;
-            }
-
-            .scroll {
-                width: 100px;
-                height: 150px;
-
-                &:hover {
-                    cursor: pointer;
-                }
-
-                &::before, &::after {
-                    display: block;
-                    content: '';
-                    width: 4px;
-                    height: 80px;
-                    background: $green;
-                    transform: rotate(45deg);
-
-                    position: relative;
-                    left: 50%;
-                }
-
-                &::before {
-                    bottom: -44.5%;
-                }
-
-                &::after {
-                    transform: rotate(135deg);
-                    top: -45%;
-                }
-            }
-
-            .left {
-                transform: scaleX(-1);
-            }
-
-            .right {
             }
         }
     }
@@ -688,12 +854,12 @@ $blue: #0034FF;
             background-size: cover;
             background-position: 50% 50%;
             max-height: 950px;
-            padding-bottom: 180px;
+            padding-bottom: 120px;
 
             .first-page-text {
                 width: 100%;
                 text-align: center;
-                padding-top: 40px;
+                padding-top: 0px;
                 background-image: none;
                 border: none;
             }
