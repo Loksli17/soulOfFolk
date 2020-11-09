@@ -25,8 +25,6 @@ exports.actionCreateOrder = async (req, res) => {
         lastOrder = {},
         orderForm = JSON.parse(POST.order);
 
-    console.log(POST);
-
     if(orderForm == undefined){
         res.status(500).send({message: 'Данные с формы не были получены'});
     }
