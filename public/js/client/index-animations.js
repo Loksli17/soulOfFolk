@@ -1,4 +1,6 @@
 let
+    bundleCase = 0,
+    bundleSec = document.getElementById('bundleSec'),
     bundles = document.querySelector(".bundles"),
     dvbundle = document.querySelector(".dv-bundle"),
     ussrbundle = document.querySelector(".ussr-bundle"),
@@ -10,7 +12,9 @@ let
     dvbundles = document.querySelectorAll(".dvbundle"),
     ussrbundles = document.querySelectorAll(".ussrbundle"),
     rusbundles = document.querySelectorAll(".rusbundle"),
-    closeButton = document.querySelector(".close");
+    closeButton = document.querySelector(".close"),
+    bundleScrollLeft = document.getElementById("bundleScrollLeft"),
+    bundleScrollRight = document.getElementById("bundleScrollRight");
 
 let windowResize = function() {
     if (window.matchMedia("(max-width: 900px)").matches) {
@@ -66,36 +70,32 @@ function smoothScroll(duration){
 
 }
 
-function fadeIn(el, time) {
-    el.style.opacity = 0;
-
-    let last = +new Date(),
-        tick = function() {
-        el.style.opacity = +el.style.opacity + (new Date() - last) / time;
-        last = +new Date();
-
-        if (+el.style.opacity < 1) {
-            (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
+function fadeIn(element, time) {
+    element.style.display = 'flex';
+    let
+        op = 0.1,
+        timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
         }
-    };
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, time);
+}
 
-  tick();
-};
-
-function fadeOut(el, time) {
-    el.style.opacity = 1;
-
-    let last = +new Date(),
-        tick = function() {
-        el.style.opacity = +el.style.opacity - (new Date() - last) / time;
-        last = +new Date();
-
-        if (+el.style.opacity > 0) {
-            (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
-        }
-    };
-
-  tick();
+function fadeOut(element, time) {
+    let
+        op = 1,
+        timer = setInterval(function () {
+       if (op <= 0.1){
+           clearInterval(timer);
+           element.style.display = 'none';
+       }
+       element.style.opacity = op;
+       element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+       op -= op * 0.1;
+   }, time);
 };
 
 selector.forEach((item, i) => {
@@ -109,21 +109,37 @@ selector.forEach((item, i) => {
             case 0:
                 item.classList.add('active');
                 bundles.appendChild(dvbundle);
-                fadeIn(dvbundle, 1000);
+                fadeIn(dvbundle, 20);
                 break;
             case 1:
                 item.classList.add('active');
                 bundles.appendChild(ussrbundle);
-                fadeIn(ussrbundle, 1000);
+                fadeIn(ussrbundle, 20);
                 break;
             case 2:
                 item.classList.add('active');
                 bundles.appendChild(rusbundle);
-                fadeIn(rusbundle, 1000);
+                fadeIn(rusbundle, 20);
                 break;
         }
     }
 });
+
+function addSecs(amount) {
+
+    for (let i = 0; i < amount; i++) {
+        addSec();
+    }
+
+    function addSec() {
+        let
+            section = document.createElement('span');
+        section.classList.add('section');
+        bundleSec.appendChild(section);
+    };
+
+    bundleSec.children[0].classList.add("active");
+}
 
 arrows.onclick = function() {
     smoothScroll(1000);
@@ -132,19 +148,32 @@ arrows.onclick = function() {
 bundleInfo.forEach((item, i) => {
     item.onclick = function() {
         document.body.appendChild(bundlesCollection);
-        console.log(i);
+
         switch (i) {
             case 0:
-                dvbundles[0].style.opacity = 1;
-                dvbundles[0].style.zIndex = 9999;
+                bundleCase = 0;
+                fadeIn(dvbundles[0], 20);
+                dvbundles[0].style.zIndex = 9999
+                addSecs(4);
+
+                bundleScrollLeft.style.display = 'none';
                 break;
             case 1:
-                ussrbundles[0].style.opacity = 1;
+                bundleCase = 1;
+                fadeIn(ussrbundles[0], 20);
                 ussrbundles[0].style.zIndex = 9999;
+                addSecs(2);
+
+                bundleScrollLeft.style.display = 'none';
                 break;
             case 2:
-                rusbundles[0].style.opacity = 1;
+                bundleCase = 2;
+                fadeIn(rusbundles[0], 20);
                 rusbundles[0].style.zIndex = 9999;
+                addSecs(1);
+
+                bundleScrollLeft.style.display = 'none';
+                bundleScrollRight.style.display = 'none';
                 break;
 
         }
@@ -166,6 +195,75 @@ closeButton.onclick = function() {
     fade(dvbundles);
     fade(ussrbundles);
     fade(rusbundles);
+
+    bundleScrollLeft.style.display = 'block';
+    bundleScrollRight.style.display = 'block';
+
+    while (bundleSec.firstChild) {
+        bundleSec.removeChild(bundleSec.lastChild);
+    }
+}
+
+bundleScrollLeft.onclick = function() {
+    scroll('l');
+}
+
+bundleScrollRight.onclick = function() {
+    scroll('r');
+}
+
+function scroll(side) {
+    let activeIndex = 0;
+    for (let i = 0; i < bundleSec.children.length; i++) {
+        if (bundleSec.children[i].classList.contains('active')) {
+            activeIndex = i;
+            break;
+        }
+    }
+
+    switch (side) {
+        case 'r':
+            bundleSec.children[activeIndex].classList.remove('active');
+            bundleSec.children[activeIndex+1].classList.add('active');
+
+            bundleDisplay(bundleCase, activeIndex, 'r');
+            activeIndex++;
+            break;
+        case 'l':
+            bundleSec.children[activeIndex].classList.remove('active');
+            bundleSec.children[activeIndex-1].classList.add('active');
+
+            bundleDisplay(bundleCase, activeIndex, 'l');
+            activeIndex--;
+            break;
+    }
+
+    bundleScrollLeft.style.display = 'block';
+    bundleScrollRight.style.display = 'block';
+    if (activeIndex == 0) {
+        bundleScrollLeft.style.display = 'none';
+    }
+    if (activeIndex == bundleSec.children.length-1) {
+        bundleScrollRight.style.display = 'none';
+    }
+}
+
+function bundleDisplay(bunCase, index, side) {
+    let addition = side == 'l' ? -1 : 1;
+    switch (bunCase) {
+        case 0:
+            fadeOut(dvbundles[index], 20);
+            fadeIn(dvbundles[index+addition], 20);
+            break;
+        case 1:
+            fadeOut(ussrbundles[index], 20);
+            fadeIn(ussrbundles[index+addition], 20);
+            break;
+        case 2:
+            fadeOut(rusbundles[index], 20);
+            fadeIn(rusbundles[index+addition], 20);
+            break;
+    }
 }
 
 bundlesCollection.remove();
