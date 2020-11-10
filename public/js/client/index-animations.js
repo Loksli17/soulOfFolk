@@ -1,4 +1,5 @@
 let
+    activeSelector = 0,
     bundleCase = 0,
     bundleSec = document.getElementById('bundleSec'),
     bundles = document.querySelector(".bundles"),
@@ -88,9 +89,8 @@ function fadeOut(element, time) {
     let
         op = 1,
         timer = setInterval(function () {
-       if (op <= 0.1){
+       if (op <= 0.01){
            clearInterval(timer);
-           element.style.display = 'none';
        }
        element.style.opacity = op;
        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
@@ -100,27 +100,31 @@ function fadeOut(element, time) {
 
 selector.forEach((item, i) => {
     item.onclick = function() {
-        fadeOut(bundles.children[0], 10);
-        bundles.removeChild(bundles.children[0]);
-        selector.forEach((sel, x) => {
-            sel.classList.remove('active');
-        });
-        switch (i) {
-            case 0:
-                item.classList.add('active');
-                bundles.appendChild(dvbundle);
-                fadeIn(dvbundle, 20);
-                break;
-            case 1:
-                item.classList.add('active');
-                bundles.appendChild(ussrbundle);
-                fadeIn(ussrbundle, 20);
-                break;
-            case 2:
-                item.classList.add('active');
-                bundles.appendChild(rusbundle);
-                fadeIn(rusbundle, 20);
-                break;
+        if (i !== activeSelector) {
+            fadeOut(bundles.children[0], 10);
+            bundles.removeChild(bundles.children[0]);
+            selector.forEach((sel, x) => {
+                sel.classList.remove('active');
+            });
+            switch (i) {
+                case 0:
+                    item.classList.add('active');
+                    bundles.appendChild(dvbundle);
+                    fadeIn(dvbundle, 20);
+                    break;
+                case 1:
+                    item.classList.add('active');
+                    bundles.appendChild(ussrbundle);
+                    fadeIn(ussrbundle, 20);
+                    break;
+                case 2:
+                    item.classList.add('active');
+                    bundles.appendChild(rusbundle);
+                    fadeIn(rusbundle, 20);
+                    break;
+            }
+            fadeIn(bundles.children[0], 20);
+            activeSelector = i;
         }
     }
 });

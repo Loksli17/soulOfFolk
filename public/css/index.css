@@ -41,10 +41,14 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(450%, -50%);
+    transform: translate(365%, -50%) scale(0.3);
     z-index: 99999; }
+    .bundles-collection .scroll::before, .bundles-collection .scroll::after {
+      width: 12px; }
+    .bundles-collection .scroll::after {
+      top: -42%; }
   .bundles-collection .left {
-    transform: translate(-550%, -50%) scaleX(-1); }
+    transform: translate(-465%, -50%) scale(-0.3); }
   .bundles-collection .close {
     display: block;
     content: '';
@@ -448,6 +452,7 @@
       flex-flow: row nowrap;
       justify-content: center; }
       .wrapper .bundle-variants .bundles > div {
+        max-width: 300px;
         width: 25%;
         padding: 30px 30px;
         margin: 0px 10px;
@@ -518,15 +523,40 @@
     .wrapper .clients-reviews .clients-reviews-content {
       display: flex;
       flex-flow: row nowrap;
-      justify-content: space-around;
+      justify-content: center;
       align-items: center;
       margin-bottom: 40px; }
       .wrapper .clients-reviews .clients-reviews-content .review {
-        width: 50vw;
-        height: 400px;
+        width: 700px;
+        height: 360px;
         border-radius: 7px;
         background: #F2F2F2;
-        margin: 0px 20px; }
+        padding: 0px 20px;
+        margin: 0px 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        .wrapper .clients-reviews .clients-reviews-content .review .user-info {
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: space-between;
+          align-items: flex-start; }
+          .wrapper .clients-reviews .clients-reviews-content .review .user-info img {
+            width: 300px;
+            height: 300px; }
+          .wrapper .clients-reviews .clients-reviews-content .review .user-info .user-name-and-bundle {
+            margin-left: 20px; }
+            .wrapper .clients-reviews .clients-reviews-content .review .user-info .user-name-and-bundle > p:nth-child(1) {
+              font-style: bold;
+              font-size: 24px;
+              max-width: 50px; }
+            .wrapper .clients-reviews .clients-reviews-content .review .user-info .user-name-and-bundle > p:nth-child(2) {
+              font-style: bold;
+              font-size: 18px;
+              color: #00B100;
+              padding-top: 7px; }
+            .wrapper .clients-reviews .clients-reviews-content .review .user-info .user-name-and-bundle > p:nth-child(3) {
+              padding-top: 25px; }
   .wrapper .footer {
     display: flex;
     flex-flow: row nowrap;
@@ -541,7 +571,8 @@
       justify-content: center;
       padding: 30px 0px; }
       .wrapper .footer .owner img {
-        height: 90%; }
+        height: 90%;
+        border: #0034FF solid 2px; }
       .wrapper .footer .owner span {
         padding-top: 10px; }
     .wrapper .footer .contacts {
@@ -603,6 +634,39 @@
             left: -15px; }
 
 @media screen and (max-width: 900px) {
+  .top-menu {
+    display: none; }
+  .bundles-collection .right {
+    transform: translate(170%, -50%) scale(0.7); }
+  .bundles-collection .left {
+    transform: translate(-270%, -44%) scale(-0.7); }
+  .bundles-collection .close {
+    transform: translate(220px, -420px); }
+  .bundles-collection .bundle-frame {
+    width: 300px;
+    height: 80%;
+    overflow-y: scroll; }
+    .bundles-collection .bundle-frame .bundle-sections {
+      top: 145%;
+      padding-bottom: 40px; }
+    .bundles-collection .bundle-frame > div:not(.bundle-sections) {
+      flex-flow: column nowrap; }
+      .bundles-collection .bundle-frame > div:not(.bundle-sections) .bundle-text {
+        margin-top: 75px;
+        text-align: right;
+        padding: 30px; }
+        .bundles-collection .bundle-frame > div:not(.bundle-sections) .bundle-text .bundle-head {
+          justify-content: flex-end;
+          text-indent: 30%;
+          margin-bottom: 420px; }
+      .bundles-collection .bundle-frame > div:not(.bundle-sections) .bundle-image-and-button {
+        position: relative;
+        width: 300px;
+        transform: translate(0%, -75%);
+        margin: 0px; }
+        .bundles-collection .bundle-frame > div:not(.bundle-sections) .bundle-image-and-button img {
+          width: 300px;
+          height: 300px; }
   .wrapper .first-page {
     flex-flow: column nowrap;
     align-items: center;
@@ -677,6 +741,29 @@
       width: 70%; }
   .wrapper .bundle-variants .bundle-selector .selector {
     display: block; }
+  .wrapper .clients-reviews > p {
+    font-size: 45px;
+    max-width: 60%;
+    margin-bottom: 20px; }
+  .wrapper .clients-reviews .clients-reviews-content .scroll {
+    width: 80px;
+    transform: scale(0.5); }
+    .wrapper .clients-reviews .clients-reviews-content .scroll::before, .wrapper .clients-reviews .clients-reviews-content .scroll::after {
+      width: 12px; }
+    .wrapper .clients-reviews .clients-reviews-content .scroll::after {
+      top: -42%; }
+  .wrapper .clients-reviews .clients-reviews-content .left {
+    transform: scale(-0.5); }
+  .wrapper .clients-reviews .clients-reviews-content .review {
+    height: max-content;
+    max-width: 300px;
+    padding: 25px 20px; }
+    .wrapper .clients-reviews .clients-reviews-content .review .user-info {
+      flex-flow: column nowrap;
+      align-items: flex-start; }
+      .wrapper .clients-reviews .clients-reviews-content .review .user-info .user-name-and-bundle {
+        padding-top: 20px;
+        margin: 0px; }
   .wrapper .footer {
     flex-flow: column nowrap;
     align-items: center;

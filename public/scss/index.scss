@@ -50,12 +50,20 @@ $blue: #0034FF;
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(450%, -50%);
+        transform: translate(365%, -50%) scale(0.3);
         z-index: 99999;
+
+        &::before, &::after {
+            width: 12px;
+        }
+
+        &::after {
+            top: -42%;
+        }
     }
 
     .left {
-        transform: translate(-550%, -50%) scaleX(-1);
+        transform: translate(-465%, -50%) scale(-0.3);
     }
 
     .close {
@@ -648,6 +656,7 @@ $blue: #0034FF;
             justify-content: center;
 
             >div {
+                max-width: 300px;
                 width: 25%;
                 padding: 30px 30px;
                 margin: 0px 10px;
@@ -748,16 +757,52 @@ $blue: #0034FF;
         .clients-reviews-content {
             display: flex;
             flex-flow: row nowrap;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
             margin-bottom: 40px;
 
             .review {
-                width: 50vw;
-                height: 400px;
+                width: 700px;
+                height: 360px;
                 border-radius: 7px;
                 background: #F2F2F2;
-                margin: 0px 20px;
+                padding: 0px 20px;
+                margin: 0px 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .user-info {
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: space-between;
+                    align-items: flex-start;
+
+                    img {
+                        width: 300px;
+                        height: 300px;
+                    }
+
+                    .user-name-and-bundle {
+                        margin-left: 20px;
+                        >p {
+                            &:nth-child(1) {
+                                font-style: bold;
+                                font-size: 24px;
+                                max-width: 50px;
+                            }
+                            &:nth-child(2) {
+                                font-style: bold;
+                                font-size: 18px;
+                                color: $green;
+                                padding-top: 7px;
+                            }
+                            &:nth-child(3) {
+                                padding-top: 25px;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -780,6 +825,7 @@ $blue: #0034FF;
 
             img {
                 height: 90%;
+                border: $blue solid 2px;
             }
 
             span {
@@ -877,6 +923,61 @@ $blue: #0034FF;
 }
 
 @media screen and (max-width: 900px) {
+    .top-menu {
+        display: none;
+    }
+
+    .bundles-collection{
+        .right {
+            transform: translate(170%, -50%) scale(0.7);
+        }
+        .left {
+            transform: translate(-270%, -44%) scale(-0.7);
+        }
+
+        .close {
+            transform: translate(220px, -420px);
+        }
+
+
+        .bundle-frame {
+            width: 300px;
+            height: 80%;
+            overflow-y: scroll;
+            .bundle-sections {
+                top: 145%;
+                padding-bottom: 40px;
+            }
+
+            >div:not(.bundle-sections) {
+                flex-flow: column nowrap;
+
+                .bundle-text {
+                    margin-top: 75px;
+                    text-align: right;
+                    padding: 30px;
+
+                    .bundle-head {
+                        justify-content: flex-end;
+                        text-indent: 30%;
+                        margin-bottom: 420px;
+                    }
+                }
+
+                .bundle-image-and-button {
+                    img {
+                        width: 300px;
+                        height: 300px;
+                    }
+                    position: relative;
+                    width: 300px;
+                    transform: translate(0%, -75%);
+                    margin: 0px;
+                }
+            }
+        }
+    }
+
     .wrapper {
         .first-page {
             flex-flow: column nowrap;
@@ -1012,6 +1113,48 @@ $blue: #0034FF;
             .bundle-selector {
                 .selector {
                     display: block;
+                }
+            }
+        }
+
+        .clients-reviews {
+            >p {
+                font-size: 45px;
+                max-width: 60%;
+                margin-bottom: 20px;
+            }
+
+            .clients-reviews-content {
+                .scroll {
+                    width: 80px;
+                    transform: scale(0.5);
+
+                    &::before, &::after {
+                        width: 12px;
+                    }
+
+                    &::after {
+                        top: -42%;
+                    }
+                }
+
+                .left {
+                    transform: scale(-0.5);
+                }
+
+                .review {
+                    height: max-content;
+                    max-width: 300px;
+                    padding: 25px 20px;
+                    .user-info {
+                        flex-flow: column nowrap;
+                        align-items: flex-start;
+
+                        .user-name-and-bundle {
+                            padding-top: 20px;
+                            margin: 0px;
+                        }
+                    }
                 }
             }
         }

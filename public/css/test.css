@@ -13,10 +13,14 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(450%, -50%);
+    transform: translate(365%, -50%) scale(0.3);
     z-index: 99999; }
+    .bundles-collection .scroll::before, .bundles-collection .scroll::after {
+      width: 12px; }
+    .bundles-collection .scroll::after {
+      top: -42%; }
   .bundles-collection .left {
-    transform: translate(-550%, -50%) scaleX(-1); }
+    transform: translate(-465%, -50%) scale(-0.3); }
   .bundles-collection .close {
     display: block;
     content: '';
@@ -134,6 +138,37 @@
           margin-top: 15px;
           width: 100%;
           padding: 15px 0px; }
-      .bundles-collection > .bundle-frame > div:not(.bundle-sections):nth-child(7) {
+      .bundles-collection > .bundle-frame > div:not(.bundle-sections):nth-child(2) {
         opacity: 1;
         z-index: 9998; }
+
+@media screen and (max-width: 900px) {
+  .bundles-collection .right {
+    transform: translate(215%, -50%) scale(0.7); }
+  .bundles-collection .left {
+    transform: translate(-320%, -47%) scale(-0.7); }
+  .bundles-collection .bundle-frame {
+    width: 350px;
+    height: 80%;
+    overflow-y: scroll; }
+    .bundles-collection .bundle-frame .bundle-sections {
+      top: 137%;
+      padding-bottom: 40px; }
+    .bundles-collection .bundle-frame > div:not(.bundle-sections) {
+      flex-flow: column nowrap; }
+      .bundles-collection .bundle-frame > div:not(.bundle-sections) .bundle-text {
+        margin-top: 75px;
+        text-align: right;
+        padding: 30px; }
+        .bundles-collection .bundle-frame > div:not(.bundle-sections) .bundle-text .bundle-head {
+          justify-content: flex-end;
+          text-indent: 30%;
+          margin-bottom: 440px; }
+      .bundles-collection .bundle-frame > div:not(.bundle-sections) .bundle-image-and-button {
+        position: relative;
+        width: 350px;
+        transform: translate(0%, -70%);
+        margin: 0px; }
+        .bundles-collection .bundle-frame > div:not(.bundle-sections) .bundle-image-and-button img {
+          width: 350px;
+          height: 350px; } }
