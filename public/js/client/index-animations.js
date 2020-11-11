@@ -13,9 +13,97 @@ let
     dvbundles = document.querySelectorAll(".dvbundle"),
     ussrbundles = document.querySelectorAll(".ussrbundle"),
     rusbundles = document.querySelectorAll(".rusbundle"),
-    closeButton = document.querySelector(".close"),
+    closeButton = document.getElementById("bundleClose"),
     bundleScrollLeft = document.getElementById("bundleScrollLeft"),
-    bundleScrollRight = document.getElementById("bundleScrollRight");
+    bundleScrollRight = document.getElementById("bundleScrollRight"),
+    orderButtons = document.querySelectorAll(".order-button"),
+    orderBlock = document.querySelector(".order-form"),
+    orderForm = document.getElementById("orderForm"),
+    orderClose = document.getElementById("orderClose"),
+    order = {
+        id: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        name: [
+                "Посылка с Дальнего Востока",
+                "Посылка с Дальнего Востока",
+                "Посылка из СССР",
+                "Посылка из России",
+                "Посылка с Дальнего Востока",
+                "Посылка с Дальнего Востока",
+                "Посылка от Дальневосточников",
+                "Посылка от Дальневосточников",
+                "Посылка из СССР",
+                "Посылка из СССР",
+                "Посылка из России"],
+        info: [
+                "Большой набор",
+                "Большой набор",
+                "Большой набор",
+                "Стандартный набор",
+                "Большой набор",
+                "Картонная коробка",
+                "Большой набор",
+                "Картонная коробка",
+                "Большой набор",
+                "Картонная коробка",
+                "Стандартный набор"],
+        price: [4500, 4500, 2500, 2500, 4500, 3500, 2500, 1500, 2500, 2000, 2500],
+        images: [
+                "public/img/client/index/bundles/dv-present.jpg",
+                "public/img/client/index/bundles/dv-present.jpg",
+                "public/img/client/index/bundles/ussr-present.jpg",
+                "public/img/client/index/bundles/rus-bundle.jpeg",
+                "public/img/client/index/bundles/dv-present.jpg",
+                "public/img/client/index/bundles/dv-present-carton.jpeg",
+                "public/img/client/index/bundles/dv-present2.jpg",
+                "public/img/client/index/bundles/dv-present2.jpg",
+                "public/img/client/index/bundles/ussr-present.jpg",
+                "public/img/client/index/bundles/ussr-bundle-carton.jpg",
+                "public/img/client/index/bundles/rus-bundle.jpeg"
+                ]
+    };
+
+orderButtons.forEach((item, i) => {
+    item.onclick = function() {
+        document.body.appendChild(orderBlock);
+
+        let
+            price = orderBlock.querySelector(".price-and-confirm-button"),
+            brief = orderBlock.querySelector(".bundleBrief"),
+            image = orderBlock.querySelector(".bundleImage"),
+            pr1 = document.createElement("p"),
+            pr2 = document.createElement("p"),
+            pr3 = document.createElement("p"),
+            text1 = order.price[i] + ' руб',
+            text2 = order.name[i],
+            text3 = order.info[i]
+            imageUrl = "url(" + order.images[i] + ")";
+
+        pr1.appendChild(document.createTextNode(text1));
+        price.prepend(pr1);
+
+        pr2.appendChild(document.createTextNode(text2));
+        brief.appendChild(pr2);
+
+        pr3.appendChild(document.createTextNode(text3));
+        brief.appendChild(pr3);
+
+        image.style.backgroundImage = imageUrl;
+    }
+    document.body.classList.add('stop-scrolling');
+});
+
+orderClose.onclick = function() {
+    document.body.classList.remove('stop-scrolling');
+    document.body.removeChild(orderBlock);
+
+    let
+        price = orderBlock.querySelector(".price-and-confirm-button"),
+        brief = orderBlock.querySelector(".bundleBrief");
+
+        price.removeChild(price.firstChild);
+        brief.removeChild(brief.lastChild);
+        brief.removeChild(brief.lastChild);
+}
 
 let windowResize = function() {
     if (window.matchMedia("(max-width: 900px)").matches) {
@@ -44,9 +132,9 @@ let windowResize = function() {
     }
 }
 
-function smoothScroll(duration){
+function smoothScroll(duration, targetId){
     let
-        target = document.getElementById("bundleVar");
+        target = document.getElementById(targetId);
         targetPosition = target.offsetTop,
         startPosition = window.pageYOffset,
         distance = targetPosition - startPosition - 50,
@@ -146,7 +234,7 @@ function addSecs(amount) {
 }
 
 arrows.onclick = function() {
-    smoothScroll(1000);
+    smoothScroll(1000, "bundleVar");
 }
 
 bundleInfo.forEach((item, i) => {
@@ -256,20 +344,28 @@ function bundleDisplay(bunCase, index, side) {
     let addition = side == 'l' ? -1 : 1;
     switch (bunCase) {
         case 0:
+            dvbundles[index].style.zIndex = 10;
             fadeOut(dvbundles[index], 20);
+            dvbundles[index+addition].style.zIndex = 9999;
             fadeIn(dvbundles[index+addition], 20);
             break;
         case 1:
+            ussrbundles[index].style.zIndex = 10;
             fadeOut(ussrbundles[index], 20);
+            ussrbundles[index+addition].style.zIndex = 9999;
             fadeIn(ussrbundles[index+addition], 20);
             break;
         case 2:
+            rusbundles[index].style.zIndex = 10;
             fadeOut(rusbundles[index], 20);
+            rusbundles[index+addition].style.zIndex = 9999;
             fadeIn(rusbundles[index+addition], 20);
             break;
     }
 }
 
+orderBlock.remove();
 bundlesCollection.remove();
+document.body.classList.remove('stop-scrolling');
 windowResize();
 window.addEventListener("resize", windowResize);
