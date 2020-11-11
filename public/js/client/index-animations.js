@@ -13,9 +13,66 @@ let
     dvbundles = document.querySelectorAll(".dvbundle"),
     ussrbundles = document.querySelectorAll(".ussrbundle"),
     rusbundles = document.querySelectorAll(".rusbundle"),
-    closeButton = document.querySelector(".close"),
+    closeButton = document.getElementById("bundleClose"),
     bundleScrollLeft = document.getElementById("bundleScrollLeft"),
-    bundleScrollRight = document.getElementById("bundleScrollRight");
+    bundleScrollRight = document.getElementById("bundleScrollRight"),
+    orderButtons = document.querySelectorAll(".order-button"),
+    orderBlock = document.querySelector(".order-form"),
+    orderForm = document.getElementById("orderForm"),
+    orderClose = document.getElementById("orderClose"),
+    order = {
+        id: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        name: ["Посылка с Дальнего Востока", "Посылка с Дальнего Востока",
+                "Посылка из СССР", "Посылка из России", "Посылка с Дальнего Востока",
+                "Посылка с Дальнего Востока", "Посылка от Дальневосточников",
+                "Посылка от Дальневосточников", "Посылка из СССР",
+                "Посылка из СССР", "Посылка из России"],
+        info: ["Большой набор", "Большой набор",
+                "Большой набор", "Стандартный набор", "Большой набор",
+                "Картонная коробка", "Большой набор",
+                "Картонная коробка", "Большой набор",
+                "Картонная коробка", "Стандартный набор"],
+        price: [4500, 4500, 2500, 2500, 4500, 3500, 2500, 1500, 2500, 2000, 2500]
+    };
+
+orderButtons.forEach((item, i) => {
+    item.onclick = function() {
+        document.body.appendChild(orderBlock);
+
+        let
+            price = orderBlock.querySelector(".price-and-confirm-button"),
+            brief = orderBlock.querySelector(".bundleBrief"),
+            pr1 = document.createElement("p"),
+            pr2 = document.createElement("p"),
+            pr3 = document.createElement("p"),
+            text1 = order.price[i] + ' руб',
+            text2 = order.name[i],
+            text3 = order.info[i];
+
+        pr1.appendChild(document.createTextNode(text1));
+        price.prepend(pr1);
+
+        pr2.appendChild(document.createTextNode(text2));
+        brief.appendChild(pr2);
+
+        pr3.appendChild(document.createTextNode(text3));
+        brief.appendChild(pr3);
+    }
+    document.body.classList.add('stop-scrolling');
+});
+
+orderClose.onclick = function() {
+    document.body.classList.remove('stop-scrolling');
+    document.body.removeChild(orderBlock);
+
+    let
+        price = orderBlock.querySelector(".price-and-confirm-button"),
+        brief = orderBlock.querySelector(".bundleBrief");
+
+        price.removeChild(price.firstChild);
+        brief.removeChild(brief.lastChild);
+        brief.removeChild(brief.lastChild);
+}
 
 let windowResize = function() {
     if (window.matchMedia("(max-width: 900px)").matches) {
@@ -44,9 +101,9 @@ let windowResize = function() {
     }
 }
 
-function smoothScroll(duration){
+function smoothScroll(duration, targetId){
     let
-        target = document.getElementById("bundleVar");
+        target = document.getElementById(targetId);
         targetPosition = target.offsetTop,
         startPosition = window.pageYOffset,
         distance = targetPosition - startPosition - 50,
@@ -146,7 +203,7 @@ function addSecs(amount) {
 }
 
 arrows.onclick = function() {
-    smoothScroll(1000);
+    smoothScroll(1000, "bundleVar");
 }
 
 bundleInfo.forEach((item, i) => {
@@ -270,6 +327,7 @@ function bundleDisplay(bunCase, index, side) {
     }
 }
 
+orderBlock.remove();
 bundlesCollection.remove();
 windowResize();
 window.addEventListener("resize", windowResize);
