@@ -28,6 +28,8 @@ exports.actionIndex = async (req, res) => {
         count      : count,
         endButton  : true,
         startButton: true,
+        prev       : {content: '&larr;', class: 'step-a'},
+        next       : {content: '&rarr;', class: 'step-a'},
     });
 
     orders = await Order.find().
@@ -172,6 +174,91 @@ exports.actionSearch = async (req, res) => {
 
     res.status(200).send({data: orders});
 }
+
+
+exports.actionEdit = async (req, res, next) => {
+
+    let
+       POST = req.body,
+       GET  = req.query;
+       
+
+    let
+        orderForm = {},
+        id        = GET.id,
+        order     = {};
+
+    if(id == undefined){
+        res.status(404).render('server/error.hbs', {
+            layout : null,
+            err   : '404',
+            message: 'Зазаз не найден не найден',
+        });
+        return;
+    }
+
+    try {
+        order = await Order.findById(id).lean().exec();
+    }catch(err) {
+        res.status(404).render('server/error.hbs', {
+            layout : null,
+            err    : '404',
+            message: 'Заказ не найден',
+        });
+        return;
+    }
+
+    order.date = DateModule.formatDbDate(order.date);
+
+    if(POST.order == undefined){
+        res.render('admin/order/edit', {
+            layout : 'layouts/admin',
+            order  : order,
+            title  : 'Панель администрации: Редактирование комментария',
+            linkCss: [
+                '/css/admin/form.css', 
+                '/css/admin/header.css',
+                '/css/admin/order/edit.css'
+            ],
+            csrf   : res.locals._csrfToken,
+            submitValue: 'Редактировать заказ',
+
+        });
+        return;
+    }
+    
+    orderForm = POST.order;
+
+    order.name.lastName   = orderForm.lastName;
+    order.name.firstName  = orderForm.firstName;
+    order.name.patronymic = orderForm.patronymic;
+    order.bundle          = orderForm.bundle;
+    order.cost            = orderForm.cost;
+    order.date            = orderForm.date;
+    order.phone           = orderForm.phone;
+
+    try{
+        await Order.findByIdAndUpdate(order._id, order, {runValidators: true});
+        req.flash('flash', {class: 'success', status: 'Успешно!', text: `Заказ c id ${order.number} успешно изменен.`});
+        res.redirect('/admin/orders');
+    }catch(error){
+        req.flash('flash', {class: 'fail', status: 'Ошибка!', text: `Заказ c id ${order.number} не был изменен.`});
+        console.log(error);
+        res.render('admin/order/edit', {
+            layout : 'layouts/admin',
+            order  : order,
+            title  : 'Панель администрации: Редактирование комментария',
+            linkCss: [
+                '/css/admin/form.css', 
+                '/css/admin/header.css',
+                '/css/admin/order/edit.css'
+            ],
+            csrf   : res.locals._csrfToken,
+            submitValue: 'Редактировать отзыв',
+        });
+    }
+
+} 
 
 
 exports.actionGetNewOrders = async (req, res, next) => {

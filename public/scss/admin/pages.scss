@@ -26,6 +26,11 @@
                 color: #000;
                 text-decoration: none;
                 font-size: 20px;
+
+                &:hover{
+                    transition: 0.6s;
+                    background: #a8a9ad;
+                }
             }
 
             .ellipsis{
@@ -40,6 +45,11 @@
             .page-active{
                 background: #13DB79;
                 color: #fff;
+
+                &:hover{
+                    transition: 0.6s;
+                    background: #00b95e;
+                }
             }
 
             .step-a{

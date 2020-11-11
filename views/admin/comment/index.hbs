@@ -11,10 +11,10 @@
             <div>
                 <img src="/img/admin/search.svg">
             </div>
-            <input type="text" name="search-data" placeholder="Поиск..">
+            <input type="text" name="search-data" placeholder="Поиск.." autocomplete="off">
         </form>
     </div>
-    <a class="btn-add" href="/admin/comments/create">Добавить отзыв+</a>
+    <a class="btn-add bth-crud" href="/admin/comments/create">Добавить отзыв+</a>
 </div>
 
 <div class="table-wrap wrap-row">
@@ -47,7 +47,12 @@
                 <span>{{this.type}}</span>
             </td>
             <td>
-                <span>{{this.isActive}}</span>
+                {{#if this.isActive}}
+                    <span class="comment-active">{{this.isActiveText}}</span>
+                {{else}}
+                    <span>{{this.isActiveText}}</span>
+                {{/if}}
+                
             </td>
             <td>
                 <a href="/admin/comments/view?id={{this._id}}"><i class="far fa-eye"></i></a>

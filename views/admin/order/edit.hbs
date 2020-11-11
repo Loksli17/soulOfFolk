@@ -1,0 +1,67 @@
+<div class="title">
+    <h1>Заказы</h1>
+    <span>Редактирование с id: {{order.number}}</span>
+</div>
+
+<div class="add">
+    <a class="btn-add bth-back" href="/admin/orders">&larr; Все заказы</a>
+</div>
+
+<div class="view-content">
+    <div class="form-wrap">
+        <form action="{{action}}" method="post">
+
+            <div class="row">
+                <div class="col margin">
+                    <span>Фамилия</span>
+                    <input type="text" name="order[lastName]" value="{{order.name.lastName}}" required>
+                </div>
+                <div class="col margin">
+                    <span>Имя</span>
+                    <input type="text" name="order[firstName]" value="{{order.name.firstName}}" required>
+                </div>
+                <div class="col">
+                    
+                    <span>Отчество</span>
+                    <input type="" name="order[patronymic]" value="{{order.name.firstName}}" required>
+                </div>
+                <input type="hidden" name="_csrf" value="{{csrf}}">
+            </div>
+    
+            <div class="row">
+                <div class="col margin">
+                    <span>Купленный набор</span>
+                    <input type="text" name="order[bundle]" value="{{order.bundle}}" required>
+                </div>
+                <div class="col">
+                    <span>Цена</span>
+                    <input type="text" name="order[cost]" value="{{order.cost}}" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col margin">
+                    <span>Дата</span>
+                    <input type="date" name="order[date]" value="{{order.date}}" required>
+                </div>
+                <div class="col">
+                    <span>Номер телефона</span>
+                    <input type="phone" name="order[phone]" value="{{order.phone}}" required>
+                </div>
+            </div>
+
+                            
+    
+            <div class="row">
+                <div class="col">
+                    <input type="submit" value="{{submitValue}}">
+                </div>
+            </div>
+    
+    
+        </form>
+    </div>
+</div>
+
+
+<script src="/js/admin/order/input-phone.js"></script>

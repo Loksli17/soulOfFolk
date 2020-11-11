@@ -9,6 +9,9 @@ body {
   font-family: 'Exo 2';
   background: #F5F6FA; }
 
+.add {
+  margin-top: 30px; }
+
 .wrapper {
   margin-top: 60px;
   padding: 20px 50px 50px 50px;
@@ -33,7 +36,12 @@ body {
       font-size: 22px;
       padding: 0px 40px;
       box-sizing: border-box;
-      border-radius: 8px; }
+      border-radius: 8px;
+      transition: all 0.4s ease-out; }
+    .wrapper .add .bth-back:hover {
+      padding-left: 80px; }
+    .wrapper .add .bth-crud:hover {
+      padding-right: 80px; }
 
 .nice-block {
   position: fixed;

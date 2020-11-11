@@ -25,19 +25,21 @@
         }
 
         td:last-child{
-            display: grid;
-            grid-template-columns: max-content max-content max-content;
-            grid-column-gap: 10px;
             border-radius: 0px $radius $radius 0px;
             justify-content: center;
 
             a{
                 color: #000;
+                margin-right: 10px;
 
                 &:hover{
                     transition: 0.5s;
                     color: #19be6c;
                 }
+            }
+
+            a:last-child{
+                margin-right: 0px;
             }
 
             a.del{
@@ -55,5 +57,16 @@
         background: #fff;
         padding: 22px;
         font-size: 19px;
+        word-wrap: break-word;
+        
+        .comment-active{
+            color: #13DB79;;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .tableView td{
+        font-size: 17px;
     }
 }

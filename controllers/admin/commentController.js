@@ -42,9 +42,9 @@ exports.actionIndex = async (req, res) => {
         exec();
 
     for(let i = 0; i < comments.length; i++){
-        comments[i].text     = `${comments[i].text.slice(0, 30)}...`;
-        comments[i].type     = comments[i].type == 'eng' ? 'Английский' : 'Русский';
-        comments[i].isActive = comments[i].isActive ? 'Да' : 'Нет'; 
+        comments[i].text         = `${comments[i].text.slice(0, 30)}...`;
+        comments[i].type         = comments[i].type == 'eng' ? 'Английский' : 'Русский';
+        comments[i].isActiveText = comments[i].isActive ? 'Да' : 'Нет'; 
     }
 
     flash = req.flash('flash')[0];
@@ -192,7 +192,7 @@ exports.actionEdit = async (req, res) => {
         res.status(404).render('server/error.hbs', {
             layout : null,
             err    : '404',
-            message: 'Заказ не найден',
+            message: 'Отзыв не найден',
         });
         return;
     }
@@ -232,8 +232,7 @@ exports.actionEdit = async (req, res) => {
         req.flash('flash', {class: 'success', status: 'Успешно!', text: `Отзыв c id ${comment.number} успешно изменен.`});
         res.redirect('/admin/comments');
     }catch(error){
-        //обработать ошибки
-        req.flash('flash', {class: 'fail', status: 'Успешно!', text: `Отзыв c id ${comment.number} не был изменен.`});
+        req.flash('flash', {class: 'fail', status: 'Ошибка!', text: `Отзыв c id ${comment.number} не был изменен.`});
         console.log(error);
         res.render('admin/comment/edit', {
             layout : 'layouts/admin',

@@ -29,6 +29,9 @@ const OrderSchema = new mongoose.Schema({
         type    : String,
         required: true,
     },
+    cost: {
+        type: Number,
+    },
     viewStatus: {
         type    : Boolean,
         required: true,

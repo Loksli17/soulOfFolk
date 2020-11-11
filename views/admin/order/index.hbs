@@ -6,10 +6,14 @@
 
 
 <div class="add wrap-row">
+
     <div class="search-wrap">
         <form action="/admin/orders/search" id="search-form">
             <input type="hidden" name="_csrf" value="{{csrf}}">
-            <input type="text" name="search-data" placeholder="Поиск..">
+            <div>
+                <img src="/img/admin/search.svg">
+            </div>
+            <input type="text" name="search-data" placeholder="Поиск.." autocomplete="off">
         </form>
     </div>
     
@@ -23,6 +27,7 @@
             <th>Номер телефон</th>
             <th>Дата заказа</th>
             <th>Набор</th>
+            <th>Цена</th>
             <th>Действия</th>
         </tr>
     
@@ -43,10 +48,16 @@
             <td class="flex-td">
                 <span>{{this.bundle}}</span>
                 {{#if this.viewStatus}}
-                    <div class="order-active" id="{{this._id}}"></div>
+                    <div class="order-active-wrap">
+                        <div class="order-active" id="{{this._id}}"></div>
+                    </div>
                 {{/if}}
             </td>
             <td>
+                <span>{{this.cost}} руб</span>
+            </td>
+            <td>
+                <a href="/admin/orders/edit?id={{this._id}}"><i class="far fa-edit"></i></a>
                 <a class="del" href="/admin/orders/delete?id={{this._id}}"><i class="fas fa-trash"></i></a>
             </td>
         </tr>

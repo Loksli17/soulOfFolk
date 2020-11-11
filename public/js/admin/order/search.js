@@ -85,6 +85,7 @@ function showData(data){
 
 function closeWrap(e){
     if(e.target.tagName != 'DIV') return;
+    document.body.style.overflow = 'auto';
     e.target.remove();
 }
 

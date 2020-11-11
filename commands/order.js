@@ -19,6 +19,7 @@ let query = async () => {
                                 phone     : '+7 (924) 109 83-57',
                                 bundle    : 'Подарок из России',
                                 number    : 1,
+                                cost      : 322,
                                 viewStatus: false,
                             });
 
@@ -40,6 +41,7 @@ let query = async () => {
                                 phone : '+7 (924) 109 83-57',
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
+                                cost  : 322,
                                 number: 2,
                                 viewStatus: false,
                             });
@@ -63,6 +65,7 @@ let query = async () => {
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 3,
+                                cost  : 322,
                                 viewStatus: false,
                             });
                             order.save(function(err){
@@ -84,6 +87,7 @@ let query = async () => {
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 4,
+                                cost  : 322,
                                 viewStatus: false,
                             });
 
@@ -106,6 +110,7 @@ let query = async () => {
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 5,
+                                cost  : 322,
                                 viewStatus: false,
                             });
 
@@ -128,6 +133,7 @@ let query = async () => {
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 6,
+                                cost  : 322,
                                 viewStatus: false,
                             });
 
@@ -150,6 +156,7 @@ let query = async () => {
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 7,
+                                cost  : 322,
                                 viewStatus: false,
                             });
 
@@ -172,6 +179,7 @@ let query = async () => {
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 8,
+                                cost  : 322,
                                 viewStatus: true,
                             });
 
@@ -194,6 +202,7 @@ let query = async () => {
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 9,
+                                cost  : 322,
                                 viewStatus: true,
                             });
 
@@ -216,6 +225,7 @@ let query = async () => {
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 10,
+                                cost  : 322,
                                 viewStatus: true,
                             });
 
@@ -238,6 +248,7 @@ let query = async () => {
                                 date  : '2020-10-24',
                                 bundle: 'Подарок из России',
                                 number: 11,
+                                cost  : 322,
                                 viewStatus: true,
                             });
 

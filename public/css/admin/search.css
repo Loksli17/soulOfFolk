@@ -29,7 +29,8 @@
   height: 100vh;
   background: rgba(0, 0, 0, 0.8);
   top: 0;
-  left: 0; }
+  left: 0;
+  z-index: 9999; }
   .search-data-wrap .data {
     background: #F5F6FA;
     padding: 30px;
