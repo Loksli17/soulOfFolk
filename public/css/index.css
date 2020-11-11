@@ -4,6 +4,119 @@
   padding: 0px;
   font-family: 'Exo 2', sans-serif; }
 
+.order-form {
+  background-color: rgba(0, 0, 0, 0.57);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center; }
+  .order-form .close {
+    transform: translate(405px, -200px); }
+  .order-form #orderForm {
+    padding: 40px;
+    height: 250px;
+    width: 650px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between; }
+    .order-form #orderForm .span {
+      display: none; }
+    .order-form #orderForm .orderWrapper > p {
+      font-size: 30px; }
+      .order-form #orderForm .orderWrapper > p span {
+        color: #00B100; }
+      .order-form #orderForm .orderWrapper > p::after {
+        display: block;
+        content: '';
+        width: 250px;
+        height: 2px;
+        background: #0034FF;
+        transform: translate(55%, 100%); }
+    .order-form #orderForm .orderWrapper .userFields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr; }
+      .order-form #orderForm .orderWrapper .userFields > div {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: flex-end;
+        margin-top: 20px; }
+        .order-form #orderForm .orderWrapper .userFields > div span {
+          color: #00B100;
+          padding-bottom: 7px; }
+        .order-form #orderForm .orderWrapper .userFields > div .textBox {
+          padding: 1px;
+          position: relative;
+          background: #ccc;
+          z-index: 1;
+          border-radius: 6px;
+          overflow: hidden; }
+          .order-form #orderForm .orderWrapper .userFields > div .textBox input {
+            color: #708090;
+            box-sizing: border-box;
+            font-size: 14px;
+            outline: none;
+            border: none;
+            z-index: 2;
+            padding: 3px;
+            border-radius: 5px; }
+            .order-form #orderForm .orderWrapper .userFields > div .textBox input:focus ~ .border {
+              width: 100%;
+              height: 100%;
+              padding: 3px; }
+          .order-form #orderForm .orderWrapper .userFields > div .textBox .border {
+            position: absolute;
+            content: '';
+            top: -5px;
+            left: -5px;
+            width: 0%;
+            height: 0%;
+            background: #0034FF;
+            z-index: -1;
+            transition: height 0.3s, width 0.3s 0.1s; }
+    .order-form #orderForm .orderWrapper .price-and-confirm-button {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 35px; }
+      .order-form #orderForm .orderWrapper .price-and-confirm-button p {
+        color: #00B100;
+        font-size: 25px;
+        font-weight: lighter;
+        padding-left: 90px; }
+      .order-form #orderForm .orderWrapper .price-and-confirm-button input[type="submit"] {
+        background: #00B100;
+        color: white;
+        width: 164px;
+        height: 30px;
+        font-size: 16px;
+        border-radius: 5px;
+        outline: none;
+        border: none; }
+    .order-form #orderForm .bundleBrief {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: flex-end; }
+      .order-form #orderForm .bundleBrief .bundleImage {
+        display: block;
+        content: '';
+        width: 220px;
+        height: 160px;
+        background: url("../img/client/index//bundles/dv-present.jpg");
+        background-position: center center;
+        background-size: cover; }
+      .order-form #orderForm .bundleBrief p:nth-child(2) {
+        font-size: 18px;
+        text-align: right;
+        width: 75%; }
+      .order-form #orderForm .bundleBrief p:nth-child(3) {
+        color: #979797; }
+
 .stop-scrolling {
   height: 100%;
   overflow: hidden; }
@@ -634,6 +747,48 @@
             left: -15px; }
 
 @media screen and (max-width: 900px) {
+  .order-form {
+    display: none; }
+    .order-form .close {
+      transform: translate(230px, -390px); }
+    .order-form #orderForm {
+      padding: 40px;
+      height: 640px;
+      width: 290px;
+      background: white;
+      border-radius: 10px;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: space-between; }
+      .order-form #orderForm .orderWrapper > p {
+        text-align: right;
+        margin-bottom: 260px; }
+        .order-form #orderForm .orderWrapper > p::after {
+          display: block;
+          content: '';
+          width: 100px;
+          height: 2px;
+          background: #0034FF;
+          transform: translate(190%, 100%); }
+      .order-form #orderForm .orderWrapper .userFields {
+        display: flex;
+        flex-flow: column nowrap; }
+        .order-form #orderForm .orderWrapper .userFields > div {
+          margin-top: 10px; }
+          .order-form #orderForm .orderWrapper .userFields > div .textBox {
+            width: 290px; }
+            .order-form #orderForm .orderWrapper .userFields > div .textBox input {
+              width: 290px; }
+      .order-form #orderForm .orderWrapper .price-and-confirm-button > p {
+        font-size: 18px;
+        padding-left: 0px; }
+      .order-form #orderForm .orderWrapper .price-and-confirm-button input[type="submit"] {
+        width: 190px; }
+      .order-form #orderForm .bundleBrief {
+        transform: translate(0px, -545px); }
+        .order-form #orderForm .bundleBrief .bundleImage {
+          width: 300px;
+          height: 180px; }
   .top-menu {
     display: none; }
   .bundles-collection .right {

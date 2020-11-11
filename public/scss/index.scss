@@ -9,6 +9,164 @@ $blue: #0034FF;
     font-family: 'Exo 2', sans-serif;
 }
 
+.order-form {
+    background-color: rgba(0, 0, 0, 0.57);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    .close {
+        transform: translate(405px, -200px);
+    }
+
+    #orderForm {
+        padding: 40px;
+        height: 250px;
+        width: 650px;
+        background: white;
+        border-radius: 10px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+
+        .span {
+            display: none;
+        }
+
+        .orderWrapper {
+            >p {
+                font-size: 30px;
+
+                span {
+                    color: $green;
+                }
+
+                &::after {
+                    display: block;
+                    content: '';
+                    width: 250px;
+                    height: 2px;
+                    background: $blue;
+                    transform: translate(55%, 100%);
+                }
+            }
+
+            .userFields {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+
+                >div {
+                    display: flex;
+                    flex-flow: column nowrap;
+                    align-items: flex-end;
+                    margin-top: 20px;
+
+                    span {
+                        color: $green;
+                        padding-bottom: 7px;
+                    }
+
+                    .textBox {
+                        padding: 1px;
+                        position: relative;
+                        background: #ccc;
+                        z-index: 1;
+                        border-radius: 6px;
+                        overflow: hidden;
+                        input {
+                            color: #708090;
+                            box-sizing: border-box;
+                            font-size: 14px;
+                            outline: none;
+                            border: none;
+                            z-index: 2;
+                            padding: 3px;
+                            border-radius: 5px;
+
+                            &:focus ~ .border {
+                                width: 100%;
+                                height: 100%;
+                                padding: 3px;
+                            }
+                        }
+
+                        .border {
+                            position: absolute;
+                            content: '';
+                            top: -5px;
+                            left: -5px;
+                            width: 0%;
+                            height: 0%;
+                            background: $blue;
+                            z-index: -1;
+                            transition: height 0.3s, width 0.3s 0.1s;
+                        }
+                    }
+                }
+            }
+
+            .price-and-confirm-button {
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-top: 35px;
+
+                p {
+                    color: $green;
+                    font-size: 25px;
+                    font-weight: lighter;
+                    padding-left: 90px;
+                }
+
+                input[type="submit"] {
+                    background: $green;
+                    color: white;
+                    width:164px;
+                    height: 30px;
+                    font-size: 16px;
+                    border-radius: 5px;
+                    outline: none;
+                    border: none;
+                }
+            }
+        }
+
+        .bundleBrief {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: flex-end;
+            .bundleImage {
+                display: block;
+                content: '';
+                width: 220px;
+                height: 160px;
+
+                background: url("../img/client/index//bundles/dv-present.jpg");
+                background-position: center center;
+                background-size: cover;
+            }
+            p {
+                &:nth-child(2) {
+                    font-size: 18px;
+                    text-align: right;
+                    width: 75%;
+                }
+
+                &:nth-child(3) {
+                    color: #979797;
+                }
+            }
+        }
+    }
+
+
+}
+
 .stop-scrolling {
   height: 100%;
   overflow: hidden;
@@ -923,6 +1081,76 @@ $blue: #0034FF;
 }
 
 @media screen and (max-width: 900px) {
+    .order-form {
+        .close {
+            transform: translate(230px, -390px);
+        }
+
+        #orderForm {
+            padding: 40px;
+            height: 640px;
+            width: 290px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: space-between;
+
+            .orderWrapper {
+                >p {
+                    text-align: right;
+                    margin-bottom: 260px;
+
+                    &::after {
+                        display: block;
+                        content: '';
+                        width: 100px;
+                        height: 2px;
+                        background: $blue;
+                        transform: translate(190%, 100%);
+                    }
+                }
+
+                .userFields {
+                    display: flex;
+                    flex-flow: column nowrap;
+
+                    >div {
+                        margin-top: 10px;
+
+                        .textBox {
+                            width: 290px;
+                            input {
+                                width: 290px;
+                            }
+                        }
+                    }
+                }
+
+                .price-and-confirm-button {
+                    >p {
+                        font-size: 18px;
+                        padding-left: 0px;
+                    }
+
+                    input[type="submit"] {
+                        width: 190px;
+                    }
+                }
+            }
+
+            .bundleBrief {
+                transform: translate(0px, -545px);
+                .bundleImage {
+                    width: 300px;
+                    height: 180px;
+                }
+            }
+        }
+
+        display: none;
+    }
+
     .top-menu {
         display: none;
     }
