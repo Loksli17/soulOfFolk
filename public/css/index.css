@@ -62,7 +62,8 @@
     .order-form #orderForm .span {
       display: none; }
     .order-form #orderForm .orderWrapper > p {
-      font-size: 30px; }
+      font-size: 30px;
+      text-align: right; }
       .order-form #orderForm .orderWrapper > p span {
         color: #00B100; }
       .order-form #orderForm .orderWrapper > p::after {

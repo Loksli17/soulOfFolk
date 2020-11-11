@@ -313,15 +313,21 @@ function bundleDisplay(bunCase, index, side) {
     let addition = side == 'l' ? -1 : 1;
     switch (bunCase) {
         case 0:
+            dvbundles[index].style.zIndex = 10;
             fadeOut(dvbundles[index], 20);
+            dvbundles[index+addition].style.zIndex = 9999;
             fadeIn(dvbundles[index+addition], 20);
             break;
         case 1:
+            ussrbundles[index].style.zIndex = 10;
             fadeOut(ussrbundles[index], 20);
+            ussrbundles[index+addition].style.zIndex = 9999;
             fadeIn(ussrbundles[index+addition], 20);
             break;
         case 2:
+            rusbundles[index].style.zIndex = 10;
             fadeOut(rusbundles[index], 20);
+            rusbundles[index+addition].style.zIndex = 9999;
             fadeIn(rusbundles[index+addition], 20);
             break;
     }
