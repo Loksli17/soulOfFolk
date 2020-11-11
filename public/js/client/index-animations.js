@@ -22,17 +22,44 @@ let
     orderClose = document.getElementById("orderClose"),
     order = {
         id: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        name: ["Посылка с Дальнего Востока", "Посылка с Дальнего Востока",
-                "Посылка из СССР", "Посылка из России", "Посылка с Дальнего Востока",
-                "Посылка с Дальнего Востока", "Посылка от Дальневосточников",
-                "Посылка от Дальневосточников", "Посылка из СССР",
-                "Посылка из СССР", "Посылка из России"],
-        info: ["Большой набор", "Большой набор",
-                "Большой набор", "Стандартный набор", "Большой набор",
-                "Картонная коробка", "Большой набор",
-                "Картонная коробка", "Большой набор",
-                "Картонная коробка", "Стандартный набор"],
-        price: [4500, 4500, 2500, 2500, 4500, 3500, 2500, 1500, 2500, 2000, 2500]
+        name: [
+                "Посылка с Дальнего Востока",
+                "Посылка с Дальнего Востока",
+                "Посылка из СССР",
+                "Посылка из России",
+                "Посылка с Дальнего Востока",
+                "Посылка с Дальнего Востока",
+                "Посылка от Дальневосточников",
+                "Посылка от Дальневосточников",
+                "Посылка из СССР",
+                "Посылка из СССР",
+                "Посылка из России"],
+        info: [
+                "Большой набор",
+                "Большой набор",
+                "Большой набор",
+                "Стандартный набор",
+                "Большой набор",
+                "Картонная коробка",
+                "Большой набор",
+                "Картонная коробка",
+                "Большой набор",
+                "Картонная коробка",
+                "Стандартный набор"],
+        price: [4500, 4500, 2500, 2500, 4500, 3500, 2500, 1500, 2500, 2000, 2500],
+        images: [
+                "public/img/client/index/bundles/dv-present.jpg",
+                "public/img/client/index/bundles/dv-present.jpg",
+                "public/img/client/index/bundles/ussr-present.jpg",
+                "public/img/client/index/bundles/rus-bundle.jpeg",
+                "public/img/client/index/bundles/dv-present.jpg",
+                "public/img/client/index/bundles/dv-present-carton.jpeg",
+                "public/img/client/index/bundles/dv-present2.jpg",
+                "public/img/client/index/bundles/dv-present2.jpg",
+                "public/img/client/index/bundles/ussr-present.jpg",
+                "public/img/client/index/bundles/ussr-bundle-carton.jpg",
+                "public/img/client/index/bundles/rus-bundle.jpeg"
+                ]
     };
 
 orderButtons.forEach((item, i) => {
@@ -42,12 +69,14 @@ orderButtons.forEach((item, i) => {
         let
             price = orderBlock.querySelector(".price-and-confirm-button"),
             brief = orderBlock.querySelector(".bundleBrief"),
+            image = orderBlock.querySelector(".bundleImage"),
             pr1 = document.createElement("p"),
             pr2 = document.createElement("p"),
             pr3 = document.createElement("p"),
             text1 = order.price[i] + ' руб',
             text2 = order.name[i],
-            text3 = order.info[i];
+            text3 = order.info[i]
+            imageUrl = "url(" + order.images[i] + ")";
 
         pr1.appendChild(document.createTextNode(text1));
         price.prepend(pr1);
@@ -57,6 +86,8 @@ orderButtons.forEach((item, i) => {
 
         pr3.appendChild(document.createTextNode(text3));
         brief.appendChild(pr3);
+
+        image.style.backgroundImage = imageUrl;
     }
     document.body.classList.add('stop-scrolling');
 });
@@ -335,5 +366,6 @@ function bundleDisplay(bunCase, index, side) {
 
 orderBlock.remove();
 bundlesCollection.remove();
+document.body.classList.remove('stop-scrolling');
 windowResize();
 window.addEventListener("resize", windowResize);
