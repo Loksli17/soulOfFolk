@@ -944,13 +944,13 @@ $blue: #0034FF;
                 flex-flow: row nowrap;
                 justify-content: center;
                 .review {
+                    display: none;
                     width: 700px;
                     height: 360px;
                     border-radius: 7px;
                     background: #F2F2F2;
                     padding: 0px 20px;
                     margin: 0px 40px;
-                    display: none;
                     justify-content: center;
                     align-items: center;
 
@@ -1389,7 +1389,7 @@ $blue: #0034FF;
             .clients-reviews-content {
                 .scroll {
                     width: 80px;
-                    transform: scale(0.5);
+                    transform: scale(0.3) translate(50px, 0px);
 
                     &::before, &::after {
                         width: 12px;
@@ -1401,17 +1401,24 @@ $blue: #0034FF;
                 }
 
                 .left {
-                    transform: scale(-0.5);
+                    transform: scale(-0.3) translate(50px, 0px);
                 }
 
                 .reviews {
+                    width: 100%;
                     .review {
                         height: max-content;
-                        max-width: 300px;
+                        width: 90%;
+                        height: auto;
                         padding: 25px 20px;
                         .user-info {
                             flex-flow: column nowrap;
                             align-items: flex-start;
+
+                            img {
+                                width: 75vw;
+                                height: auto;
+                            }
 
                             .user-name-and-bundle {
                                 padding-top: 20px;

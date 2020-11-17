@@ -661,13 +661,13 @@
         flex-flow: row nowrap;
         justify-content: center; }
         .wrapper .clients-reviews .clients-reviews-content .reviews .review {
+          display: none;
           width: 700px;
           height: 360px;
           border-radius: 7px;
           background: #F2F2F2;
           padding: 0px 20px;
           margin: 0px 40px;
-          display: none;
           justify-content: center;
           align-items: center; }
           .wrapper .clients-reviews .clients-reviews-content .reviews .review .user-info {
@@ -930,23 +930,29 @@
       margin-bottom: 20px; }
     .wrapper .clients-reviews .clients-reviews-content .scroll {
       width: 80px;
-      transform: scale(0.5); }
+      transform: scale(0.3) translate(50px, 0px); }
       .wrapper .clients-reviews .clients-reviews-content .scroll::before, .wrapper .clients-reviews .clients-reviews-content .scroll::after {
         width: 12px; }
       .wrapper .clients-reviews .clients-reviews-content .scroll::after {
         top: -42%; }
     .wrapper .clients-reviews .clients-reviews-content .left {
-      transform: scale(-0.5); }
-    .wrapper .clients-reviews .clients-reviews-content .reviews .review {
-      height: max-content;
-      max-width: 300px;
-      padding: 25px 20px; }
-      .wrapper .clients-reviews .clients-reviews-content .reviews .review .user-info {
-        flex-flow: column nowrap;
-        align-items: flex-start; }
-        .wrapper .clients-reviews .clients-reviews-content .reviews .review .user-info .user-name-and-bundle {
-          padding-top: 20px;
-          margin: 0px; }
+      transform: scale(-0.3) translate(50px, 0px); }
+    .wrapper .clients-reviews .clients-reviews-content .reviews {
+      width: 100%; }
+      .wrapper .clients-reviews .clients-reviews-content .reviews .review {
+        height: max-content;
+        width: 90%;
+        height: auto;
+        padding: 25px 20px; }
+        .wrapper .clients-reviews .clients-reviews-content .reviews .review .user-info {
+          flex-flow: column nowrap;
+          align-items: flex-start; }
+          .wrapper .clients-reviews .clients-reviews-content .reviews .review .user-info img {
+            width: 75vw;
+            height: auto; }
+          .wrapper .clients-reviews .clients-reviews-content .reviews .review .user-info .user-name-and-bundle {
+            padding-top: 20px;
+            margin: 0px; }
     .wrapper .footer {
       flex-flow: column nowrap;
       align-items: center;
