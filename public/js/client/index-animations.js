@@ -1,4 +1,5 @@
 let
+    anchors = document.querySelectorAll(".anchor"),
     activeSelector = 0,
     bundleCase = 0,
     bundleSec = document.getElementById('bundleSec'),
@@ -363,6 +364,15 @@ function bundleDisplay(bunCase, index, side) {
             break;
     }
 }
+
+anchors.forEach((item, i) => {
+    let
+        anchor = ["fp", "whyWe", "bundleVar", "clientsRev", "cont"];
+    item.onclick = function() {
+        smoothScroll(1000, anchor[i]);
+    }
+});
+
 
 orderBlock.remove();
 bundlesCollection.remove();
