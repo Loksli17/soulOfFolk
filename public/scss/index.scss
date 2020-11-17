@@ -939,44 +939,49 @@ $blue: #0034FF;
             align-items: center;
             margin-bottom: 40px;
 
-            .review {
-                width: 700px;
-                height: 360px;
-                border-radius: 7px;
-                background: #F2F2F2;
-                padding: 0px 20px;
-                margin: 0px 40px;
+            .reviews {
                 display: flex;
+                flex-flow: row nowrap;
                 justify-content: center;
-                align-items: center;
+                .review {
+                    width: 700px;
+                    height: 360px;
+                    border-radius: 7px;
+                    background: #F2F2F2;
+                    padding: 0px 20px;
+                    margin: 0px 40px;
+                    display: none;
+                    justify-content: center;
+                    align-items: center;
 
-                .user-info {
-                    display: flex;
-                    flex-flow: row nowrap;
-                    justify-content: space-between;
-                    align-items: flex-start;
+                    .user-info {
+                        display: flex;
+                        flex-flow: row nowrap;
+                        justify-content: space-between;
+                        align-items: flex-start;
 
-                    img {
-                        width: 300px;
-                        height: 300px;
-                    }
+                        img {
+                            width: 300px;
+                            height: 300px;
+                        }
 
-                    .user-name-and-bundle {
-                        margin-left: 20px;
-                        >p {
-                            &:nth-child(1) {
-                                font-style: bold;
-                                font-size: 24px;
-                                max-width: 50px;
-                            }
-                            &:nth-child(2) {
-                                font-style: bold;
-                                font-size: 18px;
-                                color: $green;
-                                padding-top: 7px;
-                            }
-                            &:nth-child(3) {
-                                padding-top: 25px;
+                        .user-name-and-bundle {
+                            margin-left: 20px;
+                            >p {
+                                &:nth-child(1) {
+                                    font-style: bold;
+                                    font-size: 24px;
+                                    max-width: 50px;
+                                }
+                                &:nth-child(2) {
+                                    font-style: bold;
+                                    font-size: 18px;
+                                    color: $green;
+                                    padding-top: 7px;
+                                }
+                                &:nth-child(3) {
+                                    padding-top: 25px;
+                                }
                             }
                         }
                     }
@@ -1103,19 +1108,20 @@ $blue: #0034FF;
 @media screen and (max-width: 900px) {
     .order-form {
         .close {
-            transform: translate(230px, -390px);
+            transform: translate(200px, -370px) scale(0.7);
         }
 
         #orderForm {
-            padding: 40px;
+            padding: 20px;
+            margin-top: 20px;
             height: 640px;
-            width: 290px;
+            width: 80%;
             background: white;
             border-radius: 10px;
             display: flex;
             flex-flow: column nowrap;
             align-items: space-between;
-
+            overflow: scroll;
             .orderWrapper {
                 >p {
                     text-align: right;
@@ -1182,13 +1188,14 @@ $blue: #0034FF;
         }
 
         .close {
-            transform: translate(220px, -420px);
+            transform: translate(200px, -400px) scale(0.7);
         }
 
 
         .bundle-frame {
-            width: 300px;
+            width: 80%;
             height: 80%;
+            padding: 20px;
             overflow-y: scroll;
             .bundle-sections {
                 top: 150%;
@@ -1241,6 +1248,14 @@ $blue: #0034FF;
                 padding-top: 40px;
                 background-image: none;
                 border: none;
+
+                p {
+                    width: 100%;
+                }
+
+                .order-button {
+                    width: 80%;
+                }
             }
 
             .first-page-bundles-button {
@@ -1389,17 +1404,19 @@ $blue: #0034FF;
                     transform: scale(-0.5);
                 }
 
-                .review {
-                    height: max-content;
-                    max-width: 300px;
-                    padding: 25px 20px;
-                    .user-info {
-                        flex-flow: column nowrap;
-                        align-items: flex-start;
+                .reviews {
+                    .review {
+                        height: max-content;
+                        max-width: 300px;
+                        padding: 25px 20px;
+                        .user-info {
+                            flex-flow: column nowrap;
+                            align-items: flex-start;
 
-                        .user-name-and-bundle {
-                            padding-top: 20px;
-                            margin: 0px;
+                            .user-name-and-bundle {
+                                padding-top: 20px;
+                                margin: 0px;
+                            }
                         }
                     }
                 }
@@ -1416,7 +1433,8 @@ $blue: #0034FF;
 
             .owner {
                 img {
-                    height: 450px;
+                    height: auto;
+                    width: 100%;
                 }
             }
 

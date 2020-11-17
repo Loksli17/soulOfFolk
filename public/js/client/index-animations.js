@@ -1,4 +1,7 @@
 let
+    reviews = document.querySelectorAll(".review"),
+    activeRev = 0,
+    reviewScroll = document.querySelector(".clients-reviews-content").querySelectorAll(".scroll"),
     anchors = document.querySelectorAll(".anchor"),
     activeSelector = 0,
     bundleCase = 0,
@@ -373,9 +376,39 @@ anchors.forEach((item, i) => {
     }
 });
 
+reviewScroll.forEach((item, i) => {
+    item.onclick = function() {
+        if (i == 0) {
+            if (activeRev == 0) {
+                reviews[activeRev].style.display = "none";
+                activeRev = reviews.length-1;
+                reviews[activeRev].style.display = "flex";
+            }
+            else{
+                reviews[activeRev].style.display = "none";
+                activeRev--;
+                reviews[activeRev].style.display = "flex";
+            }
+        }
+        else {
+            if (activeRev == reviews.length-1) {
+                reviews[activeRev].style.display = "none";
+                activeRev = 0;
+                reviews[activeRev].style.display = "flex";
+            }
+            else {
+                reviews[activeRev].style.display = "none";
+                activeRev++;
+                reviews[activeRev].style.display = "flex";
+            }
+        }
+    }
+});
+
 
 orderBlock.remove();
 bundlesCollection.remove();
+reviews[0].style.display = "flex";
 document.body.classList.remove('stop-scrolling');
 windowResize();
 window.addEventListener("resize", windowResize);
