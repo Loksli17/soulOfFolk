@@ -52,22 +52,28 @@ let
                 "Стандартный набор"],
         price: [4500, 4500, 2500, 2500, 4500, 3500, 2500, 1500, 2500, 2000, 2500],
         images: [
-                "public/img/client/index/bundles/dv-present.jpg",
-                "public/img/client/index/bundles/dv-present.jpg",
-                "public/img/client/index/bundles/ussr-present.jpg",
-                "public/img/client/index/bundles/rus-bundle.jpeg",
-                "public/img/client/index/bundles/dv-present.jpg",
-                "public/img/client/index/bundles/dv-present-carton.jpeg",
-                "public/img/client/index/bundles/dv-present2.jpg",
-                "public/img/client/index/bundles/dv-present2.jpg",
-                "public/img/client/index/bundles/ussr-present.jpg",
-                "public/img/client/index/bundles/ussr-bundle-carton.jpg",
-                "public/img/client/index/bundles/rus-bundle.jpeg"
+                "/img/client/index/bundles/dv-present.jpg",
+                "/img/client/index/bundles/dv-present.jpg",
+                "/img/client/index/bundles/ussr-present.jpg",
+                "/img/client/index/bundles/rus-bundle.jpeg",
+                "/img/client/index/bundles/dv-present.jpg",
+                "/img/client/index/bundles/dv-present-carton.jpeg",
+                "/img/client/index/bundles/dv-present2.jpg",
+                "/img/client/index/bundles/dv-present2.jpg",
+                "/img/client/index/bundles/ussr-present.jpg",
+                "/img/client/index/bundles/ussr-bundle-carton.jpg",
+                "/img/client/index/bundles/rus-bundle.jpeg"
                 ]
     };
 
+    
+
 orderButtons.forEach((item, i) => {
     item.onclick = function() {
+
+        globalCurrentOrderInd = i;
+
+    console.log(globalCurrentOrderInd);
         document.body.appendChild(orderBlock);
 
         let
@@ -86,15 +92,20 @@ orderButtons.forEach((item, i) => {
         price.prepend(pr1);
 
         pr2.appendChild(document.createTextNode(text2));
+        pr2.classList.add('bundleName');
         brief.appendChild(pr2);
 
         pr3.appendChild(document.createTextNode(text3));
         brief.appendChild(pr3);
 
         image.style.backgroundImage = imageUrl;
+
+        orderBlock.querySelector('#orderForm').addEventListener('submit', createOrder, false);
+        orderBlock.querySelector('#orderForm input[name="order[phone]"]').addEventListener('input', addNumberInPhone, false);
     }
     document.body.classList.add('stop-scrolling');
 });
+
 
 orderClose.onclick = function() {
     document.body.classList.remove('stop-scrolling');
@@ -108,6 +119,7 @@ orderClose.onclick = function() {
         brief.removeChild(brief.lastChild);
         brief.removeChild(brief.lastChild);
 }
+
 
 let windowResize = function() {
     if (window.matchMedia("(max-width: 900px)").matches) {
@@ -136,6 +148,7 @@ let windowResize = function() {
     }
 }
 
+
 function smoothScroll(duration, targetId){
     let
         target = document.getElementById(targetId);
@@ -163,6 +176,7 @@ function smoothScroll(duration, targetId){
 
 }
 
+
 function fadeIn(element, time) {
     element.style.display = 'flex';
     let
@@ -177,6 +191,7 @@ function fadeIn(element, time) {
     }, time);
 }
 
+
 function fadeOut(element, time) {
     let
         op = 1,
@@ -189,6 +204,7 @@ function fadeOut(element, time) {
        op -= op * 0.1;
    }, time);
 };
+
 
 selector.forEach((item, i) => {
     item.onclick = function() {
@@ -221,6 +237,7 @@ selector.forEach((item, i) => {
     }
 });
 
+
 function addSecs(amount) {
 
     for (let i = 0; i < amount; i++) {
@@ -237,9 +254,11 @@ function addSecs(amount) {
     bundleSec.children[0].classList.add("active");
 }
 
+
 arrows.onclick = function() {
     smoothScroll(1000, "bundleVar");
 }
+
 
 bundleInfo.forEach((item, i) => {
     item.onclick = function() {
@@ -277,6 +296,7 @@ bundleInfo.forEach((item, i) => {
     }
 })
 
+
 closeButton.onclick = function() {
     document.body.classList.remove('stop-scrolling');
     document.body.removeChild(bundlesCollection);
@@ -300,13 +320,16 @@ closeButton.onclick = function() {
     }
 }
 
+
 bundleScrollLeft.onclick = function() {
     scroll('l');
 }
 
+
 bundleScrollRight.onclick = function() {
     scroll('r');
 }
+
 
 function scroll(side) {
     let activeIndex = 0;
@@ -368,6 +391,7 @@ function bundleDisplay(bunCase, index, side) {
     }
 }
 
+
 anchors.forEach((item, i) => {
     let
         anchor = ["fp", "whyWe", "bundleVar", "clientsRev", "cont"];
@@ -375,6 +399,7 @@ anchors.forEach((item, i) => {
         smoothScroll(1000, anchor[i]);
     }
 });
+
 
 reviewScroll.forEach((item, i) => {
     item.onclick = function() {

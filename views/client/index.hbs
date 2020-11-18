@@ -1,28 +1,506 @@
-{{#each comments}}
-    {{this.text}}
-    <img src="/img/comments/{{this.img}}" alt="">
-    {{this.name.lastName}}
-    {{this.name.firstName}}
-    {{this.bundle}}
-{{/each}}
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
 
-<div class="flash-mes">
-    <span></span>
-    <div id='flash-mes-close'>&#10006;</div>
-</div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/index.css">
+    <title></title>
+</head>
 
-<form id="orderForm" action="/save-order" method="post">
+<body>
+    <div class="top-menu">
+        <span class="anchor"><img src="/img/client/index/logo.png" alt="logo"></span>
+        <span class="anchor">Почему мы</span>
+        <span class="anchor">Варианты посылок</span>
+        <span class="anchor">Отзывы</span>
+        <span class="anchor">Контакты</span>
+        <a href="https://www.instagram.com/kuhnyabezgranic/">Наш инстаграмм</a>
+    </div>
+    <div class="wrapper">
+        <div class="first-page">
+            <div class="first-page-text">
+                <p>#Кухня Без Границ</p>
+                <p>Посылка со смыслом</p>
+                <p>Полезные и вкусные наборы для подарка себе и своим близким</p>
+
+                <div class="order-button">
+                    Оформить заказ
+                </div>
+            </div>
+            <div class="first-page-bundles-button">
+                <img src="/img/client/index/logo.png" alt="logo">
+                <span>
+                    Наборы
+                </span>
+                <div class="arrows" id="arrows">
+                    <div class="arrow">
+
+                    </div>
+                    <div class="arrow">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="why-text-page">
+            <p>
+                Почему стоит покупать у <span>нас</span>
+            </p>
+            <p>
+                Наши наборы Вы не купите больше <span>нигде</span>! Вместе с наборами Вы приобретаете еще и
+                <span>впечатления</span>!
+            </p>
+            <div class="arrow-stick">
+                <div class="arrow-down">
+
+                </div>
+            </div>
+            <div class="arrow-stick">
+                <div class="arrow-down">
+
+                </div>
+            </div>
+            <p>
+                Посылки <span>"Кухня Без Границ" </span> — это <span>оригинальный</span> подарок с <span>вкусным</span>
+                наполнением
+            </p>
+            <p>
+                Избавим Вас от <span>хлопот</span> при выборе <span>подарка</span>
+            </p>
+            <div class="arrow-and-ok">
+                <div class="arrow-stick arrow-straight">
+
+                </div>
+                <div class="ok">
+
+                </div>
+            </div>
+        </div>
+        <div class="bundle-variants" id="bundleVar">
+            <p>Варианты посылок</p>
+            <div class="bundles">
+                <div class="dv-bundle">
+                    <div class="image-and-bundle-name">
+                        <img src="/img/client/index/bundles/dv-present.jpg" alt="dv bundle">
+                        <p>Посылка с Дальнего Востока</p>
+                    </div>
+                    <div class="bundle-details">
+                        <p>1500 — 4500 руб</p>
+                        <div class="order-button">
+                            Оформить заказ
+                        </div>
+                        <span class="bundleInfo">Подробнее >></span>
+                    </div>
+                </div>
+                <div class="ussr-bundle">
+                    <div class="image-and-bundle-name">
+                        <img src="/img/client/index/bundles/ussr-present.jpg" alt="ussr bundle">
+                        <p>Посылка из СССР</p>
+                    </div>
+                    <div class="bundle-details">
+                        <p>2000 — 2500 руб</p>
+                        <div class="order-button">
+                            Оформить заказ
+                        </div>
+                        <span class="bundleInfo">Подробнее >></span>
+                    </div>
+                </div>
+                <div class="rus-bundle">
+                    <div class="image-and-bundle-name">
+                        <img src="/img/client/index/bundles/rus-present.jpg" alt="rus bundle">
+                        <p>Посылка из России</p>
+                    </div>
+                    <div class="bundle-details">
+                        <p>2500 — 4500 руб</p>
+                        <div class="order-button">
+                            Оформить заказ
+                        </div>
+                        <span class="bundleInfo">Подробнее >></span>
+                    </div>
+                </div>
+            </div>
+            <div class="bundle-selector">
+                <span class="selector active">1</span>
+                <span class="selector">2</span>
+                <span class="selector">3</span>
+            </div>
+        </div>
+        <div class="clients-reviews">
+            <p>Отзывы наших клиентов</p>
+            <div class="clients-reviews-content">
+                <div class="scroll left"></div>
+
+                <div class="reviews">
+                    {{#each comments}}
+                    <div class="review">
+                        <div class="user-info">
+                            <div class="user-img">
+                                <img src="/img/comments/{{this.img}}" alt="user photo">
+                            </div>
+                            <div class="user-name-and-bundle">
+                                <p>{{this.name.firstName}} {{this.name.lastName}}</p>
+                                <p>{{this.bundle}}</p>
+                                <p>{{this.text}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+
+                <div class="scroll right"></div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="owner">
+                <img src="/img/client/index/self-portrait.jpg" alt="self portrait">
+                <span>Татьяна Аршинова</span>
+            </div>
+            <div class="contacts">
+                <p>Контакты</p>
+                <p>Телефон: <span>+7 (962) 678 05 84</span></p>
+                <p>E-mail: <span>arshinova.tatyana@bk.ru</span></p>
+                <div class="social-medias">
+                    <a href="https://wa.me/79626780584"><img src="public/img/client/index/whatsapp.svg"
+                            alt="whats-app"></a>
+                    <a href="https://www.instagram.com/kuhnyabezgranic/"><img src="public/img/client/index/insta.svg"
+                            alt="instagram"></a>
+                    <a href="https://telegram.me/username"><img src="public/img/client/index/telegram.svg"
+                            alt="telegram"></a>
+                </div>
+                <div class="logo-and-text">
+                    <img src="/img/client/index/logo.png" alt="logo">
+                    <span>#Кухня Без Границ</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="order-form">
+        <div class="close" id="orderClose">
+            <div class="cross">
+
+            </div>
+        </div>
+
+        <form id="orderForm" action="/save-order" method="post">
+            <div class="orderWrapper">
+                <p>Оформление заявки <span>заказа</span></p>
+                <div class="userFields">
+                    <div class="lastName">
+                        <span>Фамилия</span>
+                        <div class="textBox">
+                            <input type="text" name="order[lastName]" id="" placeholder="Рукавишников">
+                            <div class="border">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="firstName">
+                        <span>Имя</span>
+                        <div class="textBox">
+                            <input type="text" name="order[firstName]" id="" placeholder="Василий">
+                            <div class="border">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="patronymic">
+                        <span>Отчество</span>
+                        <div class="textBox">
+                            <input type="text" name="order[patronymic]" id="" placeholder="Владимирович">
+                            <div class="border">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phone">
+                        <span>Номер телефона</span>
+                        <div class="textBox">
+                            <input type="tel" name="order[phone]" id="" placeholder="+7 (800) 555 35-35">
+                            <div class="border">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-and-confirm-button">
+                    <!-- <p>4500 руб</p> -->
+                    <input type="submit" value="Оставить заявку">
+                    <input type="hidden" name="csrf" value="{{csrf}}">
+                </div>
+                <span class="err"></span>
+            </div>
+            <div class="bundleBrief">
+                <div class="bundleImage">
+
+                </div>
+                <!-- <p>Подарок с Дальнего Востока</p> -->
+                <!-- <p>Большой набор</p> -->
+            </div>
+        </form>
+
+
+    </div>
+
+    <div class="bundles-collection" id="bundleCol">
+        <div class="scroll left" id="bundleScrollLeft">
+
+        </div>
+        <div class="close" id="bundleClose">
+            <div class="cross">
+
+            </div>
+        </div>
+        <div class="scroll right" id="bundleScrollRight">
+
+        </div>
+        <div class="bundle-frame">
+            <div class="bundle-sections" id="bundleSec">
+            </div>
+            <div class="dvbundle dv1">
+                <div class="bundle-text">
+                    <div class="bundle-head">
+                        <p>Посылка с Дальнего Востока</p>
+                        <p>4500 руб</p>
+                    </div>
+                    <ul class="bundle-content">
+                        <li>Шоколад (с ламинарией или с морской солью)</li>
+                        <li>Кедровые орешки</li>
+                        <li>Мед с женьшенем</li>
+                        <li>Сироп с брусникой</li>
+                        <li>Дальневосточный Иван-чай</li>
+                        <li>Ягоды лимонника</li>
+                        <li>Чипсы мясные или рыбные</li>
+                        <li>Жевательная смолка из Бурятии</li>
+                        <li>Природный энергетик - трава Саган Дайля</li>
+                        <li>Травяной алкогольный напиток "Уссурийский бальзам"</li>
+                        <li>Блокнот с рецептами еврейской кухни</li>
+                        <li>Вафли от фабрики "Зея"</li>
+                        <li>Вкладыш о проекте "Кухне без границ"</li>
+                        <li>Магнит-сувенир о ДВ</li>
+                        <li>Сушеные кальмар и морская капуста</li>
+                        <li>Деревянная коробка ручной работы</li>
+                    </ul>
+                </div>
+                <div class="bundle-image-and-button">
+                    <img src="/img/client/index/bundles/dv-present.jpg" alt="dvbundle1">
+                    <div class="order-button">
+                        Оформить заказ
+                    </div>
+                </div>
+            </div>
+            <div class="dvbundle dv1 carton">
+                <div class="bundle-text">
+                    <div class="bundle-head">
+                        <p>Посылка с Дальнего Востока</p>
+                        <p>(картоная коробка)</p>
+                        <p>3500 руб</p>
+                    </div>
+                    <ul class="bundle-content">
+                        <li>Шоколад (с ламинарией или с морской солью)</li>
+                        <li>Кедровые орешки</li>
+                        <li>Мед с женьшенем</li>
+                        <li>Сироп с брусникой</li>
+                        <li>Дальневосточный Иван-чай</li>
+                        <li>Ягоды лимонника</li>
+                        <li>Чипсы мясные или рыбные</li>
+                        <li>Жевательная смолка из Бурятии</li>
+                        <li>Природный энергетик - трава Саган Дайля</li>
+                        <li>Травяной алкогольный напиток "Уссурийский бальзам"</li>
+                        <li>Блокнот с рецептами еврейской кухни</li>
+                        <li>Вафли от фабрики "Зея"</li>
+                        <li>Вкладыш о проекте "Кухне без границ"</li>
+                        <li>Магнит-сувенир о ДВ</li>
+                        <li>Сушеные кальмар и морская капуста</li>
+                    </ul>
+                </div>
+                <div class="bundle-image-and-button">
+                    <img src="/img/client/index/bundles/dv-present-carton.jpeg" alt="dvbundle1">
+                    <div class="order-button">
+                        Оформить заказ
+                    </div>
+                </div>
+            </div>
+            <div class="dvbundle dv2">
+                <div class="bundle-text">
+                    <div class="bundle-head">
+                        <p>Посылка от Дальневосточников</p>
+                        <p>2500 руб</p>
+                    </div>
+                    <ul class="bundle-content">
+                        <li>Шоколад с гребешком</li>
+                        <li>Мед с женьшенем</li>
+                        <li>Кедровые орешки</li>
+                        <li>Чипсы мясные или рыбные</li>
+                        <li>Жевательная смолка из Бурятии</li>
+                        <li>Природный энергетик - трава Саган Дайля</li>
+                        <li>Вафли от фабрики "Зея"</li>
+                        <li>Сушеные кальмар или морская капуста</li>
+                        <li>Вкладыш о проекте "Кухне без границ</li>
+                        <li>Магнит-сувенир о ДВ</li>
+                        <li>Деревянная коробка ручной работы</li>
+                    </ul>
+                </div>
+                <div class="bundle-image-and-button">
+                    <img src="/img/client/index/bundles/dv-present2.jpg" alt="dvbundle1">
+                    <div class="order-button">
+                        Оформить заказ
+                    </div>
+                </div>
+            </div>
+            <div class="dvbundle dv2 carton">
+                <div class="bundle-text">
+                    <div class="bundle-head">
+                        <p>Посылка от Дальневосточников</p>
+                        <p>(картоная коробка)</p>
+                        <p>1500 руб</p>
+                    </div>
+                    <ul class="bundle-content">
+                        <li>Шоколад с гребешком</li>
+                        <li>Мед с женьшенем</li>
+                        <li>Кедровые орешки</li>
+                        <li>Чипсы мясные или рыбные</li>
+                        <li>Жевательная смолка из Бурятии</li>
+                        <li>Природный энергетик - трава Саган Дайля</li>
+                        <li>Вафли от фабрики "Зея"</li>
+                        <li>Сушеные кальмар или морская капуста</li>
+                        <li>Вкладыш о проекте "Кухне без границ</li>
+                        <li>Магнит-сувенир о ДВ</li>
+                    </ul>
+                </div>
+                <div class="bundle-image-and-button">
+                    <img src="/img/client/index/bundles/dv-present2.jpg" alt="dvbundle1">
+                    <div class="order-button">
+                        Оформить заказ
+                    </div>
+                </div>
+            </div>
+            <div class="ussrbundle ussr2">
+                <div class="bundle-text">
+                    <div class="bundle-head">
+                        <p>Посылка из СССР</p>
+                        <p>2500 руб</p>
+                    </div>
+                    <ul class="bundle-content">
+                        <li>Белорусские продукты:</li>
+                        <li>Конфеты “Беловежская пуща”</li>
+                        <li>Шоколад “Коммунарка”</li>
+                        <li>Кисель “Земляника”</li>
+                        <li>Армянские продукты:</li>
+                        <li>Варенье из грецких орехов</li>
+                        <li>Приправа “Для долмы”</li>
+                        <li>Приправа “4 перца”</li>
+                        <li>Сушенные персики</li>
+                        <li>Соус “Армянский”</li>
+                        <li>Шоколад “Joyko”</li>
+                        <li>Чай синий “Нане”</li>
+                        <li>Азербайджанские продукты:</li>
+                        <li>чай “Азерчай" ООО "Sun Tea Vay Fabriki", г. Баку</li>
+                        <li>Варенье из инжира</li>
+                        <li>Казахские продукты:</li>
+                        <li>Шоколад “Казахстан”</li>
+                        <li>Чай “Пиала”</li>
+                        <li>А так же Узбексикие сухофрукты</li>
+                    </ul>
+                </div>
+                <div class="bundle-image-and-button">
+                    <img src="/img/client/index/bundles/ussr-present.jpg" alt="dvbundle1">
+                    <div class="order-button">
+                        Оформить заказ
+                    </div>
+                </div>
+            </div>
+            <div class="ussrbundle ussr2 carton">
+                <div class="bundle-text">
+                    <div class="bundle-head">
+                        <p>Посылка из СССР</p>
+                        <p>(картоная коробка)</p>
+                        <p>2000 руб</p>
+                    </div>
+                    <ul class="bundle-content">
+                        <li>Белорусские продукты:</li>
+                        <li>Конфеты “Беловежская пуща”</li>
+                        <li>Шоколад “Коммунарка”</li>
+                        <li>Кисель “Земляника”</li>
+                        <li>Армянские продукты:</li>
+                        <li>Варенье из грецких орехов</li>
+                        <li>Приправа “Для долмы”</li>
+                        <li>Приправа “4 перца”</li>
+                        <li>Сушенные персики</li>
+                        <li>Соус “Армянский”</li>
+                        <li>Шоколад “Joyko”</li>
+                        <li>Чай синий “Нане”</li>
+                        <li>Азербайджанские продукты:</li>
+                        <li>Чай “Азерчай" ООО "Sun Tea Vay Fabriki", г. Баку</li>
+                        <li>Варенье из инжира</li>
+                        <li>Казахские продукты:</li>
+                        <li>Шоколад “Казахстан”</li>
+                        <li>Чай “Пиала”</li>
+                        <li>А так же Узбексикие сухофрукты</li>
+                    </ul>
+                </div>
+                <div class="bundle-image-and-button">
+                    <img src="/img/client/index/bundles/ussr-bundle-carton.jpg" alt="dvbundle1">
+                    <div class="order-button">
+                        Оформить заказ
+                    </div>
+                </div>
+            </div>
+            <div class="rusbundle rus1 carton">
+                <div class="bundle-text">
+                    <div class="bundle-head">
+                        <p>Посылка из России</p>
+                        <p>(картоная коробка)</p>
+                        <p>от 2500 руб</p>
+                    </div>
+                    <ul class="bundle-content">
+                        <li>Шоколад (с ламинарией или с морской солью)</li>
+                        <li>Мед с женьшенем</li>
+                        <li>Соевые орешки</li>
+                        <li>Мясные чипсы</li>
+                        <li>Жевательная смолка из Бурятии</li>
+                        <li>Дальневосточный Иван-чай</li>
+                        <li>Ягоды лимонника</li>
+                        <li>Травяной алкогольный напиток "Уссурийский бальзам"</li>
+                    </ul>
+                </div>
+                <div class="bundle-image-and-button">
+                    <img src="/img/client/index/bundles/rus-bundle.jpeg" alt="dvbundle1">
+                    <div class="order-button">
+                        Оформить заказ
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let globalCurrentOrderInd = 0;
+        let csrf = '{{csrf}}';
+    </script>
+    <script src="/js/save-order.js"></script>
+    <script src="/js/client/index-animations.js"></script>
+    <script src="/js/flash.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+{{!-- <form id="orderForm" action="/save-order" method="post">
     <input type="text" name="order[firstName]" id="" placeholder="Василий" required>
     <input type="text" name="order[lastName]" id="" placeholder="Рукавишников" required>
     <input type="text" name="order[patronymic]" id="" placeholder="Владимирович" required>
     <input type="tel" name="order[phone]" id="" placeholder="+7 (800) 555 35-35" required>
-    <input type="hidden" name="csrf" value="{{csrf}}">
+   
     <input type="submit" value="Оформить заказ">
     <span class="err"></span>
-</form>
+</form> --}}
 
-<script>
-    let csrf = '{{csrf}}';
-</script>
-<script src="/js/flash.js"></script>
-<script src="/js/save-order.js"></script>

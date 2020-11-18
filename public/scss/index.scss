@@ -544,14 +544,16 @@ $blue: #0034FF;
 }
 
 .top-menu {
-    span,a {
+    
+    span, a {
         img {
             height: 40px;
             padding: 0px 5px;
         }
         text-decoration: none;
         color: $green;
-        padding: 0px 30px;
+        font-size: 19px;
+        margin-left: 35px;
         cursor: pointer;
 
         &:hover {
@@ -559,7 +561,6 @@ $blue: #0034FF;
             transition: 0.5s ease-out;
         }
     }
-
 
     position: fixed;
     top: 0px;
@@ -627,12 +628,19 @@ $blue: #0034FF;
             align-items: center;
             width: 50%;
             margin-top: 50px;
+
             img {
-                height: 45%;
+                width: 80%;
+                max-width: 500px;
+                // height: 45%;
                 &:hover {
                     cursor: pointer;
                 }
             }
+
+            // @media screen and (max-width: 1070px){
+            //     width: ;
+            // }
 
             .arrows {
                 position: relative;
@@ -730,7 +738,7 @@ $blue: #0034FF;
         position: relative;
 
         p {
-            font-size: 20px;
+            font-size: 22px;
 
             span {
                 color: $green;
@@ -943,6 +951,7 @@ $blue: #0034FF;
                 display: flex;
                 flex-flow: row nowrap;
                 justify-content: center;
+
                 .review {
                     display: none;
                     width: 700px;
@@ -960,13 +969,18 @@ $blue: #0034FF;
                         justify-content: space-between;
                         align-items: flex-start;
 
-                        img {
-                            width: 300px;
-                            height: 300px;
+                        .user-img{
+                            width: 55%;
+
+                            img{
+                                width: 100%;
+                            }
                         }
 
                         .user-name-and-bundle {
                             margin-left: 20px;
+                            width: 45%;
+                            box-sizing: border-box;
                             >p {
                                 &:nth-child(1) {
                                     font-style: bold;
@@ -1380,16 +1394,22 @@ $blue: #0034FF;
         }
 
         .clients-reviews {
+
+            padding: 20px;
+
             >p {
-                font-size: 45px;
-                max-width: 60%;
+                font-size: 30px;
+                width: 100%;
+                text-align: left;
                 margin-bottom: 20px;
             }
 
             .clients-reviews-content {
+                
                 .scroll {
                     width: 80px;
-                    transform: scale(0.3) translate(50px, 0px);
+                    transform: scale(0.4) translateX(20px);
+                    // translate(-70px, 0px)
 
                     &::before, &::after {
                         width: 12px;
@@ -1401,23 +1421,28 @@ $blue: #0034FF;
                 }
 
                 .left {
-                    transform: scale(-0.3) translate(50px, 0px);
+                    transform: scale(-0.4) translateX(20px);
+                    // translate(-63px, -13px)
                 }
 
                 .reviews {
                     width: 100%;
                     .review {
                         height: max-content;
-                        width: 90%;
+                        width: 100%;
                         height: auto;
-                        padding: 25px 20px;
+                        padding: 15px;
+                        box-sizing: border-box;
+                        margin: 0px;
+
                         .user-info {
                             flex-flow: column nowrap;
                             align-items: flex-start;
+                            align-items: center;
 
-                            img {
-                                width: 75vw;
-                                height: auto;
+                            .user-img, .user-name-and-bundle{
+                                min-width: 200px;
+                                width: 100%;
                             }
 
                             .user-name-and-bundle {

@@ -2,11 +2,14 @@ const
     Comment = require('./../models/CommentModel'),
     Order   = require('./../models/OrderModel'); 
 
+
 exports.actionIndex = async (req, res) => {
     
     let comments = [];
 
     comments = await Comment.find({isActive: true}).sort({number: -1}).exec();
+
+    console.log(comments);
 
     res.render('client/index', {
         comments: comments,
@@ -42,6 +45,7 @@ exports.actionCreateOrder = async (req, res) => {
         phone     : orderForm.phone,
         bundle    : orderForm.bundle,
         date      : new Date(),
+        cost      : orderForm.cost,
     });
 
     try{
