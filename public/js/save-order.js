@@ -46,15 +46,43 @@ function addNumberInPhone(e){
 }
 
 
+function formValidate(obj){
+
+    let nameReg = /^[a-zA-Zа-яА-ЯёЁ'][a-zA-Z-а-яА-ЯёЁ']+[a-zA-Zа-яА-ЯёЁ']?$/;
+
+    if(!nameReg.test(obj.lastName)){
+        return {message: 'Не верно указано фамилия'};
+    }
+
+    if(!nameReg.test(obj.firstName)){
+        return {message: 'Не верно указано имя'};
+    }
+    
+    if(!nameReg.test(obj.patronymic)){
+        return {message: 'Не верно указано отчество'};
+    }
+
+    if(obj.phone.length < 18){
+        return {message: 'Не верно указан телефон'};
+    }
+
+    return true;
+}
+
+
+
 function createOrder(e){
     e.preventDefault();
 
     console.log(globalCurrentOrderInd);
 
     let
-        xhr       = new XMLHttpRequest(),
-        formData  = new FormData,
-        orderForm = {
+        xhr         = new XMLHttpRequest(),
+        formData    = new FormData,
+        phoneReg    = /_/g,
+        validStatus = false, 
+        csrf        = e.target.querySelector('input[name="csrf"]').value,
+        orderForm   = {
             lastName  : '',
             firstName : '',
             patronymic: '',
@@ -69,10 +97,15 @@ function createOrder(e){
     orderForm.patronymic = e.target.querySelector('input[name="order[patronymic]"]').value;
     orderForm.phone      = e.target.querySelector('input[name="order[phone]"]').value;
 
-    if(orderForm.patronymic)
+    orderForm.phone = orderForm.phone.replace(phoneReg, '');
 
-    if(orderForm.phone.length < 18){
-        document.querySelector('#orderForm .err').innerHTML = 'Вы ввели не корректный номер';
+    validStatus = formValidate(orderForm);
+
+    if(typeof validStatus == 'object'){
+        console.log(validStatus);
+        document.querySelector('#orderForm .err').style.display = 'block';
+        document.querySelector('#orderForm .err').innerHTML = validStatus.message;
+        return;
     }
 
     formData.append('order', JSON.stringify(orderForm));

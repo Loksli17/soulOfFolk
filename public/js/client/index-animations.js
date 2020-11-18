@@ -70,10 +70,7 @@ let
 
 orderButtons.forEach((item, i) => {
     item.onclick = function() {
-
-        globalCurrentOrderInd = i;
-
-    console.log(globalCurrentOrderInd);
+        document.body.classList.add('stop-scrolling');
         document.body.appendChild(orderBlock);
 
         let
@@ -103,7 +100,8 @@ orderButtons.forEach((item, i) => {
         orderBlock.querySelector('#orderForm').addEventListener('submit', createOrder, false);
         orderBlock.querySelector('#orderForm input[name="order[phone]"]').addEventListener('input', addNumberInPhone, false);
     }
-    document.body.classList.add('stop-scrolling');
+
+    
 });
 
 

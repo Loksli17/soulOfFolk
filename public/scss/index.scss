@@ -10,6 +10,9 @@ $blue: #0034FF;
 }
 
 .close {
+    position: absolute;
+    top: -40px;
+    right: -40px;
     display: block;
     content: '';
     width: 80px;
@@ -18,12 +21,6 @@ $blue: #0034FF;
     background: $green;
     z-index: 99999;
     cursor: pointer;
-
-    position: fixed;
-    top: 50%;
-    right: 50%;
-    transform: translate(470px, -340px);
-
 
     .cross {
         width: 100%;
@@ -63,153 +60,172 @@ $blue: #0034FF;
     left: 0px;
     z-index: 999999;
 
-    .close {
-        transform: translate(405px, -200px);
-    }
-
-    #orderForm {
-        padding: 40px;
-        height: 250px;
-        width: 650px;
+    .form-wrap{
+        padding: 32px 40px;
         background: white;
         border-radius: 10px;
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
+        position: relative;
 
-        .span {
-            display: none;
+        > p{
+            position: relative;
+            margin-bottom: 40px;
+            font-size: 30px;
+            text-align: right;
+
+            span {
+                color: $green;
+            }
+
+            &::after {
+                display: block;
+                content: '';
+                width: 250px;
+                height: 2px;
+                background: $blue;
+                right: 0px;
+                position: absolute;
+            }
         }
 
-        .orderWrapper {
-            >p {
-                font-size: 30px;
-                text-align: right;
+        #orderForm {
+            display: grid;
+            grid-template-columns: max-content max-content;
 
-                span {
-                    color: $green;
+            .span {
+                display: none;
+            }
+
+            .orderWrapper {
+                margin-right: 50px;
+
+                .err{
+                    display: none;
+                    margin-top: 15px;
+                    font-size: 20px;
+                    color: rgb(255, 31, 76);
                 }
 
-                &::after {
+                .userFields {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: 1fr 1fr;
+                    grid-row-gap: 35px;
+                    grid-column-gap: 25px;
+
+                    > div{
+                        display: flex;
+                        flex-flow: column nowrap;
+                        align-items: flex-end;
+
+
+                        span {
+                            color: $green;
+                            padding-bottom: 7px;
+                            font-size: 19px;
+                        }
+
+                        .textBox {
+                            padding: 1px;
+                            position: relative;
+                            background: #ccc;
+                            z-index: 1;
+                            border-radius: 6px;
+                            overflow: hidden;
+
+                            input {
+                                color: #708090;
+                                box-sizing: border-box;
+                                font-size: 16px;
+                                outline: none;
+                                border: none;
+                                z-index: 2;
+                                padding: 10px;
+                                box-sizing: border-box;
+                                border-radius: 5px;
+
+                                &:focus ~ .border {
+                                    width: 100%;
+                                    height: 100%;
+                                    padding: 3px;
+                                }
+                            }
+
+                            .border {
+                                position: absolute;
+                                content: '';
+                                top: -5px;
+                                left: -5px;
+                                width: 0%;
+                                height: 0%;
+                                background: $blue;
+                                z-index: -1;
+                                transition: height 0.3s, width 0.3s 0.1s;
+                            }
+                        }
+                    }
+                }
+
+                .price-and-confirm-button {
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-top: 55px;
+
+                    p {
+                        color: $green;
+                        font-size: 25px;
+                        font-weight: lighter;
+                        padding-left: 90px;
+                    }
+
+                    input[type="submit"] {
+                        background: $green;
+                        color: white;
+                        padding: 10px 15px;
+                        font-size: 19px;
+                        border-radius: 5px;
+                        outline: none;
+                        border: none;
+                        cursor: pointer;
+
+                        &:hover {
+                            background: $blue;
+                            transition: background 0.5s;
+                        }
+                    }
+                }
+            }
+
+            .bundleBrief {
+                display: grid;
+                grid-template-rows: auto max-content max-content;
+
+                .bundleImage {
                     display: block;
                     content: '';
                     width: 250px;
-                    height: 2px;
-                    background: $blue;
-                    transform: translate(55%, 100%);
+                    // height: 10%;
+                    background: url("../img/client/index//bundles/dv-present.jpg");
+                    background-position: center center;
+                    background-size: cover;
+                    margin-bottom: 15px;
                 }
-            }
-
-            .userFields {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 1fr 1fr;
-
-                >div {
-                    display: flex;
-                    flex-flow: column nowrap;
-                    align-items: flex-end;
-                    margin-top: 20px;
-
-                    span {
-                        color: $green;
-                        padding-bottom: 7px;
-                    }
-
-                    .textBox {
-                        padding: 1px;
-                        position: relative;
-                        background: #ccc;
-                        z-index: 1;
-                        border-radius: 6px;
-                        overflow: hidden;
-                        input {
-                            color: #708090;
-                            box-sizing: border-box;
-                            font-size: 14px;
-                            outline: none;
-                            border: none;
-                            z-index: 2;
-                            padding: 3px;
-                            border-radius: 5px;
-
-                            &:focus ~ .border {
-                                width: 100%;
-                                height: 100%;
-                                padding: 3px;
-                            }
-                        }
-
-                        .border {
-                            position: absolute;
-                            content: '';
-                            top: -5px;
-                            left: -5px;
-                            width: 0%;
-                            height: 0%;
-                            background: $blue;
-                            z-index: -1;
-                            transition: height 0.3s, width 0.3s 0.1s;
-                        }
-                    }
-                }
-            }
-
-            .price-and-confirm-button {
-                display: flex;
-                flex-flow: row nowrap;
-                justify-content: space-between;
-                align-items: flex-start;
-                margin-top: 35px;
 
                 p {
-                    color: $green;
-                    font-size: 25px;
-                    font-weight: lighter;
-                    padding-left: 90px;
-                }
-
-                input[type="submit"] {
-                    background: $green;
-                    color: white;
-                    width:164px;
-                    height: 30px;
-                    font-size: 16px;
-                    border-radius: 5px;
-                    outline: none;
-                    border: none;
-
-                    &:hover {
-                        background: $blue;
-                        transition: background 0.5s;
+                    &:nth-child(2) {
+                        width: 100%;
+                        text-align: right;
+                        font-size: 22px;
+                        margin-bottom: 2px;
                     }
-                }
-            }
-        }
 
-        .bundleBrief {
-            display: flex;
-            flex-flow: column nowrap;
-            align-items: flex-end;
-            .bundleImage {
-                display: block;
-                content: '';
-                width: 220px;
-                height: 160px;
-
-                background: url("../img/client/index//bundles/dv-present.jpg");
-                background-position: center center;
-                background-size: cover;
-            }
-            p {
-                &:nth-child(2) {
-                    font-size: 18px;
-                    text-align: right;
-                    width: 75%;
-                }
-
-                &:nth-child(3) {
-                    color: #979797;
+                    &:nth-child(3) {
+                        width: 100%;
+                        text-align: right;
+                        color: #979797;
+                        font-size: 18px;
+                    }
                 }
             }
         }
@@ -1119,74 +1135,45 @@ $blue: #0034FF;
     }
 }
 
+
+//FUCKING
 @media screen and (max-width: 900px) {
+
     .order-form {
-        .close {
-            transform: translate(200px, -370px) scale(0.7);
-        }
 
-        #orderForm {
-            padding: 20px;
-            margin-top: 20px;
-            height: 640px;
-            width: 80%;
-            background: white;
-            border-radius: 10px;
-            display: flex;
-            flex-flow: column nowrap;
-            align-items: space-between;
-            overflow: scroll;
-            .orderWrapper {
-                >p {
-                    text-align: right;
-                    margin-bottom: 260px;
+        .form-wrap{
+            max-height: 500px;
+            overflow-y: auto;
 
-                    &::after {
-                        display: block;
-                        content: '';
-                        width: 100px;
-                        height: 2px;
-                        background: $blue;
-                        transform: translate(190%, 100%);
+            .close{
+                // position: fixed;
+            }
+
+            #orderForm{
+                grid-template-columns: 1fr;
+                
+                .orderWrapper{
+                    margin-right: 0px;
+                    grid-row: 2;
+                    margin-top: 30px;
+
+                    .userFields{
+                        grid-template-columns: 1fr;
+                        grid-template-rows: 1fr;
+                        grid-row-gap: 10px;
                     }
                 }
 
-                .userFields {
-                    display: flex;
-                    flex-flow: column nowrap;
+                .bundleBrief{
+                    grid-row: 1;
 
-                    >div {
-                        margin-top: 10px;
-
-                        .textBox {
-                            width: 290px;
-                            input {
-                                width: 290px;
-                            }
-                        }
-                    }
-                }
-
-                .price-and-confirm-button {
-                    >p {
-                        font-size: 18px;
-                        padding-left: 0px;
-                    }
-
-                    input[type="submit"] {
-                        width: 190px;
+                    .bundleImage{
+                        width: 100%;
+                        height: 400px;
                     }
                 }
             }
-
-            .bundleBrief {
-                transform: translate(0px, -545px);
-                .bundleImage {
-                    width: 300px;
-                    height: 180px;
-                }
-            }
-        }
+        } 
     }
 
     .top-menu {
@@ -1200,11 +1187,6 @@ $blue: #0034FF;
         .left {
             transform: translate(-270%, -44%) scale(-0.7);
         }
-
-        .close {
-            transform: translate(200px, -400px) scale(0.7);
-        }
-
 
         .bundle-frame {
             width: 80%;

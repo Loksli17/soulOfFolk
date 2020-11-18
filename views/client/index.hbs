@@ -177,69 +177,75 @@
     </div>
 
     <div class="order-form">
-        <div class="close" id="orderClose">
-            <div class="cross">
 
+        <div class="form-wrap">
+
+            <div class="close" id="orderClose">
+                <div class="cross">
+            
+                </div>
             </div>
+
+            <p>Оформление заявки <span>заказа</span></p>
+            
+            <form id="orderForm" action="/save-order" method="post">
+            
+                <div class="orderWrapper">
+            
+                    <div class="userFields">
+                        <div class="lastName">
+                            <span>Фамилия</span>
+                            <div class="textBox">
+                                <input type="text" name="order[lastName]" id="" placeholder="Рукавишников">
+                                <div class="border">
+            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="firstName">
+                            <span>Имя</span>
+                            <div class="textBox">
+                                <input type="text" name="order[firstName]" id="" placeholder="Василий">
+                                <div class="border">
+            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="patronymic">
+                            <span>Отчество</span>
+                            <div class="textBox">
+                                <input type="text" name="order[patronymic]" id="" placeholder="Владимирович">
+                                <div class="border">
+            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="phone">
+                            <span>Номер телефона</span>
+                            <div class="textBox">
+                                <input type="tel" name="order[phone]" id="" placeholder="+7 (800) 555 35-35">
+                                <div class="border">
+            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price-and-confirm-button">
+                        <!-- <p>4500 руб</p> -->
+                        <input type="submit" value="Оставить заявку">
+                        <input type="hidden" name="csrf" value="{{csrf}}">
+                    </div>
+                    <span class="err"></span>
+                </div>
+                <div class="bundleBrief">
+                    <div class="bundleImage">
+            
+                    </div>
+                    <!-- <p>Подарок с Дальнего Востока</p> -->
+                    <!-- <p>Большой набор</p> -->
+                </div>
+            </form>
         </div>
-
-        <form id="orderForm" action="/save-order" method="post">
-            <div class="orderWrapper">
-                <p>Оформление заявки <span>заказа</span></p>
-                <div class="userFields">
-                    <div class="lastName">
-                        <span>Фамилия</span>
-                        <div class="textBox">
-                            <input type="text" name="order[lastName]" id="" placeholder="Рукавишников">
-                            <div class="border">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="firstName">
-                        <span>Имя</span>
-                        <div class="textBox">
-                            <input type="text" name="order[firstName]" id="" placeholder="Василий">
-                            <div class="border">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="patronymic">
-                        <span>Отчество</span>
-                        <div class="textBox">
-                            <input type="text" name="order[patronymic]" id="" placeholder="Владимирович">
-                            <div class="border">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="phone">
-                        <span>Номер телефона</span>
-                        <div class="textBox">
-                            <input type="tel" name="order[phone]" id="" placeholder="+7 (800) 555 35-35">
-                            <div class="border">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="price-and-confirm-button">
-                    <!-- <p>4500 руб</p> -->
-                    <input type="submit" value="Оставить заявку">
-                    <input type="hidden" name="csrf" value="{{csrf}}">
-                </div>
-                <span class="err"></span>
-            </div>
-            <div class="bundleBrief">
-                <div class="bundleImage">
-
-                </div>
-                <!-- <p>Подарок с Дальнего Востока</p> -->
-                <!-- <p>Большой набор</p> -->
-            </div>
-        </form>
-
 
     </div>
 
@@ -477,7 +483,6 @@
 
     <script>
         let globalCurrentOrderInd = 0;
-        let csrf = '{{csrf}}';
     </script>
     <script src="/js/save-order.js"></script>
     <script src="/js/client/index-animations.js"></script>
