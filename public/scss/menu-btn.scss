@@ -1,0 +1,58 @@
+.menu-btn{
+	width: 40px;
+	height: 40px;
+	display: none;
+	align-items: center;
+    transform: translateY(2px);
+    
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .menu-btn{
+        display: flex;
+    }
+}
+
+.menu-btn .btn-span{
+	display: block;
+	width: 40px;
+	height: 4px;
+	background: #00B100;
+}
+
+.menu-btn .btn-span:before, .menu-btn .btn-span:after{
+	content: '';
+	transition: 0.4s;
+	display: block;
+	height: 4px;
+	width: 40px;
+	background: #00B100;
+}
+
+.menu-btn .btn-span:before{
+	transform: translateY(-15px);
+	
+}
+
+.menu-btn .btn-span:after{
+	transform: translateY(10px);
+}
+
+
+
+.menu-btn-active .btn-span{
+	width: 0px;
+}
+
+.menu-btn-active .btn-span:before{
+	transition: 0.4s;
+	transform: rotate(45deg) translateY(2.5px);
+}
+
+.menu-btn-active .btn-span:after{
+	transition: 0.4s;
+	transform: rotate(135deg) translateY(2.7px);
+}

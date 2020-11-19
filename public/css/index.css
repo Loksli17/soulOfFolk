@@ -407,6 +407,7 @@
   top: -13px; }
 
 .top-menu {
+  z-index: 9999;
   position: fixed;
   top: 0px;
   left: 0px;
@@ -416,18 +417,17 @@
   flex-flow: row nowrap;
   align-items: center;
   background: white;
-  box-shadow: 0px 2.5px 2px rgba(0, 0, 0, 0.25);
-  z-index: 999; }
-  .top-menu span, .top-menu a {
+  box-shadow: 0px 2.5px 2px rgba(0, 0, 0, 0.25); }
+  .top-menu span:not(.btn-span), .top-menu a:not(.menu-btn) {
     text-decoration: none;
     color: #00B100;
     font-size: 19px;
     margin-left: 35px;
     cursor: pointer; }
-    .top-menu span img, .top-menu a img {
+    .top-menu span:not(.btn-span) img, .top-menu a:not(.menu-btn) img {
       height: 40px;
       padding: 0px 5px; }
-    .top-menu span:hover, .top-menu a:hover {
+    .top-menu span:not(.btn-span):hover, .top-menu a:not(.menu-btn):hover {
       color: #0034FF;
       transition: 0.5s ease-out; }
 
@@ -878,10 +878,18 @@
         .order-form .form-wrap #orderForm .bundleBrief .bundleImage {
           width: 100%;
           height: 400px; }
-  .top-menu span {
-    display: none; }
-  .top-menu span:nth-child(1) {
-    display: block; }
+  .top-menu {
+    box-shadow: 0px 2.5px 2px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+    box-sizing: border-box; }
+    .top-menu span {
+      display: none; }
+    .top-menu span:nth-child(2) {
+      display: block; }
+    .top-menu span:not(.btn-span), .top-menu a:not(.menu-btn) {
+      margin-left: 0px; }
   .wrapper {
     padding-top: 0px; }
     .wrapper .first-page {
