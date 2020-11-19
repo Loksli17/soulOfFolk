@@ -87,7 +87,6 @@ function createOrder(e){
             firstName : '',
             patronymic: '',
             phone     : '',
-            // bundle    : document.querySelector('#orderForm .bundleName').innerHTML,
             bundle    : `${order.name[globalCurrentOrderInd]} ${order.info[globalCurrentOrderInd]}`, 
             cost      : order.price[globalCurrentOrderInd],
         };
