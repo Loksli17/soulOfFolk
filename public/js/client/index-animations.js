@@ -66,7 +66,7 @@ let
                 ]
     };
 
-    
+
 
 orderButtons.forEach((item, i) => {
     item.onclick = function() {
@@ -101,12 +101,14 @@ orderButtons.forEach((item, i) => {
         orderBlock.querySelector('#orderForm input[name="order[phone]"]').addEventListener('input', addNumberInPhone, false);
     }
 
-    
+
 });
 
 
 orderClose.onclick = function() {
-    document.body.classList.remove('stop-scrolling');
+    if (document.body.querySelector("#bundleCol") == null) {
+        document.body.classList.remove('stop-scrolling');
+    }
     document.body.removeChild(orderBlock);
 
     let

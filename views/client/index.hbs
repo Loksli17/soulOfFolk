@@ -18,7 +18,7 @@
         <a href="https://www.instagram.com/kuhnyabezgranic/">Наш инстаграмм</a>
     </div>
     <div class="wrapper">
-        <div class="first-page">
+        <div class="first-page" id="fp">
             <div class="first-page-text">
                 <p>#Кухня Без Границ</p>
                 <p>Посылка со смыслом</p>
@@ -43,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="why-text-page">
+        <div class="why-text-page" id="whyWe">
             <p>
                 Почему стоит покупать у <span>нас</span>
             </p>
@@ -126,7 +126,7 @@
                 <span class="selector">3</span>
             </div>
         </div>
-        <div class="clients-reviews">
+        <div class="clients-reviews" id="clientsRev">
             <p>Отзывы наших клиентов</p>
             <div class="clients-reviews-content">
                 <div class="scroll left"></div>
@@ -156,7 +156,7 @@
                 <img src="/img/client/index/self-portrait.jpg" alt="self portrait">
                 <span>Татьяна Аршинова</span>
             </div>
-            <div class="contacts">
+            <div class="contacts" id="cont">
                 <p>Контакты</p>
                 <p><span>Телефон:</span> <span class="footer-info">+7 (962) 678 05 84</span></p>
                 <p><span>E-mail:</span> <span class="footer-info">arshinova.tatyana@bk.ru</span></p>
@@ -184,23 +184,23 @@
 
             <div class="close" id="orderClose">
                 <div class="cross">
-            
+
                 </div>
             </div>
 
             <p>Оформление заявки <span>заказа</span></p>
-            
+
             <form id="orderForm" action="/save-order" method="post">
-            
+
                 <div class="orderWrapper">
-            
+
                     <div class="userFields">
                         <div class="lastName">
                             <span>Фамилия</span>
                             <div class="textBox">
                                 <input type="text" name="order[lastName]" id="" placeholder="Рукавишников">
                                 <div class="border">
-            
+
                                 </div>
                             </div>
                         </div>
@@ -209,7 +209,7 @@
                             <div class="textBox">
                                 <input type="text" name="order[firstName]" id="" placeholder="Василий">
                                 <div class="border">
-            
+
                                 </div>
                             </div>
                         </div>
@@ -218,7 +218,7 @@
                             <div class="textBox">
                                 <input type="text" name="order[patronymic]" id="" placeholder="Владимирович">
                                 <div class="border">
-            
+
                                 </div>
                             </div>
                         </div>
@@ -227,7 +227,7 @@
                             <div class="textBox">
                                 <input type="tel" name="order[phone]" id="" placeholder="+7 (800) 555 35-35">
                                 <div class="border">
-            
+
                                 </div>
                             </div>
                         </div>
@@ -241,7 +241,7 @@
                 </div>
                 <div class="bundleBrief">
                     <div class="bundleImage">
-            
+
                     </div>
                     <!-- <p>Подарок с Дальнего Востока</p> -->
                     <!-- <p>Большой набор</p> -->
@@ -496,4 +496,3 @@
 </body>
 
 </html>
-
