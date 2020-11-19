@@ -204,8 +204,6 @@ $blue: #0034FF;
                 .bundleImage {
                     display: block;
                     content: '';
-                    width: 250px;
-                    // height: 10%;
                     background: url("../img/client/index//bundles/dv-present.jpg");
                     background-position: center center;
                     background-size: cover;
@@ -1142,11 +1140,41 @@ $blue: #0034FF;
     .order-form {
 
         .form-wrap{
-            max-height: 500px;
+            max-height: 450px;
             overflow-y: auto;
+            padding: 16px 13px;
+
+            > p{
+                font-size: 20px;
+
+                &:after{
+                    width: 150px;
+                }
+            }
 
             .close{
-                // position: fixed;
+                position: fixed;
+                transform: translate(260px, -32px);
+                top: inherit;
+                right: inherit;
+                width: 40px;
+                height: 40px;
+
+                .cross{
+                    &:before, &:after{
+                        width: 30px;
+                    }
+                    
+                    &:after{
+                        top: 16px;
+                        left: 5.2px;
+                    }
+
+                    &:before{
+                        top: 19px;
+                        left: 5.2px;
+                    }
+                }
             }
 
             #orderForm{
@@ -1161,11 +1189,39 @@ $blue: #0034FF;
                         grid-template-columns: 1fr;
                         grid-template-rows: 1fr;
                         grid-row-gap: 10px;
+
+                        > div span{
+                            margin-top: 20px;
+                        }
+
+                        > div .textBox{
+                            width: 100%;
+
+                            input{
+                                width: 100%;
+                            }
+                        }
+                    }
+
+                    .price-and-confirm-button{
+                        flex-flow: column;
+                        align-items: flex-end;
+                        margin-top: 35px;
+                        
+                        > p{
+                            margin-bottom: 10px;
+                            padding-left: 0px;
+                            font-size: 17px;
+                        }
                     }
                 }
 
                 .bundleBrief{
                     grid-row: 1;
+
+                    p:nth-child(2){
+                        font-size: 15px;
+                    }
 
                     .bundleImage{
                         width: 100%;
@@ -1357,7 +1413,7 @@ $blue: #0034FF;
         }
 
         .bundle-variants {
-            >p {
+            > p {
                 font-size: 45px;
             }
             .bundles {

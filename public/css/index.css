@@ -153,7 +153,6 @@
         .order-form .form-wrap #orderForm .bundleBrief .bundleImage {
           display: block;
           content: '';
-          width: 250px;
           background: url("../img/client/index//bundles/dv-present.jpg");
           background-position: center center;
           background-size: cover;
@@ -786,8 +785,28 @@
 
 @media screen and (max-width: 900px) {
   .order-form .form-wrap {
-    max-height: 500px;
-    overflow-y: auto; }
+    max-height: 450px;
+    overflow-y: auto;
+    padding: 16px 13px; }
+    .order-form .form-wrap > p {
+      font-size: 20px; }
+      .order-form .form-wrap > p:after {
+        width: 150px; }
+    .order-form .form-wrap .close {
+      position: fixed;
+      transform: translate(260px, -32px);
+      top: inherit;
+      right: inherit;
+      width: 40px;
+      height: 40px; }
+      .order-form .form-wrap .close .cross:before, .order-form .form-wrap .close .cross:after {
+        width: 30px; }
+      .order-form .form-wrap .close .cross:after {
+        top: 16px;
+        left: 5.2px; }
+      .order-form .form-wrap .close .cross:before {
+        top: 19px;
+        left: 5.2px; }
     .order-form .form-wrap #orderForm {
       grid-template-columns: 1fr; }
       .order-form .form-wrap #orderForm .orderWrapper {
@@ -798,8 +817,24 @@
           grid-template-columns: 1fr;
           grid-template-rows: 1fr;
           grid-row-gap: 10px; }
+          .order-form .form-wrap #orderForm .orderWrapper .userFields > div span {
+            margin-top: 20px; }
+          .order-form .form-wrap #orderForm .orderWrapper .userFields > div .textBox {
+            width: 100%; }
+            .order-form .form-wrap #orderForm .orderWrapper .userFields > div .textBox input {
+              width: 100%; }
+        .order-form .form-wrap #orderForm .orderWrapper .price-and-confirm-button {
+          flex-flow: column;
+          align-items: flex-end;
+          margin-top: 35px; }
+          .order-form .form-wrap #orderForm .orderWrapper .price-and-confirm-button > p {
+            margin-bottom: 10px;
+            padding-left: 0px;
+            font-size: 17px; }
       .order-form .form-wrap #orderForm .bundleBrief {
         grid-row: 1; }
+        .order-form .form-wrap #orderForm .bundleBrief p:nth-child(2) {
+          font-size: 15px; }
         .order-form .form-wrap #orderForm .bundleBrief .bundleImage {
           width: 100%;
           height: 400px; }
