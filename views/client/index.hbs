@@ -5,17 +5,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/index.css">
-    <title></title>
+    <link rel="stylesheet" href="/css/menu-btn.css">
+    <link rel="stylesheet" href="/css/mobile-menu.css">
+    <title>Душа народа</title>
 </head>
 
 <body>
     <div class="top-menu">
+        <a class="menu-btn" href="">
+            <span class="btn-span"></span>
+        </a>
         <span class="anchor"><img src="/img/client/index/logo.png" alt="logo"></span>
         <span class="anchor">Почему мы</span>
         <span class="anchor">Варианты посылок</span>
         <span class="anchor">Отзывы</span>
         <span class="anchor">Контакты</span>
-        <a href="https://www.instagram.com/kuhnyabezgranic/">Наш инстаграмм</a>
+        <a href="https://www.instagram.com/kuhnyabezgranic/">
+            <img src="/img/client/index/instagram.svg" alt="">
+        </a>
     </div>
     <div class="wrapper">
         <div class="first-page" id="fp">
@@ -158,8 +165,8 @@
             </div>
             <div class="contacts" id="cont">
                 <p>Контакты</p>
-                <p>Телефон: <span>+7 (962) 678 05 84</span></p>
-                <p>E-mail: <span>arshinova.tatyana@bk.ru</span></p>
+                <p><span>Телефон:</span> <span class="footer-info">+7 (962) 678 05 84</span></p>
+                <p><span>E-mail:</span> <span class="footer-info">arshinova.tatyana@bk.ru</span></p>
                 <div class="social-medias">
                     <a href="https://wa.me/79626780584"><img src="/img/client/index/whatsapp.svg"
                             alt="whats-app"></a>
@@ -169,7 +176,9 @@
                             alt="telegram"></a>
                 </div>
                 <div class="logo-and-text">
-                    <img src="/img/client/index/logo.png" alt="logo">
+                    <div class="logo-footer-img-wrap">
+                        <img src="/img/client/index/logo.png" alt="logo">
+                    </div>
                     <span>#Кухня Без Границ</span>
                 </div>
             </div>
@@ -485,9 +494,27 @@
         </div>
     </div>
 
+    <div class="mobile-menu">
+        <ul>
+            <li>
+                <span class="anchor">Почему мы</span>
+            </li>
+            <li>
+                <span class="anchor">Варианты посылок</span>
+            </li>
+            <li>
+                <span class="anchor">Отзывы</span>
+            </li>
+            <li>
+                <span class="anchor">Контакты</span>
+            </li>
+        </ul>
+    </div>
+
     <script>
         let globalCurrentOrderInd = 0;
     </script>
+    <script src="/js/menu.js"></script>
     <script src="/js/save-order.js"></script>
     <script src="/js/client/index-animations.js"></script>
     <script src="/js/flash.js"></script>

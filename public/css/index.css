@@ -407,6 +407,7 @@
   top: -13px; }
 
 .top-menu {
+  z-index: 9999;
   position: fixed;
   top: 0px;
   left: 0px;
@@ -416,18 +417,17 @@
   flex-flow: row nowrap;
   align-items: center;
   background: white;
-  box-shadow: 0px 2.5px 2px rgba(0, 0, 0, 0.25);
-  z-index: 999; }
-  .top-menu span, .top-menu a {
+  box-shadow: 0px 2.5px 2px rgba(0, 0, 0, 0.25); }
+  .top-menu span:not(.btn-span), .top-menu a:not(.menu-btn) {
     text-decoration: none;
     color: #00B100;
     font-size: 19px;
     margin-left: 35px;
     cursor: pointer; }
-    .top-menu span img, .top-menu a img {
+    .top-menu span:not(.btn-span) img, .top-menu a:not(.menu-btn) img {
       height: 40px;
       padding: 0px 5px; }
-    .top-menu span:hover, .top-menu a:hover {
+    .top-menu span:not(.btn-span):hover, .top-menu a:not(.menu-btn):hover {
       color: #0034FF;
       transition: 0.5s ease-out; }
 
@@ -707,25 +707,22 @@
               .wrapper .clients-reviews .clients-reviews-content .reviews .review .user-info .user-name-and-bundle > p:nth-child(3) {
                 padding-top: 25px; }
   .wrapper .footer {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    border-top: 1px solid black;
-    max-height: 400px; }
+    display: grid;
+    grid-template-columns: max-content auto;
+    border-top: 1px solid black; }
     .wrapper .footer .owner {
-      width: 50vw;
       display: flex;
       flex-flow: column nowrap;
       align-items: center;
       justify-content: center;
-      padding: 30px 0px; }
+      padding: 30px;
+      box-sizing: border-box; }
       .wrapper .footer .owner img {
-        height: 90%;
-        border: #0034FF solid 2px; }
+        width: 420px;
+        height: 420px; }
       .wrapper .footer .owner span {
         padding-top: 10px; }
     .wrapper .footer .contacts {
-      width: 50vw;
       background-image: url("../img/client/index/first-page-bg.png");
       background-size: cover;
       background-position: 50% 50%;
@@ -735,7 +732,7 @@
       flex-flow: column nowrap;
       justify-content: center; }
       .wrapper .footer .contacts p:nth-child(1) {
-        font-size: 30px;
+        font-size: 34px;
         text-transform: uppercase; }
         .wrapper .footer .contacts p:nth-child(1)::after {
           display: block;
@@ -744,14 +741,17 @@
           height: 2px;
           background: #0034FF; }
       .wrapper .footer .contacts p:nth-child(2) {
+        font-size: 20px;
         padding-top: 25px;
         padding-left: 3px; }
-        .wrapper .footer .contacts p:nth-child(2) span {
+        .wrapper .footer .contacts p:nth-child(2) .footer-info {
           color: #476AE6; }
       .wrapper .footer .contacts p:nth-child(3) {
+        margin-top: 5px;
+        font-size: 20px;
         padding-top: 5px;
         padding-left: 3px; }
-        .wrapper .footer .contacts p:nth-child(3) span {
+        .wrapper .footer .contacts p:nth-child(3) .footer-info {
           color: #476AE6; }
       .wrapper .footer .contacts .social-medias {
         display: flex;
@@ -759,28 +759,31 @@
         padding-top: 25px;
         width: 60%; }
         .wrapper .footer .contacts .social-medias img {
-          width: 50px;
+          width: 70px;
           margin: 0px 5px; }
       .wrapper .footer .contacts .logo-and-text {
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
         padding-top: 40px; }
-        .wrapper .footer .contacts .logo-and-text img {
-          width: 15%; }
-        .wrapper .footer .contacts .logo-and-text span {
-          color: #0034FF;
-          margin-left: 25px;
-          position: relative; }
-          .wrapper .footer .contacts .logo-and-text span::before {
+        .wrapper .footer .contacts .logo-and-text .logo-footer-img-wrap {
+          display: flex;
+          position: relative;
+          width: 130px; }
+          .wrapper .footer .contacts .logo-and-text .logo-footer-img-wrap:after {
             display: block;
             content: '';
-            width: 1.5px;
-            height: 50px;
+            width: 2px;
+            height: 100%;
             background: #0034FF;
             position: absolute;
-            top: -15px;
-            left: -15px; }
+            right: -20px; }
+          .wrapper .footer .contacts .logo-and-text .logo-footer-img-wrap img {
+            width: 100%; }
+        .wrapper .footer .contacts .logo-and-text span {
+          color: #0034FF;
+          margin-left: 40px;
+          font-size: 26px; }
 
 @media screen and (max-width: 980px) {
   .bundles-collection .right {
@@ -877,7 +880,17 @@
           width: 100%;
           height: 400px; }
   .top-menu {
-    display: none; }
+    box-shadow: 0px 2.5px 2px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+    box-sizing: border-box; }
+    .top-menu span {
+      display: none; }
+    .top-menu span:nth-child(2) {
+      display: block; }
+    .top-menu span:not(.btn-span), .top-menu a:not(.menu-btn) {
+      margin-left: 0px; }
   .wrapper {
     padding-top: 0px; }
     .wrapper .first-page {
@@ -896,6 +909,8 @@
         border: none; }
         .wrapper .first-page .first-page-text p {
           width: 100%; }
+        .wrapper .first-page .first-page-text p:nth-child(1) {
+          margin-top: 20px; }
         .wrapper .first-page .first-page-text .order-button {
           width: 80%; }
       .wrapper .first-page .first-page-bundles-button img {
@@ -994,8 +1009,7 @@
               padding-top: 20px;
               margin: 0px; }
     .wrapper .footer {
-      flex-flow: column nowrap;
-      align-items: center;
+      grid-template-columns: 1fr;
       background-image: url("../img/client/index/first-page-bg.png");
       background-size: cover;
       background-position: 50% 50%;
@@ -1012,12 +1026,20 @@
           display: flex;
           flex-flow: column nowrap;
           align-items: center; }
+        .wrapper .footer .contacts > p:nth-child(2) .footer-info {
+          margin-top: 5px; }
+        .wrapper .footer .contacts > p:nth-child(3) {
+          margin-top: 10px; }
+          .wrapper .footer .contacts > p:nth-child(3) .footer-info {
+            margin-top: 5px; }
         .wrapper .footer .contacts .social-medias {
           flex-flow: column nowrap;
           align-items: center; }
           .wrapper .footer .contacts .social-medias img {
             width: 90px;
             margin: 10px 0px; }
+        .wrapper .footer .contacts .logo-and-text .logo-footer-img-wrap {
+          width: 50%; }
         .wrapper .footer .contacts .logo-and-text img {
           width: 60px; }
         .wrapper .footer .contacts .logo-and-text span {
