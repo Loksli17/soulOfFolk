@@ -1,15 +1,15 @@
 const
     Comment = require('./../models/CommentModel'),
-    Order   = require('./../models/OrderModel'); 
+    Order   = require('./../models/OrderModel');
 
 
 exports.actionIndex = async (req, res) => {
-    
+
     let comments = [];
 
     comments = await Comment.find({isActive: true}).sort({number: -1}).exec();
 
-    console.log(comments);
+    console.log("piska ",comments);
 
     res.render('client/index', {
         comments: comments,
@@ -38,7 +38,7 @@ exports.actionCreateOrder = async (req, res) => {
         name: {
             lastName  : orderForm.lastName,
             firstName : orderForm.firstName,
-            patronymic: orderForm.patronymic, 
+            patronymic: orderForm.patronymic,
         },
         number    : lastOrder.number + 1,
         viewStatus: true,

@@ -70,35 +70,41 @@ let
 
 orderButtons.forEach((item, i) => {
     item.onclick = function() {
-        document.body.classList.add('stop-scrolling');
-        document.body.appendChild(orderBlock);
+        if (i!== 0) {
+            document.body.classList.add('stop-scrolling');
+            document.body.appendChild(orderBlock);
 
-        let
-            price = orderBlock.querySelector(".price-and-confirm-button"),
-            brief = orderBlock.querySelector(".bundleBrief"),
-            image = orderBlock.querySelector(".bundleImage"),
-            pr1 = document.createElement("p"),
-            pr2 = document.createElement("p"),
-            pr3 = document.createElement("p"),
-            text1 = order.price[i] + ' руб',
-            text2 = order.name[i],
-            text3 = order.info[i]
-            imageUrl = "url(" + order.images[i] + ")";
+            let
+                price = orderBlock.querySelector(".price-and-confirm-button"),
+                brief = orderBlock.querySelector(".bundleBrief"),
+                image = orderBlock.querySelector(".bundleImage"),
+                pr1 = document.createElement("p"),
+                pr2 = document.createElement("p"),
+                pr3 = document.createElement("p"),
+                text1 = order.price[i] + ' руб',
+                text2 = order.name[i],
+                text3 = order.info[i]
+                imageUrl = "url(" + order.images[i] + ")";
 
-        pr1.appendChild(document.createTextNode(text1));
-        price.prepend(pr1);
+            pr1.appendChild(document.createTextNode(text1));
+            price.prepend(pr1);
 
-        pr2.appendChild(document.createTextNode(text2));
-        pr2.classList.add('bundleName');
-        brief.appendChild(pr2);
+            pr2.appendChild(document.createTextNode(text2));
+            pr2.classList.add('bundleName');
+            brief.appendChild(pr2);
 
-        pr3.appendChild(document.createTextNode(text3));
-        brief.appendChild(pr3);
+            pr3.appendChild(document.createTextNode(text3));
+            brief.appendChild(pr3);
 
-        image.style.backgroundImage = imageUrl;
+            image.style.backgroundImage = imageUrl;
 
-        orderBlock.querySelector('#orderForm').addEventListener('submit', createOrder, false);
-        orderBlock.querySelector('#orderForm input[name="order[phone]"]').addEventListener('input', addNumberInPhone, false);
+            orderBlock.querySelector('#orderForm').addEventListener('submit', createOrder, false);
+            orderBlock.querySelector('#orderForm input[name="order[phone]"]').addEventListener('input', addNumberInPhone, false);
+        }
+
+        else {
+            smoothScroll(1000, "bundleVar");
+        }
     }
 
 
@@ -252,11 +258,6 @@ function addSecs(amount) {
     };
 
     bundleSec.children[0].classList.add("active");
-}
-
-
-arrows.onclick = function() {
-    smoothScroll(1000, "bundleVar");
 }
 
 
