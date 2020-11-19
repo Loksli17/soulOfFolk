@@ -286,7 +286,7 @@ $blue: #0034FF;
     .left {
         transform: translate(-465%, -50%) scale(-0.3);
     }
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -568,7 +568,7 @@ $blue: #0034FF;
 }
 
 .top-menu {
-    
+
     span, a {
         img {
             height: 40px;
@@ -657,9 +657,9 @@ $blue: #0034FF;
                 width: 80%;
                 max-width: 500px;
                 // height: 45%;
-                &:hover {
-                    cursor: pointer;
-                }
+                // &:hover {
+                //     cursor: pointer;
+                // }
             }
 
             // @media screen and (max-width: 1070px){
@@ -706,15 +706,15 @@ $blue: #0034FF;
                     }
                 }
 
-                &:hover {
-                    cursor: pointer;
-                    .arrow {
-                        &::before, &::after {
-                            transition: 0.4s;
-                            background: $green;
-                        }
-                    }
-                }
+                // &:hover {
+                //     cursor: pointer;
+                //     .arrow {
+                //         &::before, &::after {
+                //             transition: 0.4s;
+                //             background: $green;
+                //         }
+                //     }
+                // }
             }
 
             span {
@@ -975,6 +975,7 @@ $blue: #0034FF;
                 display: flex;
                 flex-flow: row nowrap;
                 justify-content: center;
+                user-select: none;
 
                 .review {
                     display: none;
@@ -1155,6 +1156,7 @@ $blue: #0034FF;
 
         .bundle-frame {
             width: 80%;
+            max-width: 500px;
             height: 80%;
             padding: 20px;
             overflow-y: scroll;
@@ -1163,24 +1165,33 @@ $blue: #0034FF;
             //     width: ;
             // }
 
+            #bundleClose {
+                transform: translate(470px, -70px) scale(0.7);
+            }
+
             .bundle-sections {
                 top: 150%;
                 padding-bottom: 40px;
             }
 
-            >div:not(.bundle-sections) {
+            >div:not(.bundle-sections):not(#bundleClose) {
                 flex-flow: column nowrap;
 
                 .bundle-text {
                     margin-top: 75px;
                     text-align: right;
                     padding: 30px;
+                    width: 300px;
 
                     .bundle-head {
                         justify-content: flex-end;
                         text-indent: 30%;
                         margin-bottom: 420px;
                     }
+
+                    // .bundle-content {
+                    //     padding-right: 80px;
+                    // }
                 }
 
                 .bundle-image-and-button {
@@ -1189,7 +1200,6 @@ $blue: #0034FF;
                         height: 300px;
                     }
                     position: relative;
-                    width: 300px;
                     transform: translate(0%, -75%);
                     margin: 0px;
                 }
@@ -1198,6 +1208,15 @@ $blue: #0034FF;
     }
 }
 
+@media screen and (max-width: 600px) {
+    .bundles-collection{
+        .bundle-frame {
+            #bundleClose {
+                transform: translate(75vw, -70px) scale(0.6);
+            }
+        }
+    }
+}
 
 //FUCKING
 @media screen and (max-width: 900px) {
@@ -1229,7 +1248,7 @@ $blue: #0034FF;
                     &:before, &:after{
                         width: 30px;
                     }
-                    
+
                     &:after{
                         top: 16px;
                         left: 5.2px;
@@ -1244,7 +1263,7 @@ $blue: #0034FF;
 
             #orderForm{
                 grid-template-columns: 1fr;
-                
+
                 .orderWrapper{
                     margin-right: 0px;
                     grid-row: 2;
@@ -1272,7 +1291,7 @@ $blue: #0034FF;
                         flex-flow: column;
                         align-items: flex-end;
                         margin-top: 35px;
-                        
+
                         > p{
                             margin-bottom: 10px;
                             padding-left: 0px;
@@ -1294,7 +1313,7 @@ $blue: #0034FF;
                     }
                 }
             }
-        } 
+        }
     }
 
     .top-menu {
@@ -1461,7 +1480,7 @@ $blue: #0034FF;
             }
 
             .clients-reviews-content {
-                
+
                 .scroll {
                     width: 80px;
                     transform: scale(0.4) translateX(20px);
@@ -1559,6 +1578,81 @@ $blue: #0034FF;
                         &::before {
                             top: 4px;
                         }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .bundles-collection{
+        .right {
+            transform: translate(115%, -50%) scale(0.45);
+        }
+        .left {
+            transform: translate(-215%, -44%) scale(-0.45);
+        }
+
+            #bundleClose {
+                transform: translate(73vw, -65px) scale(0.4);
+            }
+
+        .bundle-frame {
+            .bundle-sections {
+                top: 190%;
+            }
+
+            >div:not(.bundle-sections):not(#bundleClose) {
+                flex-flow: column nowrap;
+
+                .bundle-text {
+                    margin-top: 250px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .bundles-collection {
+        .right {
+            transform: translate(95%, -50%) scale(0.3);
+        }
+        .left {
+            transform: translate(-195%, -44%) scale(-0.3);
+        }
+
+        .bundle-frame {
+            .bundle-sections {
+                top: 260%;
+            }
+
+            #bundleClose {
+                transform: translate(72vw, -62px) scale(0.4);
+            }
+
+            >div:not(.bundle-sections):not(#bundleClose) {
+                flex-flow: column nowrap;
+
+                .bundle-text {
+                    margin-top: 370px;
+                    padding-right: 60px;
+                    .bundle-head {
+                        .bundle-content {
+                            padding-right: 10px;
+                        }
+                    }
+                }
+
+                .bundle-image-and-button {
+                    margin-top: 25px;
+                    img {
+                        width: 260px;
+                        height: 260px;
+                    }
+                    .order-button {
+                        width: 260px;
                     }
                 }
             }
