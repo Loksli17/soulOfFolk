@@ -709,7 +709,7 @@
   .wrapper .footer {
     display: grid;
     grid-template-columns: max-content auto;
-    border-top: 1px solid black; }
+    border-top: 1px solid #0034FF; }
     .wrapper .footer .owner {
       display: flex;
       flex-flow: column nowrap;
@@ -910,7 +910,11 @@
         .wrapper .first-page .first-page-text p {
           width: 100%; }
         .wrapper .first-page .first-page-text p:nth-child(1) {
-          margin-top: 20px; }
+          margin-top: 40px;
+          font-size: 28px; }
+        .wrapper .first-page .first-page-text p:nth-child(3) {
+          width: 80%;
+          font-size: 25px; }
         .wrapper .first-page .first-page-text .order-button {
           width: 80%; }
       .wrapper .first-page .first-page-bundles-button img {
@@ -932,12 +936,13 @@
       .wrapper .why-text-page p:nth-child(1) {
         max-width: 300px;
         order: 1;
-        padding-bottom: 20px; }
+        padding-bottom: 20px;
+        text-align: left; }
         .wrapper .why-text-page p:nth-child(1) span::after {
           position: static;
           width: 100px;
           background: #00B100;
-          margin-left: 35px; }
+          margin-top: 10px; }
       .wrapper .why-text-page p:nth-child(2) {
         order: 2; }
       .wrapper .why-text-page p:nth-child(5) {
@@ -965,7 +970,7 @@
           margin-left: 48px;
           transform: scale(1.5); }
     .wrapper .bundle-variants > p {
-      font-size: 45px; }
+      font-size: 30px; }
     .wrapper .bundle-variants .bundles {
       justify-content: center;
       padding: 50px 0px; }

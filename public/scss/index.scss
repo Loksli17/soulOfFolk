@@ -568,13 +568,8 @@ $blue: #0034FF;
 }
 
 .top-menu {
-<<<<<<< HEAD
-
-    span, a {
-=======
     
     span:not(.btn-span), a:not(.menu-btn) {
->>>>>>> 21d2c9973c31bc388b8ffa075534ec8e867a7616
         img {
             height: 40px;
             padding: 0px 5px;
@@ -1037,7 +1032,7 @@ $blue: #0034FF;
     .footer {
         display: grid;
         grid-template-columns: max-content auto;
-        border-top: 1px solid black;
+        border-top: 1px solid #0034FF;
 
         .owner {
             display: flex;
@@ -1170,17 +1165,10 @@ $blue: #0034FF;
             padding: 20px;
             overflow-y: scroll;
 
-<<<<<<< HEAD
-            // #bundleClose{
-            //     width: ;
-            // }
-
             #bundleClose {
                 transform: translate(470px, -70px) scale(0.7);
             }
 
-=======
->>>>>>> 21d2c9973c31bc388b8ffa075534ec8e867a7616
             .bundle-sections {
                 top: 150%;
                 padding-bottom: 40px;
@@ -1371,7 +1359,13 @@ $blue: #0034FF;
                 }
 
                 p:nth-child(1){
-                    margin-top: 20px;
+                    margin-top: 40px;
+                    font-size: 28px;
+                }
+
+                p:nth-child(3){
+                    width: 80%;
+                    font-size: 25px;
                 }
 
                 .order-button {
@@ -1419,12 +1413,13 @@ $blue: #0034FF;
                     max-width: 300px;
                     order: 1;
                     padding-bottom: 20px;
+                    text-align: left;
 
                     span::after {
                         position: static;
                         width: 100px;
                         background: $green;
-                        margin-left: 35px;
+                        margin-top: 10px;
                     }
                 }
 
@@ -1483,7 +1478,7 @@ $blue: #0034FF;
 
         .bundle-variants {
             > p {
-                font-size: 45px;
+                font-size: 30px;
             }
             .bundles {
                 justify-content: center;

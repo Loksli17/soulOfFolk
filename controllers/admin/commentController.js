@@ -147,7 +147,6 @@ exports.actionCreate = async (req, res) => {
         req.flash('flash', {class: 'success', status: 'Успешно!', text: `Отзыв c id ${comment.number} успешно создан.`});
         res.redirect('/admin/comments');
     }catch(error){
-        //обработать ошибки
         req.flash('flash', {class: 'fail', status: 'Ошибка!', text: `Отзыв c id ${comment.number} не был создан.`});
         res.render('admin/comment/create', {
             layout : 'layouts/admin',
