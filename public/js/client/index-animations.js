@@ -1,4 +1,5 @@
 let
+    mobileMenu = document.querySelector(".mobile-menu"),
     reviews = document.querySelectorAll(".review"),
     activeRev = 0,
     reviewScroll = document.querySelector(".clients-reviews-content").querySelectorAll(".scroll"),
@@ -395,10 +396,13 @@ function bundleDisplay(bunCase, index, side) {
 
 anchors.forEach((item, i) => {
     let
-        anchor = ["fp", "whyWe", "bundleVar", "clientsRev", "cont"];
+        anchor = ["fp", "whyWe", "bundleVar", "clientsRev", "cont", "whyWe", "bundleVar", "clientsRev", "cont"];
     item.onclick = function() {
         smoothScroll(1000, anchor[i]);
-    }
+        if (mobileMenu.classList.contains("mobile-menu-active")) {
+            mobileMenu.classList.remove("mobile-menu-active");
+        }
+    }    
 });
 
 

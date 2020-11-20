@@ -1162,6 +1162,7 @@ $blue: #0034FF;
             width: 80%;
             max-width: 500px;
             height: 80%;
+            margin-top: 10%;
             padding: 20px;
             overflow-y: scroll;
 
@@ -1170,8 +1171,7 @@ $blue: #0034FF;
             }
 
             .bundle-sections {
-                top: 150%;
-                padding-bottom: 40px;
+                display: none;
             }
 
             >div:not(.bundle-sections):not(#bundleClose) {
@@ -1189,9 +1189,9 @@ $blue: #0034FF;
                         margin-bottom: 420px;
                     }
 
-                    // .bundle-content {
-                    //     padding-right: 80px;
-                    // }
+                    .bundle-content {
+                        padding-bottom: 20px;
+                    }
                 }
 
                 .bundle-image-and-button {
@@ -1322,7 +1322,7 @@ $blue: #0034FF;
         justify-content: space-between;
         padding: 0px 20px;
         box-sizing: border-box;
-        
+
         span{
             display: none;
         }
@@ -1611,7 +1611,7 @@ $blue: #0034FF;
                     .logo-footer-img-wrap{
                         width: 50%;
                     }
-                    
+
                     img {
                         width: 60px;
                     }
@@ -1643,9 +1643,6 @@ $blue: #0034FF;
             }
 
         .bundle-frame {
-            .bundle-sections {
-                top: 190%;
-            }
 
             >div:not(.bundle-sections):not(#bundleClose) {
                 flex-flow: column nowrap;
@@ -1668,9 +1665,6 @@ $blue: #0034FF;
         }
 
         .bundle-frame {
-            .bundle-sections {
-                top: 260%;
-            }
 
             #bundleClose {
                 transform: translate(72vw, -62px) scale(0.4);
