@@ -50,37 +50,35 @@ hbs.registerHelper('title', (title) => {
 app.use(require('./controllers/authController').actionLocalsControl);
 app.use(require('./controllers/admin/orderController').actionGetNewOrders);
 
-app.use('/',      require('./routers/indexRouter'));
+app.use('/',            require('./routers/indexRouter'));
 app.use('/admin/login', require('./controllers/authController').actionLogin);
 
-// app.use('/admin/orders', (req, res, next) => {
-//     if(req.session.userIdentity == undefined){
-//         res.status(404).render('server/error.hbs', {
-//             layout : null,
-//             err   : '404',
-//             message: 'Страница не найдена',
-//         });
-//     }else{
-//         next();
-//     } 
-// });
+app.use('/admin/orders', (req, res, next) => {
+    if(req.session.userIdentity == undefined){
+        res.status(403).render('server/error.hbs', {
+            layout : null,
+            err   : '403',
+            message: 'Перед попаданием в панель администрации необходима авторизация',
+        });
+    }else{
+        next();
+    } 
+});
 
-// app.use('/admin/comments', (req, res, next) => {
-//     if(req.session.userIdentity == undefined){
-//         res.status(404).render('server/error.hbs', {
-//             layout : null,
-//             err   : '404',
-//             message: 'Страница не найдена',
-//         });
-//     }else{
-//         next();
-//     }  
-// });
+app.use('/admin/comments', (req, res, next) => {
+    if(req.session.userIdentity == undefined){
+        res.status(403).render('server/error.hbs', {
+            layout : null,
+            err   : '403',
+            message: 'Перед попаданием в панель администрации необходима авторизация',
+        });
+    }else{
+        next();
+    }  
+});
 
 app.use('/admin/orders',   require('./routers/admin/orderRouter'));
 app.use('/admin/comments', require('./routers/admin/commentRouter'));
-
-
 
 
 app.use((req, res) => {
@@ -90,6 +88,7 @@ app.use((req, res) => {
         err    : 404,
         message: 'Страница не найдена'
     });
+    return;
 });
 
 app.use((err, req, res) => {
@@ -100,6 +99,7 @@ app.use((err, req, res) => {
         err    : 500,
         message: 'Внутреняя ошибка сервера',
     });
+    return;
 });
 
 app.set('port', process.env.PORT || config.app.port);
