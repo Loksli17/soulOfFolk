@@ -51,19 +51,19 @@ function formValidate(obj){
     let nameReg = /^[a-zA-Zа-яА-ЯёЁ'][a-zA-Z-а-яА-ЯёЁ']+[a-zA-Zа-яА-ЯёЁ']?$/;
 
     if(!nameReg.test(obj.lastName)){
-        return {message: 'Не верно указано фамилия'};
+        return {message: 'Неверно указано фамилия'};
     }
 
     if(!nameReg.test(obj.firstName)){
-        return {message: 'Не верно указано имя'};
+        return {message: 'Неверно указано имя'};
     }
     
     if(!nameReg.test(obj.patronymic)){
-        return {message: 'Не верно указано отчество'};
+        return {message: 'Неверно указано отчество'};
     }
 
     if(obj.phone.length < 18){
-        return {message: 'Не верно указан телефон'};
+        return {message: 'Неверно указан телефон'};
     }
 
     return true;
